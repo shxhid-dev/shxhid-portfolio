@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shahid Afrid — Software Developer</title>
+<meta name="description" content="Shahid Afrid — software developer in Bengaluru. Production systems for industrial commerce: a 200,000-product Shopify storefront, an MCP-based AI shopping agent on Claude, and the services behind them.">
+<meta name="theme-color" content="#07090f">
+<meta property="og:title" content="Shahid Afrid — Software Developer">
+<meta property="og:description" content="I build software that ships. Full-stack, AI agents, automation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   TOKENS — ink, bone, cobalt
+   ========================================================= */
+:root{
+  --bg:#07090F;
+  --bg-2:#0C0F17;
+  --panel:#10131C;
+  --line:rgba(237,237,234,.09);
+  --line-2:rgba(237,237,234,.18);
+  --fg:#EDEDEA;
+  --fg-2:#9EA2AC;
+  --fg-3:#5F636D;
+  --cobalt:#3B5BFF;
+  --cobalt-2:#2E4AE6;
+  --ice:#B9CBFF;
+  --cobalt-glow:rgba(59,91,255,.32);
+
+  --f:"Archivo",system-ui,sans-serif;
+  --m:"DM Mono",ui-monospace,monospace;
+  --wrap:1280px;
+  --gutter:clamp(20px,4vw,56px);
+  --ease:cubic-bezier(.19,1,.22,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:var(--f);font-variation-settings:"wdth" 100;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,h4{margin:0;line-height:1;letter-spacing:-.03em;font-weight:700}
+p{margin:0 0 1em}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+img{max-width:100%;display:block}
+::selection{background:var(--cobalt);color:#fff}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+.mono{font-family:var(--m)}
+.label{font:500 11px/1 var(--m);letter-spacing:.22em;text-transform:uppercase;color:var(--fg-3)}
+.label.on{color:var(--cobalt)}
+
+/* noise */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+
+/* =========================================================
+   LOADER
+   ========================================================= */
+.loader{position:fixed;inset:0;background:var(--bg);z-index:200;display:flex;align-items:flex-end;padding:var(--gutter);transition:transform .9s var(--ease);will-change:transform}
+.loader.done{transform:translateY(-100%)}
+.loader .big{font-size:clamp(64px,16vw,220px);font-weight:900;font-variation-settings:"wdth" 118;letter-spacing:-.05em;line-height:.85;overflow:hidden}
+.loader .big span{display:block;transform:translateY(105%);animation:up 1s var(--ease) .15s forwards}
+.loader .pct{position:absolute;top:var(--gutter);right:var(--gutter);font:500 12px var(--m);letter-spacing:.2em;color:var(--fg-3)}
+@keyframes up{to{transform:none}}
+
+/* =========================================================
+   NAV
+   ========================================================= */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;padding:22px var(--gutter);display:flex;justify-content:space-between;align-items:center;mix-blend-mode:difference}
+.nav .logo{font-weight:800;font-size:18px;letter-spacing:-.04em}
+.nav .logo i{font-style:normal;color:var(--cobalt)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:36px;align-items:center}
+.nav li a.pill{opacity:1;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:9px 16px;margin-left:8px}
+.nav li a.pill::after{display:none}
+.nav li a.pill:hover{background:#fff;color:#000}
+.nav li a{font:500 12px var(--m);letter-spacing:.18em;text-transform:uppercase;color:#fff;opacity:.6;transition:opacity .2s;position:relative}
+.nav li a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:100%;background:#fff;transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.nav li a:hover{opacity:1}
+.nav li a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .menu{display:none}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding-top:120px;position:relative}
+.hero-top{display:block}
+.hero .iam{font:500 13px var(--m);letter-spacing:.24em;text-transform:uppercase;color:var(--fg-2);margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.hero .iam::before{content:"";width:40px;height:1px;background:var(--cobalt)}
+.hero .name{
+  font-size:clamp(72px,15.5vw,236px);font-weight:900;letter-spacing:-.06em;line-height:.82;
+  font-variation-settings:"wdth" 118;text-transform:uppercase;
+}
+.hero .name .w{display:block;overflow:hidden;padding-bottom:.05em}
+.hero .name .w span{display:inline-block;transform:translateY(110%);opacity:0}
+.loaded .hero .name .w span{animation:up .95s var(--ease) forwards;opacity:1}
+.hero .name .w:nth-child(2) span{color:transparent;-webkit-text-stroke:1.5px var(--fg);}
+.hero .name .w:nth-child(2) span:hover{-webkit-text-stroke:1.5px var(--cobalt);color:var(--cobalt);transition:color .3s,-webkit-text-stroke .3s}
+.hero-right{max-width:440px;justify-self:end}
+.hero-right .avail{font:500 11px var(--m);letter-spacing:.22em;text-transform:uppercase;color:var(--ice);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.hero-right .avail i{width:8px;height:8px;border-radius:50%;background:var(--cobalt);box-shadow:0 0 0 0 var(--cobalt-glow);animation:ping 2.2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 var(--cobalt-glow)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero-right p{color:var(--fg-2);font-size:16px;line-height:1.65;margin:0 0 28px}
+
+.hero-bottom{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:end;padding:56px 0 48px;border-top:1px solid var(--line);margin-top:56px}
+.hero .state{font-size:clamp(28px,3.6vw,46px);font-weight:600;letter-spacing:-.035em;line-height:1.08;max-width:16ch}
+.hero .state .split{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero .state .split i{display:inline-block;font-style:normal;transform:translateY(105%)}
+.loaded .hero .state .split i{animation:up .9s var(--ease) forwards}
+.hero .state em{font-style:normal;color:var(--cobalt)}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+
+/* letter-flip buttons */
+.fbtn{
+  position:relative;display:inline-flex;align-items:center;gap:14px;
+  padding:18px 28px;border-radius:999px;border:1px solid var(--line-2);
+  font-weight:600;font-size:15px;letter-spacing:-.01em;overflow:hidden;background:transparent;color:var(--fg);
+  transition:border-color .3s,background .3s,color .3s,transform .3s var(--ease);cursor:pointer;
+}
+.fbtn:hover{transform:translateY(-2px);border-color:var(--fg)}
+.fbtn.solid{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+.fbtn.solid:hover{background:var(--cobalt-2);border-color:var(--cobalt-2);box-shadow:0 20px 50px -18px var(--cobalt-glow)}
+.fbtn .l{display:inline-flex}
+.fbtn .l b{display:inline-block;position:relative;font-weight:600;overflow:hidden;height:1.15em;line-height:1.15em}
+.fbtn .l b span{display:block;transition:transform .5s var(--ease)}
+.fbtn .l b span:nth-child(2){position:absolute;top:100%;left:0}
+.fbtn:hover .l b span{transform:translateY(-100%)}
+.fbtn .ar{width:16px;height:16px;transition:transform .4s var(--ease)}
+.fbtn:hover .ar{transform:translate(2px,-2px)}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+.section{padding:clamp(96px,12vw,170px) 0}
+.about{display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:start}
+.about .side .label{margin-bottom:18px}
+.about .side h2{font-size:clamp(34px,4.5vw,60px);font-weight:800;letter-spacing:-.045em;line-height:.98;font-variation-settings:"wdth" 108}
+.about .side h2 i{font-style:normal;color:var(--fg-3);font-weight:500;font-variation-settings:"wdth" 100}
+.about .body p.big{font-size:clamp(22px,2.4vw,32px);font-weight:500;letter-spacing:-.03em;line-height:1.28;margin-bottom:28px}
+.about .body p.big em{font-style:normal;color:var(--cobalt)}
+.about .body p{color:var(--fg-2);font-size:16.5px;max-width:60ch}
+.caps{list-style:none;margin:36px 0 0;padding:0;border-top:1px solid var(--line)}
+.caps li{display:grid;grid-template-columns:44px 1fr auto;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line);transition:padding-left .4s var(--ease)}
+.caps li:hover{padding-left:12px}
+.caps li .n{font:500 12px var(--m);color:var(--fg-3)}
+.caps li .t{font-size:clamp(20px,2vw,26px);font-weight:600;letter-spacing:-.025em}
+.caps li .d{font:500 11px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);text-align:right}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.facts div{padding:22px 22px 20px;border-right:1px solid var(--line)}
+.facts div:last-child{border-right:0}
+.facts .k{font:500 10.5px var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3);margin-bottom:10px}
+.facts .v{font-weight:600;font-size:15.5px;line-height:1.35}
+.facts .v.clock{font-family:var(--m);font-size:22px;color:var(--ice);font-weight:500}
+
+/* =========================================================
+   PROJECTS TABLE
+   ========================================================= */
+.projects-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:34px}
+.projects-head h2{font-size:clamp(48px,9vw,140px);font-weight:900;letter-spacing:-.06em;line-height:.85;font-variation-settings:"wdth" 116;text-transform:uppercase}
+.projects-head p{color:var(--fg-2);max-width:32ch;margin:0;font-size:15.5px}
+.tbl{border-top:1px solid var(--line-2)}
+.thead,.trow{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1.5fr) 90px minmax(0,1.6fr) 44px;gap:24px;align-items:center}
+.thead{padding:16px 0;font:500 11px var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3)}
+.trow{
+  padding:30px 0;border-top:1px solid var(--line);position:relative;
+  transition:padding .45s var(--ease),color .3s;cursor:pointer;
+}
+.trow::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--cobalt);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.trow:hover::after{transform:scaleX(1)}
+.trow:hover{padding-left:18px}
+.trow .name{font-size:clamp(26px,3.4vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1;font-variation-settings:"wdth" 104;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.trow .name .st{font:500 10px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--ice);padding:5px 9px;border:1px solid var(--line-2);border-radius:999px;background:rgba(59,91,255,.08)}
+.trow .name .st.off{color:var(--fg-3);background:transparent}
+.trow .role{color:var(--fg-2);font-size:15px;line-height:1.45}
+.trow .year{font:500 13px var(--m);color:var(--fg-3)}
+.trow .svc{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 11.5px var(--m);padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--fg-2);transition:border-color .2s,color .2s}
+.trow:hover .chip{border-color:var(--line-2);color:var(--fg)}
+.trow .go{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;transition:background .3s,transform .5s var(--ease),border-color .3s}
+.trow .go svg{width:16px;height:16px}
+.trow:hover .go{background:var(--fg);color:var(--bg);border-color:var(--fg);transform:rotate(-45deg)}
+
+/* row expansion on hover */
+.trow .more{grid-column:1 / -1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.trow:hover .more,.trow:focus-visible .more{grid-template-rows:1fr}
+.trow .more > div{overflow:hidden;min-height:0}
+.trow .more .in{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:end;padding-top:22px;opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease) .1s,transform .5s var(--ease) .1s}
+.trow:hover .more .in,.trow:focus-visible .more .in{opacity:1;transform:none}
+.trow .more .num{font-size:clamp(48px,6vw,84px);font-weight:900;letter-spacing:-.06em;line-height:.85;font-variation-settings:"wdth" 118;color:var(--cobalt)}
+.trow .more .cap{font:500 11px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--fg-2);max-width:32ch;line-height:1.7;padding-bottom:4px}
+.trow .more .act{font:500 11px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--ice);padding-bottom:6px;white-space:nowrap}
+@media (max-width:1024px){.trow .more{grid-column:1 / -1}.trow .more .in{grid-template-columns:1fr;gap:10px}}
+
+/* =========================================================
+   NUMBERS
+   ========================================================= */
+.nums{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--panel)}
+.num{padding:30px 24px 26px;border-right:1px solid var(--line);position:relative;transition:background .4s}
+.num:last-child{border-right:0}
+.num:hover{background:var(--bg)}
+.num .v{font-size:clamp(34px,3.6vw,56px);font-weight:900;letter-spacing:-.06em;line-height:.9;font-variation-settings:"wdth" 116}
+.num .v em{font-style:normal;color:var(--cobalt)}
+.num .l{margin-top:12px;font:500 10.5px var(--m);letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);line-height:1.6}
+@media (max-width:1024px){.nums{grid-template-columns:repeat(3,1fr)}.num:nth-child(3){border-right:0}.num:nth-child(-n+3){border-bottom:1px solid var(--line)}}
+@media (max-width:640px){.nums{grid-template-columns:repeat(2,1fr)}.num:nth-child(3){border-right:1px solid var(--line)}.num:nth-child(even){border-right:0}.num:nth-child(-n+4){border-bottom:1px solid var(--line)}}
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+.process-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.process-head h2{font-size:clamp(40px,6vw,88px);font-weight:900;letter-spacing:-.055em;line-height:.9;font-variation-settings:"wdth" 114}
+.process-head h2 i{font-style:normal;color:transparent;-webkit-text-stroke:1px var(--fg-2)}
+.process-head p{color:var(--fg-2);margin:0;max-width:44ch}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.step{background:var(--bg);padding:36px 28px 32px;min-height:300px;display:flex;flex-direction:column;position:relative;transition:background .4s}
+.step:hover{background:var(--panel)}
+.step .n{font:500 12px var(--m);color:var(--cobalt);letter-spacing:.16em}
+.step h3{font-size:30px;font-weight:700;letter-spacing:-.035em;margin:auto 0 14px}
+.step p{color:var(--fg-2);font-size:14.5px;margin:0}
+.step::after{content:"";position:absolute;left:28px;right:28px;top:60px;height:1px;background:var(--line);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.step:hover::after{transform:scaleX(1);background:var(--cobalt)}
+
+/* =========================================================
+   TOOLBOX
+   ========================================================= */
+.tools-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:40px;flex-wrap:wrap}
+.tools-head h2{font-size:clamp(40px,6vw,88px);font-weight:900;letter-spacing:-.055em;line-height:.9;font-variation-settings:"wdth" 114}
+.ttabs{display:flex;gap:26px;flex-wrap:wrap;font:500 12px var(--m);letter-spacing:.2em;text-transform:uppercase}
+.ttabs button{background:none;border:0;padding:0 0 6px;color:var(--fg-3);cursor:pointer;position:relative;font:inherit;letter-spacing:inherit;text-transform:inherit}
+.ttabs button::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--cobalt);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.ttabs button.on{color:var(--fg)}
+.ttabs button.on::after{transform:scaleX(1)}
+.tools{display:flex;flex-wrap:wrap;gap:10px}
+.tool{
+  padding:14px 20px;border-radius:999px;border:1px solid var(--line);font-weight:600;font-size:15px;
+  display:inline-flex;align-items:center;gap:12px;transition:border-color .25s,transform .4s var(--ease),opacity .4s,background .25s;
+}
+.tool i{width:7px;height:7px;border-radius:50%;background:var(--cobalt);opacity:.7}
+.tool:hover{border-color:var(--fg);transform:translateY(-3px)}
+.tool.dim{opacity:.18;pointer-events:none}
+.tool.hero{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tool.hero i{background:var(--cobalt)}
+
+/* =========================================================
+   SHIPPED — compact log
+   ========================================================= */
+.ship-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:40px}
+.ship-head h2{font-size:clamp(40px,6vw,88px);font-weight:900;letter-spacing:-.055em;line-height:.9;font-variation-settings:"wdth" 114}
+.ship-head p{color:var(--fg-2);margin:0;max-width:44ch}
+.log{border-top:1px solid var(--line-2)}
+.lg{display:grid;grid-template-columns:200px 1fr 220px;gap:28px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline;transition:padding-left .4s var(--ease)}
+.lg:hover{padding-left:12px}
+.lg .tag{font:500 11px var(--m);letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3)}
+.lg .t{font-size:18px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px}
+.lg .d{color:var(--fg-2);font-size:14.5px;margin:0;max-width:70ch}
+.lg .fig{font:500 13.5px var(--m);color:var(--ice);text-align:right;line-height:1.5}
+.lg.more{display:none}
+.log.open .lg.more{display:grid}
+.log-toggle{margin-top:28px}
+
+/* =========================================================
+   EXPERIENCE
+   ========================================================= */
+.xp{display:grid;grid-template-columns:1fr 1.25fr;gap:64px}
+.xp h2{font-size:clamp(40px,6vw,88px);font-weight:900;letter-spacing:-.055em;line-height:.9;font-variation-settings:"wdth" 114;position:sticky;top:120px}
+.job{padding:0 0 40px;margin-bottom:40px;border-bottom:1px solid var(--line)}
+.job:last-child{border:0;margin:0;padding:0}
+.job .when{font:500 12px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--cobalt);margin-bottom:14px}
+.job h3{font-size:clamp(24px,2.6vw,34px);font-weight:700;letter-spacing:-.035em;margin-bottom:6px}
+.job .org{color:var(--fg-2);margin-bottom:18px}
+.job ul{margin:0 0 18px;padding-left:18px;color:var(--fg-2);font-size:15.5px}
+.job li{margin-bottom:7px}
+.job li::marker{color:var(--cobalt)}
+.mini{display:grid;gap:12px}
+.mini div{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--fg-2)}
+.mini div b{color:var(--fg);font-weight:600}
+.mini div span:last-child{font:500 12.5px var(--m);color:var(--fg-3)}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.foot{padding:clamp(96px,12vw,170px) 0 40px;position:relative;overflow:hidden}
+.foot .beam{position:absolute;left:50%;top:0;width:1200px;height:600px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 0%,var(--cobalt-glow),transparent 70%);pointer-events:none;filter:blur(10px)}
+.foot .cta{font-size:clamp(56px,11vw,176px);font-weight:900;letter-spacing:-.06em;line-height:.86;font-variation-settings:"wdth" 116;text-transform:uppercase;margin-bottom:44px;position:relative}
+.foot .cta .o{color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+.foot .cta .c{color:var(--cobalt)}
+.foot .row{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;position:relative}
+.foot .row p{color:var(--fg-2);max-width:40ch;margin:0 0 20px}
+.foot .email{font-size:clamp(20px,2.6vw,34px);font-weight:600;letter-spacing:-.03em;border-bottom:2px solid var(--line-2);padding-bottom:6px;transition:border-color .3s,color .3s;display:inline-block}
+.foot .email:hover{color:var(--cobalt);border-color:var(--cobalt)}
+.cols{display:grid;grid-template-columns:repeat(3,auto);gap:64px}
+.cols h4{font:500 11px var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3);margin-bottom:16px}
+.cols ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.cols a{color:var(--fg-2);font-size:15px;transition:color .2s}
+.cols a:hover{color:var(--fg)}
+.contact-grid{margin-top:64px;border-top:1px solid var(--line-2);display:grid;grid-template-columns:1fr 1fr}
+.cline{display:grid;grid-template-columns:110px 1fr 24px;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);transition:padding-left .4s var(--ease),color .2s}
+.cline:nth-child(odd){padding-right:32px;border-right:1px solid var(--line)}
+.cline:nth-child(even){padding-left:32px}
+.cline:not(.static):hover{color:var(--ice)}
+.cline:not(.static):hover{padding-left:12px}
+.cline:nth-child(even):not(.static):hover{padding-left:44px}
+.cline .k{font:500 11px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3)}
+.cline .v{font-weight:600;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cline .ar{color:var(--fg-3);font-size:15px;text-align:right}
+.cline:hover .ar{color:var(--cobalt)}
+@media (max-width:800px){.contact-grid{grid-template-columns:1fr}.cline:nth-child(odd){padding-right:0;border-right:0}.cline:nth-child(even){padding-left:0}.cline:nth-child(even):not(.static):hover{padding-left:12px}.cline{grid-template-columns:90px 1fr 24px}}
+.legal{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font:500 11.5px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)}
+
+/* =========================================================
+   REVEAL
+   ========================================================= */
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}.rv[data-d="3"]{transition-delay:.3s}
+.line-rv{overflow:hidden}
+.line-rv > *{display:block;transform:translateY(110%);transition:transform 1.1s var(--ease)}
+.line-rv.in > *{transform:none}
+
+/* =========================================================
+   CASE STUDIES
+   ========================================================= */
+.case{display:none;padding:150px 0 100px}
+body[data-view="case"] .home{display:none}
+body[data-view="case"] .case[data-active="true"]{display:block}
+.case .back{display:inline-flex;align-items:center;gap:10px;font:500 12px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--fg-2);margin-bottom:48px}
+.case .back:hover{color:var(--fg)}
+.case .back svg{width:14px;height:14px}
+.case h1{font-size:clamp(40px,7vw,104px);font-weight:900;letter-spacing:-.055em;line-height:.9;font-variation-settings:"wdth" 112;max-width:16ch;margin-bottom:28px}
+.case .stand{font-size:clamp(18px,1.8vw,24px);color:var(--fg-2);max-width:60ch;margin-bottom:40px;line-height:1.45}
+.case .meta{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:72px}
+.case .meta div{padding:20px 22px;border-right:1px solid var(--line)}
+.case .meta div:last-child{border:0}
+.case .meta dt{font:500 10.5px var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3);margin-bottom:8px}
+.case .meta dd{margin:0;font-weight:600;font-size:14.5px;line-height:1.4}
+.case .meta dd a{color:var(--ice);border-bottom:1px solid var(--line-2)}
+.cbody{display:grid;grid-template-columns:220px 1fr;gap:56px}
+.cbody .toc{position:sticky;top:120px;align-self:start;display:grid;gap:10px;font:500 11.5px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)}
+.cbody .toc a:hover{color:var(--fg)}
+.cbody .txt{max-width:70ch}
+.cbody h2{font-size:clamp(26px,3vw,40px);font-weight:700;letter-spacing:-.04em;margin:56px 0 16px}
+.cbody h2:first-child{margin-top:0}
+.cbody p{color:var(--fg-2);font-size:17px}
+.cbody strong{color:var(--fg);font-weight:600}
+.cbody code{font-family:var(--m);font-size:14px;color:var(--ice);background:rgba(59,91,255,.1);padding:2px 7px;border-radius:6px}
+.cbody ul{padding-left:18px;color:var(--fg-2);margin:0 0 1em}
+.cbody li{margin-bottom:10px}
+.cbody li::marker{color:var(--cobalt)}
+.pull{margin:40px 0;font-size:clamp(24px,2.6vw,34px);font-weight:600;letter-spacing:-.035em;line-height:1.2;padding-left:26px;border-left:2px solid var(--cobalt)}
+.shot{margin:36px 0;aspect-ratio:16/9;border-radius:20px;border:1px dashed var(--line-2);display:grid;place-items:center;font:500 11px var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3);background:linear-gradient(160deg,#101420,#0A0D15)}
+.cnext{margin-top:80px;padding-top:28px;border-top:1px solid var(--line)}
+.cnext .k{font:500 11px var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3);margin-bottom:10px}
+.cnext a{font-size:clamp(28px,4vw,54px);font-weight:800;letter-spacing:-.045em;font-variation-settings:"wdth" 108}
+.cnext a:hover{color:var(--cobalt)}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width:1024px){
+  .about,.xp,.gh{grid-template-columns:1fr;gap:40px}
+  .xp h2{position:static}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step{min-height:240px}
+  .thead{display:none}
+  .trow{grid-template-columns:1fr 44px;gap:12px 20px}
+  .trow .role,.trow .year,.trow .svc{grid-column:1}
+  .trow .go{grid-row:1/ span 4;align-self:start}
+  .hero-top{grid-template-columns:1fr}
+  .hero-right{max-width:none;justify-self:start}
+  .hero-bottom{grid-template-columns:1fr}
+  .hero-cta{justify-content:flex-start}
+  .cbody{grid-template-columns:1fr}
+  .cbody .toc{display:none}
+  .case .meta{grid-template-columns:repeat(2,1fr)}
+  .case .meta div:nth-child(2){border-right:0}
+  .cols{grid-template-columns:repeat(3,1fr);gap:24px}
+  .lg{grid-template-columns:1fr}
+  .lg .fig{text-align:left}
+}
+@media (max-width:640px){
+  .nav ul{display:none}
+  .nav .menu{display:inline-flex;font:500 12px var(--m);letter-spacing:.18em;text-transform:uppercase;color:#fff;background:none;border:0;padding:0}
+  .nav.open ul{display:flex;position:fixed;inset:70px var(--gutter) auto;flex-direction:column;gap:18px;background:var(--bg);border:1px solid var(--line-2);border-radius:18px;padding:22px;mix-blend-mode:normal}
+  .nav.open ul a{opacity:1}
+  .hero{padding-top:100px}
+  .facts{grid-template-columns:1fr}
+  .facts div{border-right:0;border-bottom:1px solid var(--line)}
+  .steps{grid-template-columns:1fr}
+  .case .meta{grid-template-columns:1fr}
+  .case .meta div{border-right:0;border-bottom:1px solid var(--line)}
+  .cols{grid-template-columns:1fr 1fr}
+  .caps li{grid-template-columns:36px 1fr}
+  .caps li .d{grid-column:2;text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  .rv,.line-rv>*,.hero .name .w span,.hero .state .split i{opacity:1;transform:none}
+  .loader{display:none}
+}
+</style>
+</head>
+<body data-view="home">
+
+<div class="loader" id="loader">
+  <div class="pct" id="pct">000</div>
+  <div class="big"><span>Shahid Afrid</span></div>
+</div>
+
+<nav class="nav" id="nav">
+  <a class="logo" href="#top">shahid<i>.</i></a>
+  <ul>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#shipped">Shipped</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="pill" href="Shahid-Afrid-Resume.pdf" download>Résumé</a></li>
+  </ul>
+  <button class="menu" id="menu">Menu</button>
+</nav>
+
+<div class="home" id="top">
+
+<!-- ============ HERO ============ -->
+<header class="hero wrap">
+  <div class="hero-top">
+    <div>
+      <div class="iam">I am</div>
+      <h1 class="name">
+        <span class="w"><span style="animation-delay:.25s">Shahid</span></span>
+        <span class="w"><span style="animation-delay:.4s">Afrid</span></span>
+      </h1>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <h2 class="state">
+      <span class="split"><i style="animation-delay:.55s">I build software</i></span>
+      <span class="split"><i style="animation-delay:.65s">that goes into</i></span>
+      <span class="split"><i style="animation-delay:.75s"><em>production</em> — and stays there.</i></span>
+    </h2>
+    <div class="hero-right">
+      <div class="avail"><i></i>Available for thoughtful work</div>
+      <p>Software developer in Bengaluru — full-stack, AI agents and automation. Currently building the systems an industrial distributor in Dubai runs on.</p>
+    <div class="hero-cta">
+      <a class="fbtn solid" href="#projects" data-flip="See my work"><span class="l"></span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <a class="fbtn" href="mailto:shahidafrid97419@gmail.com" data-flip="Email me"><span class="l"></span></a>
+    </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section class="section wrap about" id="about">
+  <div class="side">
+    <div class="label rv">What's up</div>
+    <h2 class="rv" data-d="1">About<br><i>me.</i></h2>
+    <div class="facts rv" data-d="2">
+      <div><div class="k">Based in</div><div class="v">Bengaluru, India<br><span style="color:var(--fg-3);font-weight:500">12.97° N · 77.59° E</span></div></div>
+      <div><div class="k">Local time</div><div class="v clock" id="clock">--:--</div></div>
+      <div><div class="k">Currently</div><div class="v">Creative Industrial Automation<br><span style="color:var(--fg-3);font-weight:500">since Dec 2025</span></div></div>
+    </div>
+  </div>
+  <div class="body">
+    <p class="big rv">I'm Shahid — a developer who gets excited about <em>building something real</em> and then keeping it running.</p>
+    <p class="rv" data-d="1">Day to day that's a 200,000-product Shopify storefront whose front end I own, an MCP-based AI shopping agent on the Claude API that searches the whole catalogue and checks out inside the chat, Express services on Railway, and n8n pipelines that take manual work off people's plates. I like the whole path — interface, API, deployment, and the debugging that only starts once something is live.</p>
+    <p class="rv" data-d="2">On my own time I ship products: an AI study platform, a form builder, a handful of ML pipelines. BCA from Nitte Meenakshi Institute of Technology, 2022–2025.</p>
+    <ul class="caps rv" data-d="2">
+      <li><span class="n">01</span><span class="t">Full-stack engineering</span><span class="d">React · Node · Python</span></li>
+      <li><span class="n">02</span><span class="t">AI agents &amp; MCP</span><span class="d">Claude · tools · RAG</span></li>
+      <li><span class="n">03</span><span class="t">Commerce at scale</span><span class="d">Shopify · 200k SKUs</span></li>
+      <li><span class="n">04</span><span class="t">Workflow automation</span><span class="d">n8n · CRM · WhatsApp</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section wrap" id="projects">
+  <div class="projects-head">
+    <h2 class="line-rv"><span>Projects</span></h2>
+    <p class="rv" data-d="1">Not demos. Things people in Dubai and Riyadh use every day — plus a few of my own.</p>
+  </div>
+
+  <div class="tbl rv" id="tbl">
+    <div class="thead"><span>Name</span><span>Role</span><span>Year</span><span>Services</span><span></span></div>
+
+    <a class="trow" href="#/case/shipping">
+      <span class="name">OTO shipping estimator <span class="st">Live</span></span>
+      <span class="role">Live carrier prices in the cart from hundreds of providers, credentials held server-side</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Railway</span><span class="chip">OTO API</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">100s</span><span class="cap">of carriers quoted live in the cart — one endpoint, credentials never leave the server</span><span class="act">Open case study</span></div></div></span>
+    </a>
+
+    <a class="trow" href="#/case/agent">
+      <span class="name">Shopify AI chat agent <span class="st">Live</span></span>
+      <span class="role">MCP architecture on Claude — search, cart and checkout inside the conversation</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Claude API</span><span class="chip">MCP</span><span class="chip">Storefront API</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">200k</span><span class="cap">products searchable in chat</span><span class="act">Open case study</span></div></div></span>
+    </a>
+
+    <a class="trow" href="#/case/storefront">
+      <span class="name">Creative Automation UAE <span class="st">Live</span></span>
+      <span class="role">Full front end of a 200,000-SKU industrial catalogue, built and maintained solo</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Liquid</span><span class="chip">Metafields</span><span class="chip">Rapid Search</span><span class="chip">PostHog</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">270+</span><span class="cap">collection pages from one hierarchy</span><span class="act">Open case study</span></div></div></span>
+    </a>
+
+    <a class="trow" href="https://www.creativeautomation.sa/" target="_blank" rel="noopener">
+      <span class="name">Creative Automation Saudi <span class="st">Live</span></span>
+      <span class="role">Second regional storefront launched from the UAE theme, May 2026</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Liquid</span><span class="chip">Matrixify</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">43</span><span class="cap">images · 15 sections · IFM page</span><span class="act">Visit site</span></div></div></span>
+    </a>
+
+    <a class="trow" href="https://www.creativeautomation.ae/pages/siemens-distributor" target="_blank" rel="noopener">
+      <span class="name">Brand landing pages <span class="st">Live</span></span>
+      <span class="role">Conversion pages for Siemens and other manufacturer lines</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Liquid</span><span class="chip">Google Ads</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">Ads</span><span class="cap">live Google Ads traffic lands here</span><span class="act">Visit site</span></div></div></span>
+    </a>
+
+    <a class="trow" href="https://hydroair.ae/" target="_blank" rel="noopener">
+      <span class="name">Hydroair <span class="st">Live</span></span>
+      <span class="role">Storefront for a second company brand</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Shopify</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">2nd</span><span class="cap">company brand storefront</span><span class="act">Visit site</span></div></div></span>
+    </a>
+
+    <div class="trow">
+      <span class="name">Operations automation <span class="st">Internal</span></span>
+      <span class="role">Workflows and agents replacing manual routing, approvals, alerts and reporting</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">n8n</span><span class="chip">MCP</span><span class="chip">Zoho</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">n8n</span><span class="cap">CRM · Shopify · WhatsApp · Sheets</span><span class="act">Internal system</span></div></div></span>
+    </div>
+
+    <a class="trow" href="https://gettutorly.vercel.app/" target="_blank" rel="noopener">
+      <span class="name">Tutorly <span class="st off">Personal</span></span>
+      <span class="role">Multimodal AI study platform, built end to end</span>
+      <span class="year">2025</span>
+      <span class="svc"><span class="chip">React</span><span class="chip">Python</span><span class="chip">AWS S3</span><span class="chip">AssemblyAI</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">AI</span><span class="cap">notes · flashcards · quizzes · audio</span><span class="act">Visit site</span></div></div></span>
+    </a>
+
+    <a class="trow" href="https://formsio.vercel.app/" target="_blank" rel="noopener">
+      <span class="name">Forms.io <span class="st off">Personal</span></span>
+      <span class="role">Form builder with a brutalist interface and response collection</span>
+      <span class="year">2025</span>
+      <span class="svc"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Supabase</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">Forms</span><span class="cap">brutalist builder · live validation</span><span class="act">Visit site</span></div></div></span>
+    </a>
+
+    <a class="trow" href="https://github.com/shxhid-dev" target="_blank" rel="noopener">
+      <span class="name">ML pipelines <span class="st off">Archive</span></span>
+      <span class="role">Three trained and deployed models from my internship year</span>
+      <span class="year">2025</span>
+      <span class="svc"><span class="chip">Python</span><span class="chip">scikit-learn</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">ML</span><span class="cap">credit · handwriting · disease</span><span class="act">Visit site</span></div></div></span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="wrap" id="numbers" style="padding-bottom:clamp(96px,12vw,170px)">
+  <div class="nums rv">
+    <div class="num"><div class="v">200k<em>+</em></div><div class="l">products on the storefront I own</div></div>
+    <div class="num"><div class="v">270<em>+</em></div><div class="l">collection pages from one hierarchy</div></div>
+    <div class="num"><div class="v">4,974</div><div class="l">broken image URLs found &amp; fixed</div></div>
+    <div class="num"><div class="v">3</div><div class="l">storefronts live · UAE &amp; Saudi</div></div>
+    <div class="num"><div class="v">16</div><div class="l">features shipped since Dec 2025</div></div>
+    <div class="num"><div class="v">0</div><div class="l">secrets exposed to the browser</div></div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section wrap" id="process">
+  <div class="process-head">
+    <div>
+      <div class="label rv" style="margin-bottom:18px">Process</div>
+      <h2 class="rv" data-d="1">The work<br><i>behind the work</i></h2>
+    </div>
+    <p class="rv" data-d="2">Every system I've shipped followed the same four moves. The last one is the one most portfolios leave out.</p>
+  </div>
+  <div class="steps rv" data-d="1">
+    <div class="step"><span class="n">01</span><h3>Understand</h3><p>What the buyer actually does. Procurement engineers search by part number, not by browsing — so the search has to meet them there.</p></div>
+    <div class="step"><span class="n">02</span><h3>Structure</h3><p>Put the shape in data, not in templates. A category is a metafield; adding one shouldn't need a deployment.</p></div>
+    <div class="step"><span class="n">03</span><h3>Build</h3><p>Small services with one honest job each. Secrets stay server-side. Everything gets a mock mode so it can be built without touching production.</p></div>
+    <div class="step"><span class="n">04</span><h3>Run</h3><p>Production is where the real bugs live: token loops, security blocks, broken image URLs. I stay on the thing after it ships.</p></div>
+  </div>
+</section>
+
+<!-- ============ TOOLBOX ============ -->
+<section class="section wrap" id="tools">
+  <div class="tools-head">
+    <div>
+      <div class="label rv" style="margin-bottom:18px">My toolbox</div>
+      <h2 class="rv" data-d="1">Tools I reach for</h2>
+    </div>
+    <div class="ttabs rv" data-d="2" id="ttabs">
+      <button class="on" data-f="all">All</button>
+      <button data-f="fe">Frontend</button>
+      <button data-f="be">Backend</button>
+      <button data-f="ai">AI</button>
+      <button data-f="com">Commerce</button>
+      <button data-f="infra">Infrastructure</button>
+    </div>
+  </div>
+  <div class="tools rv" data-d="1" id="tools">
+    <span class="tool hero" data-c="fe"><i></i>TypeScript</span>
+    <span class="tool" data-c="fe"><i></i>JavaScript</span>
+    <span class="tool hero" data-c="fe"><i></i>React</span>
+    <span class="tool" data-c="fe"><i></i>Next.js</span>
+    <span class="tool" data-c="fe"><i></i>Tailwind CSS</span>
+    <span class="tool" data-c="fe"><i></i>HTML / CSS</span>
+    <span class="tool hero" data-c="be"><i></i>Node.js</span>
+    <span class="tool" data-c="be"><i></i>Express</span>
+    <span class="tool" data-c="be"><i></i>Python</span>
+    <span class="tool" data-c="be"><i></i>FastAPI</span>
+    <span class="tool" data-c="be"><i></i>REST design</span>
+    <span class="tool" data-c="be"><i></i>OAuth &amp; tokens</span>
+    <span class="tool" data-c="be"><i></i>Webhooks</span>
+    <span class="tool" data-c="be"><i></i>SQL</span>
+    <span class="tool hero" data-c="ai"><i></i>Claude API</span>
+    <span class="tool hero" data-c="ai"><i></i>MCP</span>
+    <span class="tool" data-c="ai"><i></i>Agent architecture</span>
+    <span class="tool" data-c="ai"><i></i>Prompt design</span>
+    <span class="tool" data-c="ai"><i></i>RAG</span>
+    <span class="tool" data-c="ai"><i></i>OpenAI</span>
+    <span class="tool" data-c="ai"><i></i>Gemini</span>
+    <span class="tool hero" data-c="com"><i></i>Shopify OS 2.0</span>
+    <span class="tool" data-c="com"><i></i>Liquid</span>
+    <span class="tool" data-c="com"><i></i>Metafields</span>
+    <span class="tool" data-c="com"><i></i>Storefront API</span>
+    <span class="tool" data-c="com"><i></i>Admin REST API</span>
+    <span class="tool" data-c="com"><i></i>Matrixify</span>
+    <span class="tool" data-c="com"><i></i>n8n</span>
+    <span class="tool hero" data-c="infra"><i></i>Railway</span>
+    <span class="tool" data-c="infra"><i></i>Vercel</span>
+    <span class="tool" data-c="infra"><i></i>AWS S3</span>
+    <span class="tool" data-c="infra"><i></i>Docker</span>
+    <span class="tool" data-c="infra"><i></i>CI/CD</span>
+    <span class="tool" data-c="infra"><i></i>Git</span>
+    <span class="tool" data-c="infra"><i></i>PostgreSQL</span>
+    <span class="tool" data-c="infra"><i></i>MongoDB</span>
+    <span class="tool" data-c="infra"><i></i>Supabase</span>
+    <span class="tool" data-c="infra"><i></i>PostHog</span>
+    <span class="tool" data-c="infra"><i></i>Linux</span>
+  </div>
+</section>
+
+<!-- ============ SHIPPED ============ -->
+<section class="section wrap" id="shipped">
+  <div class="ship-head">
+    <div>
+      <div class="label rv" style="margin-bottom:18px">Track record</div>
+      <h2 class="rv" data-d="1">What I shipped</h2>
+    </div>
+    <p class="rv" data-d="2">Real changes on live systems, with the number attached. December 2025 to now.</p>
+  </div>
+  <div class="log rv" id="log">
+    <div class="lg"><span class="tag">UAE storefront</span><div><div class="t">Metafield-driven collection hierarchy</div><p class="d">Parent–child collections resolved from a <code style="font-family:var(--m);color:var(--ice);font-size:13px">custom.parent_collection</code> chain — subcategory cards, breadcrumbs and filtering rendered automatically, no per-collection hardcoding.</p></div><span class="fig">270+ collection pages<br>120+ subcategories</span></div>
+    <div class="lg"><span class="tag">UAE storefront</span><div><div class="t">Large-catalogue import and image repair</div><p class="d">~40,000 products imported file by file; broken imagery traced to unstable Google PageSpeed URLs in the CSV, 4,974 corrected and re-imported via Matrixify.</p></div><span class="fig">4,974 URLs fixed</span></div>
+    <div class="lg"><span class="tag">AI chat agent</span><div><div class="t">Storefront API token handling rebuilt</div><p class="d">A production-only 401 loop with cart failures and domain leakage behind it. Legacy OAuth logic replaced with the official Admin REST flow, with proper refresh and validation.</p></div><span class="fig">401 loop cleared</span></div>
+    <div class="lg"><span class="tag">AI chat agent</span><div><div class="t">Production deployment and Shopify security resolution</div><p class="d">Shopify blocked the app as a security threat in production. Proxy reconfigured, every error cleared, deployment stabilised across devices.</p></div><span class="fig">live 21 Feb 2026</span></div>
+    <div class="lg"><span class="tag">AI chat agent</span><div><div class="t">Product search overhaul</div><p class="d">Broad full-catalogue query first, retries on simplified queries, multi-level fallback, SKU exact-match ranking, vendor inference. Redundant layers removed.</p></div><span class="fig">fewer zero-result queries</span></div>
+    <div class="lg"><span class="tag">UAE storefront</span><div><div class="t">Advanced metafield filters</div><p class="d">Filters across collection pages with Rapid Search; resolved filter-definition conflicts with both vendors' support and secured a custom plan sized for 200k products.</p></div><span class="fig">200+ collection pages</span></div>
+    <div class="lg more"><span class="tag">UAE storefront · SEO</span><div><div class="t">Dynamic breadcrumb system</div><p class="d">Breadcrumbs auto-generate the deepest category path from chained metafields across every product and collection page. Shipped 30 May 2026.</p></div><span class="fig">zero per-product setup</span></div>
+    <div class="lg more"><span class="tag">UAE storefront</span><div><div class="t">AODD pump catalogue structure</div><p class="d">Full range mapped across size (¼″–3″), material and diaphragm variant with mappings, breadcrumbs, mega-menu entries and filters.</p></div><span class="fig">60+ collection pages</span></div>
+    <div class="lg more"><span class="tag">AI chat agent</span><div><div class="t">Canonical product-URL handling</div><p class="d">The agent can only surface canonical Shopify URLs — hallucinated and broken product links removed entirely.</p></div><span class="fig">no fabricated links</span></div>
+    <div class="lg more"><span class="tag">AI chat agent</span><div><div class="t">In-chat add to cart and checkout</div><p class="d">Reliable cart and checkout inside the conversation with token refresh and validation; session state covers new/end chat, history hydration and email capture.</p></div><span class="fig">cart + checkout in chat</span></div>
+    <div class="lg more"><span class="tag">AI chat agent</span><div><div class="t">Model upgrade and prompt refinement</div><p class="d">Upgraded the Claude model and rewrote system prompts — fewer empty or wrong results on multilingual and ambiguous queries.</p></div><span class="fig">multilingual queries</span></div>
+    <div class="lg more"><span class="tag">Saudi storefront</span><div><div class="t">IFM distributor landing page</div><p class="d">Built and optimised by hand to match a required design and content structure.</p></div><span class="fig">43 images · 15 sections</span></div>
+    <div class="lg more"><span class="tag">UAE storefront</span><div><div class="t">PostHog analytics integration</div><p class="d">Page views, session duration, paid traffic and behaviour across a site that previously had no analytics.</p></div><span class="fig">site-wide analytics</span></div>
+    <div class="lg more"><span class="tag">UAE storefront · SEO</span><div><div class="t">SEO structure work</div><p class="d">Single H1 per template, ALT text on every collection image, SEO content on ten IFM collection pages, related products from the deepest collection.</p></div><span class="fig">ALT text on 270+ pages</span></div>
+    <div class="lg more"><span class="tag">UAE storefront</span><div><div class="t">Pre-order system</div><p class="d">Dedicated cart page, pre-order buttons, stock badges and counts, and a warning that fires only on mixed carts.</p></div><span class="fig">mixed-cart logic</span></div>
+    <div class="lg more"><span class="tag">UAE storefront</span><div><div class="t">Product page rebuild</div><p class="d">Bigger specifications panel, SKU + brand line linking to the vendor collection, tariffs &amp; fees tab, larger imagery.</p></div><span class="fig">~30% larger imagery</span></div>
+  </div>
+  <a class="fbtn log-toggle" id="log-toggle" href="#shipped" data-flip="Show all 16"><span class="l"></span></a>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section wrap xp" id="experience">
+  <div><div class="label rv" style="margin-bottom:18px">Career</div><h2 class="rv" data-d="1">Experience</h2></div>
+  <div>
+    <div class="job rv">
+      <div class="when">Dec 2025 — present · Remote, UAE team</div>
+      <h3>Software Developer — AI &amp; Automation</h3>
+      <div class="org">Creative Industrial Automation</div>
+      <ul>
+        <li>Own the front end of a 200,000-product Shopify storefront end to end: theme, category architecture, navigation, filters, search, pre-orders, SEO.</li>
+        <li>Designed, built and deployed an MCP-based AI shopping agent on Claude — three services on Railway — and keep it running in production.</li>
+        <li>Built the OTO shipping-estimate service so buyers see carrier prices in the cart, credentials held server-side.</li>
+        <li>Launched a second regional storefront for Saudi Arabia and the distributor landing pages that receive the company's paid traffic.</li>
+        <li>Build n8n automations across CRM, Shopify, WhatsApp, email and Sheets.</li>
+        <li>Deployment, production debugging, PostHog instrumentation, Google Ads audits.</li>
+      </ul>
+    </div>
+    <div class="job rv" data-d="1">
+      <div class="when">2024 — 2025 · Internships</div>
+      <h3>Earlier experience</h3>
+      <div class="mini" style="margin-top:16px">
+        <div><span><b>Machine Learning Engineer</b> · CodeAlpha</span><span>Mar — May 2025</span></div>
+        <div><span><b>Frontend Developer</b> · CodeAlpha</span><span>Sep — Oct 2024</span></div>
+        <div><span><b>Full-Stack Developer</b> · SmartED Innovations</span><span>Mar — Jul 2024</span></div>
+      </div>
+    </div>
+    <div class="job rv" data-d="2">
+      <div class="when">2022 — 2025 · Bengaluru</div>
+      <h3>Bachelor of Computer Applications</h3>
+      <div class="org" style="margin:0">Nitte Meenakshi Institute of Technology</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot wrap" id="contact">
+  <div class="beam"></div>
+  <h2 class="cta">
+    <span class="line-rv"><span>Let's create</span></span>
+    <span class="line-rv"><span><span class="o">something</span> <span class="c">real.</span></span></span>
+  </h2>
+  <div class="row">
+    <div>
+      <p class="rv">Building software that actually works. If something here is close to what your team needs, write to me — I reply fast.</p>
+      <a class="email rv" data-d="1" href="mailto:shahidafrid97419@gmail.com">shahidafrid97419@gmail.com</a>
+    </div>
+    <div class="cols rv" data-d="2">
+      <div><h4>Navigation</h4><ul><li><a href="#projects">Work</a></li><li><a href="#about">About</a></li><li><a href="#shipped">Shipped</a></li><li><a href="Shahid-Afrid-Resume.pdf" download>Résumé (PDF)</a></li></ul></div>
+      <div><h4>Case studies</h4><ul><li><a href="#/case/shipping">OTO shipping</a></li><li><a href="#/case/agent">AI chat agent</a></li><li><a href="#/case/storefront">UAE storefront</a></li><li><a href="https://gettutorly.vercel.app/" target="_blank" rel="noopener">Tutorly</a></li></ul></div>
+    </div>
+  </div>
+
+  <div class="contact-grid rv" data-d="1">
+    <a class="cline" href="mailto:shahidafrid97419@gmail.com"><span class="k">Email</span><span class="v">shahidafrid97419@gmail.com</span><span class="ar">↗</span></a>
+    <a class="cline" href="https://linkedin.com/in/shahidafrid-dev" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/shahidafrid-dev</span><span class="ar">↗</span></a>
+    <a class="cline" href="https://github.com/akhi-shxhid" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">github.com/akhi-shxhid</span><span class="ar">↗</span></a>
+    <a class="cline" href="https://github.com/shxhid-dev" target="_blank" rel="noopener"><span class="k">GitHub · alt</span><span class="v">github.com/shxhid-dev</span><span class="ar">↗</span></a>
+    <a class="cline" href="https://infrequent-numeric-f06.notion.site/dc81854a1a854292aa7b5fb1fbfa0e67?v=3876869e8cbe81e99b03000c1bb54221" target="_blank" rel="noopener"><span class="k">Notion</span><span class="v">Work log — features shipped, week by week</span><span class="ar">↗</span></a>
+    <a class="cline" href="Shahid-Afrid-Resume.pdf" download><span class="k">Résumé</span><span class="v">Download PDF</span><span class="ar">↓</span></a>
+    <div class="cline static"><span class="k">Location</span><span class="v">Bengaluru, India · IST (GMT+5:30)</span><span class="ar"></span></div>
+  </div>
+  <div class="legal"><span>© 2026 Shahid Afrid</span><span>Bengaluru · IST</span><span>shahidafrid.qzz.io</span></div>
+</footer>
+
+</div><!-- /home -->
+
+<!-- ============ CASE STUDIES ============ -->
+<article class="case wrap" id="case-shipping">
+  <a class="back" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All projects</a>
+  <div class="label on" style="margin-bottom:18px">Case study · 01</div>
+  <h1>Shipping prices in the cart, without shipping the credentials</h1>
+  <p class="stand">Buyers on creativeautomation.ae couldn't see delivery cost until they were inside checkout. Fixing that meant calling a carrier aggregator from a Shopify theme — exactly the thing you cannot safely do.</p>
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Sole developer</dd></div>
+    <div><dt>Stack</dt><dd>Node.js, Express, Railway, OTO API, Liquid</dd></div>
+    <div><dt>Status</dt><dd>In production</dd></div>
+    <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/cart" target="_blank" rel="noopener">Live cart</a> · <a href="https://github.com/shxhid-dev/shxhid-shipping-proxy" target="_blank" rel="noopener">Source</a></dd></div>
+  </dl>
+  <div class="cbody">
+    <nav class="toc"><a href="#s1-1">Problem</a><a href="#s1-2">Build</a><a href="#s1-3">Production</a><a href="#s1-4">Cart</a><a href="#s1-5">Limits</a></nav>
+    <div class="txt">
+      <h2 id="s1-1">The problem</h2>
+      <p>OTO aggregates hundreds of delivery providers across the Gulf. Its delivery-fee endpoint authenticates with a long-lived refresh token exchanged for a short-lived access token. A Shopify theme is public JavaScript — anything the cart page can read, a customer can read — so calling OTO from the storefront would have published the account's credentials.</p>
+      <p>The alternative was what the store was already doing: leave shipping until checkout, and lose the carts that were price-sensitive about it.</p>
+      <div class="pull">The theme should be able to ask one honest question and get one honest answer, without ever holding a secret.</div>
+      <h2 id="s1-2">What I built</h2>
+      <p>A small Express service on Railway between the storefront and OTO, exposing one public endpoint: <code>POST /api/shipping-estimate</code>, taking a destination city, a chargeable weight and an optional order total. It returns a flat list of carrier options with price, ETA and logo.</p>
+      <p>Everything sensitive stays server-side. The refresh token lives only in Railway's environment — never in the repo, a commit, or a log line. The service exchanges it for a one-hour access token, caches it in memory, refreshes proactively around the 55-minute mark, and retries once if OTO returns a 401 or 403 mid-request.</p>
+      <h2 id="s1-3">The parts that matter in production</h2>
+      <ul>
+        <li><strong>CORS allow-list</strong> so only the store's own domains can call the endpoint.</li>
+        <li><strong>Two layers of rate limiting</strong> — 30 estimate requests a minute, plus a 120/min baseline across all routes, health check exempt.</li>
+        <li><strong>Short response cache</strong>, because ten shoppers in Riyadh with a two-kilo cart should not be ten calls to OTO.</li>
+        <li><strong>Timeouts and bounded retries</strong> upstream, so a slow carrier API degrades into a missing estimate rather than a hanging cart.</li>
+        <li><strong>Weight ceiling</strong> validated before the upstream call.</li>
+        <li><strong>Mock mode</strong> returning canned carrier data with no token, so the widget can be built locally without touching production credentials.</li>
+      </ul>
+      <h2 id="s1-4">The cart side</h2>
+      <p>The widget renders from the cart footer section. It reads <code>/cart.js</code>, converts line-item grams into a chargeable weight in kilograms, and posts that with the selected city. Carrier rows render with price, estimated window and — deliberately — the cash-on-delivery surcharge as a separate note rather than folded into the headline number.</p>
+      <div class="shot">Screenshot — cart estimate panel with carrier list</div>
+      <h2 id="s1-5">Where it stops</h2>
+      <p>The estimate is display-only and labelled that way. Shopify still calculates and charges its own rate at checkout; this shows an indicative cost early, at the moment it decides whether the cart survives.</p>
+    </div>
+  </div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/agent">Shopify AI chat agent</a></div>
+</article>
+
+<article class="case wrap" id="case-agent">
+  <a class="back" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All projects</a>
+  <div class="label on" style="margin-bottom:18px">Case study · 02</div>
+  <h1>An AI agent that can actually find one part in 200,000</h1>
+  <p class="stand">A shopping agent is easy to demo and hard to keep alive. This one has been answering, searching and checking out on a live industrial catalogue since February 2026.</p>
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Sole developer — design, build, deploy, maintain</dd></div>
+    <div><dt>Stack</dt><dd>Claude API, MCP, Railway, Shopify Storefront &amp; Admin REST</dd></div>
+    <div><dt>Live since</dt><dd>21 February 2026</dd></div>
+    <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">Live site</a> · <a href="https://github.com/shxhid-dev/shxhid-chat-agent" target="_blank" rel="noopener">Source</a></dd></div>
+  </dl>
+  <div class="cbody">
+    <nav class="toc"><a href="#s2-1">Architecture</a><a href="#s2-2">Search</a><a href="#s2-3">Production</a><a href="#s2-4">Interface</a></nav>
+    <div class="txt">
+      <h2 id="s2-1">Architecture</h2>
+      <p>Three services on Railway: a Claude-driven agent server holding the conversation, an MCP tool server exposing catalogue and cart operations as tools, and a storefront service talking to Shopify. Splitting the tool layer out of the agent is why search could be rewritten several times without touching conversation handling.</p>
+      <h2 id="s2-2">Search on a catalogue this size</h2>
+      <p>The first version asked the model to guess — which fails the moment a buyer types a partial SKU shared by four hundred other parts. I rebuilt search to query the Storefront API directly with a strategy: broad full-catalogue query first, an intelligent retry on a simplified query, then a multi-level fallback. SKU-shaped input is detected and ranked by exact match; a brand name in the query infers a vendor filter. The same pass deleted a redundant search layer and unnecessary API calls that were adding latency to every message.</p>
+      <div class="pull">The agent can no longer invent a product link. It only returns canonical Shopify handles — so a wrong answer became a missing answer instead of a broken page.</div>
+      <h2 id="s2-3">The production-only failures</h2>
+      <ul>
+        <li><strong>A Storefront token 401 loop.</strong> Token logic had been written against a legacy OAuth flow. Rebuilt on the official Admin REST flow with proper refresh and validation, which also cleared the cart failures and domain leakage behind it.</li>
+        <li><strong>Shopify blocking the app as a security threat.</strong> Reconfiguring the proxy and correcting the request path cleared every security error.</li>
+        <li><strong>Cart operations failing silently.</strong> Add to cart and checkout now run inside the chat with token refresh and validation on each call.</li>
+      </ul>
+      <h2 id="s2-4">Conversation and interface</h2>
+      <p>Session handling covers new chat, end chat, history hydration without duplicate threads, and email capture so a conversation that doesn't convert still becomes a lead. Product results render as a carousel with a modal detail view; the input auto-expands; a multi-phase indicator shows what the agent is doing rather than spinning at the user.</p>
+      <p>Later I upgraded the Claude model and rewrote the system prompts for cleaner tool queries and better instruction-following, which noticeably reduced empty and incorrect results on multilingual and ambiguous questions — a real requirement for a Gulf storefront.</p>
+      <div class="shot">Screenshot — chat with product carousel and in-chat checkout</div>
+    </div>
+  </div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/storefront">Creative Automation UAE storefront</a></div>
+</article>
+
+<article class="case wrap" id="case-storefront">
+  <a class="back" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All projects</a>
+  <div class="label on" style="margin-bottom:18px">Case study · 03</div>
+  <h1>Making 200,000 industrial parts findable</h1>
+  <p class="stand">Procurement engineers don't browse. They arrive with a part number or a spec and leave if the site can't meet them there. This is the front end I built and maintain for a catalogue at that scale.</p>
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Primary theme and front-end developer</dd></div>
+    <div><dt>Stack</dt><dd>Shopify Liquid, metafields, Rapid Search, Matrixify, PostHog</dd></div>
+    <div><dt>Since</dt><dd>February 2026, in production</dd></div>
+    <div><dt>Link</dt><dd><a href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">creativeautomation.ae</a></dd></div>
+  </dl>
+  <div class="cbody">
+    <nav class="toc"><a href="#s3-1">Structure</a><a href="#s3-2">Finding</a><a href="#s3-3">The rest</a><a href="#s3-4">Outcome</a></nav>
+    <div class="txt">
+      <h2 id="s3-1">The structural decision</h2>
+      <p>Two hundred thousand products can't be organised by hand, and a catalogue that grows every month can't be organised by template. So the category structure lives in data: every collection carries a <code>custom.parent_collection</code> metafield, and the theme walks that chain to render subcategory cards, breadcrumbs and filters.</p>
+      <p>That one decision is why 270 collection pages and 120 new subcategories could be added from a forty-thousand-product file without a new template, and why breadcrumbs across the store auto-generate the deepest correct path with zero per-product setup.</p>
+      <div class="pull">Adding a category should be a metafield, not a deployment.</div>
+      <h2 id="s3-2">Finding things</h2>
+      <p>Metafield-based filters run across 200+ collection pages with Rapid Search. Getting there meant diagnosing filter-definition conflicts with both Shopify and Rapid Search support, and securing a custom plan sized for a 200k-product limit. The AODD pump range shows what the structure buys: sixty-plus collection pages across size, material and diaphragm variant, all with working filters, breadcrumbs and mega-menu entries.</p>
+      <h2 id="s3-3">The unglamorous half</h2>
+      <ul>
+        <li><strong>Import.</strong> ~40,000 products loaded file by file to avoid duplicates. Broken imagery traced to CSV links pointing at unstable Google PageSpeed URLs — 4,974 corrected and re-imported via Matrixify.</li>
+        <li><strong>Pre-orders.</strong> Cart drawer replaced with a dedicated cart page: pre-order buttons, stock badges and counts, and a warning that fires only on mixed carts.</li>
+        <li><strong>Product pages.</strong> Larger specifications panel, SKU + brand line linking to the vendor collection, tariffs &amp; fees tab, bigger imagery, direct route to a specialist.</li>
+        <li><strong>SEO.</strong> One H1 per template, ALT text across 270+ collection pages, content on ten IFM collection pages, related products from the deepest assigned collection.</li>
+        <li><strong>Measurement.</strong> PostHog across the site where previously there was nothing to look at.</li>
+      </ul>
+      <div class="shot">Screenshot — collection page with filters and subcategory tiles</div>
+      <h2 id="s3-4">What came out of it</h2>
+      <p>A second storefront for Saudi Arabia launched from the same theme in May 2026 with regional details, a dual-office footer, redirects disabled so Saudi clicks stay on the Saudi site, and its own distributor landing page. A structure built to be reused turned out to be reusable.</p>
+    </div>
+  </div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/shipping">OTO shipping estimator</a></div>
+</article>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+
+  /* flip-letter buttons */
+  $$("[data-flip]").forEach(function(b){
+    var txt=b.getAttribute("data-flip"), l=$(".l",b);
+    l.innerHTML = txt.split("").map(function(ch,i){
+      var c = ch===" " ? "&nbsp;" : ch;
+      return '<b><span style="transition-delay:'+(i*18)+'ms">'+c+'</span><span style="transition-delay:'+(i*18)+'ms">'+c+'</span></b>';
+    }).join("");
+  });
+
+  /* loader */
+  var pct=$("#pct"), n=0, t=setInterval(function(){ n=Math.min(100,n+Math.ceil(Math.random()*9)); pct.textContent=String(n).padStart(3,"0"); if(n>=100){clearInterval(t);} },40);
+  function ready(){ $("#loader").classList.add("done"); document.body.classList.add("loaded"); }
+  var done=false; function go(){ if(done) return; done=true; setTimeout(ready, 900); }
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(go);} setTimeout(go,1500);
+
+  /* reveal */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{threshold:.1,rootMargin:"0px 0px -6% 0px"});
+  $$(".rv,.line-rv").forEach(function(el){io.observe(el);});
+
+  /* clock */
+  var clock=$("#clock");
+  function tick(){ try{ clock.textContent=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(new Date()); }catch(e){ clock.textContent=new Date().toTimeString().slice(0,8);} }
+  tick(); setInterval(tick,1000);
+
+  /* toolbox tabs */
+  $("#ttabs").addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    $$("#ttabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+    var f=b.getAttribute("data-f");
+    $$("#tools .tool").forEach(function(t){ t.classList.toggle("dim", f!=="all" && t.getAttribute("data-c")!==f); });
+  });
+
+  /* log toggle */
+  var log=$("#log"), lt=$("#log-toggle");
+  lt.addEventListener("click",function(e){
+    e.preventDefault();
+    var open=log.classList.toggle("open");
+    var txt=open?"Show fewer":"Show all 16";
+    lt.setAttribute("data-flip",txt);
+    $(".l",lt).innerHTML=txt.split("").map(function(ch){var c=ch===" "?"&nbsp;":ch;return '<b><span>'+c+'</span><span>'+c+'</span></b>'}).join("");
+    if(!open) $("#shipped").scrollIntoView({behavior:"smooth"});
+  });
+
+  /* nav */
+  var nav=$("#nav"); $("#menu").addEventListener("click",function(){nav.classList.toggle("open")});
+  $$("#nav a").forEach(function(a){a.addEventListener("click",function(){nav.classList.remove("open")})});
+
+  /* case routing */
+  var cases={shipping:$("#case-shipping"),agent:$("#case-agent"),storefront:$("#case-storefront")};
+  var titles={shipping:"OTO shipping estimator",agent:"Shopify AI chat agent",storefront:"200k-SKU storefront"};
+  function route(){
+    var m=(location.hash||"").match(/^#\/case\/([a-z]+)$/);
+    Object.keys(cases).forEach(function(k){cases[k].setAttribute("data-active","false")});
+    if(m&&cases[m[1]]){
+      document.body.setAttribute("data-view","case"); cases[m[1]].setAttribute("data-active","true");
+      document.title=titles[m[1]]+" — Shahid Afrid"; window.scrollTo({top:0});
+    } else {
+      var was=document.body.getAttribute("data-view")==="case";
+      document.body.setAttribute("data-view","home"); document.title="Shahid Afrid — Software Developer";
+      if(was&&location.hash){var tg=$(location.hash); if(tg) setTimeout(function(){tg.scrollIntoView()},0);}
+    }
+  }
+  window.addEventListener("hashchange",route); route();
+})();
+</script>
+</body>
+</html>
