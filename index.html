@@ -48,13 +48,13 @@
   --nav-bg:rgba(255,255,255,.78);--nav-line:rgba(11,13,20,.1);--nav-fg:#0B0D14;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;color-scheme:dark}
+html{scroll-behavior:smooth;color-scheme:dark;overflow-x:hidden}
 html[data-theme="light"]{color-scheme:light}
 body{transition:background .35s,color .35s}
 body{
   margin:0;background:var(--bg);color:var(--fg);
   font-family:var(--f);font-variation-settings:"wdth" 100;
-  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%;max-width:100vw;
 }
 h1,h2,h3,h4{margin:0;line-height:1;letter-spacing:-.03em;font-weight:700}
 p{margin:0 0 1em}
@@ -65,7 +65,7 @@ img{max-width:100%;display:block}
 [data-theme="light"] body::before{opacity:.06}
 :focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
 
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1;min-width:0}
 .mono{font-family:var(--m)}
 .label{font:500 11px/1 var(--m);letter-spacing:.22em;text-transform:uppercase;color:var(--fg-3)}
 .label.on{color:var(--cobalt)}
@@ -80,7 +80,7 @@ body::before{
 /* =========================================================
    LOADER
    ========================================================= */
-.loader{position:fixed;inset:0;background:var(--bg);z-index:200;display:flex;align-items:flex-end;padding:var(--gutter);transition:transform .9s var(--ease);will-change:transform}
+.loader{position:fixed;inset:0;overflow:hidden;background:var(--bg);z-index:200;display:flex;align-items:flex-end;padding:var(--gutter);transition:transform .9s var(--ease);will-change:transform}
 .loader.done{transform:translateY(-100%)}
 .loader .big{font-size:clamp(64px,16vw,220px);font-weight:900;font-variation-settings:"wdth" 118;letter-spacing:-.05em;line-height:.85;overflow:hidden}
 .loader .big span{display:block;transform:translateY(105%);animation:up 1s var(--ease) .15s forwards}
@@ -90,9 +90,9 @@ body::before{
 /* =========================================================
    NAV — glass pill
    ========================================================= */
-.nav{position:fixed;top:16px;left:0;right:0;z-index:60;padding:0 var(--gutter);display:flex;justify-content:center}
+.nav{position:fixed;top:12px;left:0;right:0;z-index:60;padding:0 var(--gutter);display:flex;justify-content:center;max-width:100vw}
 .nav-bar{
-  width:100%;max-width:var(--wrap);
+  width:100%;max-width:var(--wrap);min-width:0;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
   padding:8px 10px 8px 26px;border-radius:999px;
   background:var(--nav-bg);border:1px solid var(--nav-line);
@@ -126,6 +126,7 @@ body::before{
 .hero .iam{font:500 12px var(--m);letter-spacing:.24em;text-transform:uppercase;color:var(--fg-2);margin-bottom:18px;display:flex;align-items:center;gap:14px}
 .hero .iam::before{content:"";width:40px;height:1px;background:var(--cobalt)}
 .hero .name{
+  max-width:100%;overflow-wrap:anywhere;
   font-size:clamp(56px,9.6vw,150px);font-weight:900;letter-spacing:-.055em;line-height:.86;
   font-variation-settings:"wdth" 118;text-transform:uppercase;
 }
@@ -169,7 +170,7 @@ body::before{
 /* =========================================================
    ABOUT
    ========================================================= */
-.section{padding:clamp(96px,12vw,170px) 0}
+.section{padding-block:clamp(96px,12vw,170px)}
 .about{display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:start}
 .about .side .label{margin-bottom:18px}
 .about .side h2{font-size:clamp(34px,4.5vw,60px);font-weight:800;letter-spacing:-.045em;line-height:.98;font-variation-settings:"wdth" 108}
@@ -194,7 +195,7 @@ body::before{
    PROJECTS TABLE
    ========================================================= */
 .projects-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:34px}
-.projects-head h2{font-size:clamp(48px,9vw,140px);font-weight:900;letter-spacing:-.06em;line-height:.85;font-variation-settings:"wdth" 116;text-transform:uppercase}
+.projects-head h2{max-width:100%;overflow-wrap:anywhere;font-size:clamp(48px,9vw,140px);font-weight:900;letter-spacing:-.06em;line-height:.85;font-variation-settings:"wdth" 116;text-transform:uppercase}
 .projects-head p{color:var(--fg-2);max-width:32ch;margin:0;font-size:15.5px}
 .tbl{border-top:1px solid var(--line-2)}
 .thead,.trow{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1.5fr) 90px minmax(0,1.6fr) 44px;gap:24px;align-items:center}
@@ -219,7 +220,7 @@ body::before{
 .trow:hover .go{background:var(--fg);color:var(--bg);border-color:var(--fg);transform:rotate(-45deg)}
 
 /* row expansion on hover */
-.trow .more{grid-column:1 / -1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.trow .more{grid-column:1 / -1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease);min-width:0}
 .trow:hover .more,.trow:focus-visible .more{grid-template-rows:1fr}
 .trow .more > div{overflow:hidden;min-height:0}
 .trow .more .in{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:end;padding-top:22px;opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease) .1s,transform .5s var(--ease) .1s}
@@ -227,7 +228,7 @@ body::before{
 .trow .more .num{font-size:clamp(48px,6vw,84px);font-weight:900;letter-spacing:-.06em;line-height:.85;font-variation-settings:"wdth" 118;color:var(--cobalt)}
 .trow .more .cap{font:500 11px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--fg-2);max-width:32ch;line-height:1.7;padding-bottom:4px}
 .trow .more .act{font:500 11px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--ice);padding-bottom:6px;white-space:nowrap}
-@media (max-width:1024px){.trow .more{grid-column:1 / -1}.trow .more .in{grid-template-columns:1fr;gap:10px}}
+@media (max-width:1024px){.trow .more .in{grid-template-columns:1fr;gap:10px}}
 
 /* =========================================================
    NUMBERS
@@ -319,7 +320,7 @@ body::before{
    ========================================================= */
 .foot{padding:clamp(88px,12vw,170px) 0 0;position:relative;overflow:hidden}
 .foot .beam{position:absolute;left:50%;top:-80px;width:1200px;height:600px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 0%,var(--cobalt-glow),transparent 70%);pointer-events:none;filter:blur(10px)}
-.foot .cta{font-size:clamp(52px,10vw,160px);font-weight:900;letter-spacing:-.06em;line-height:.86;font-variation-settings:"wdth" 116;text-transform:uppercase;margin-bottom:40px;position:relative}
+.foot .cta{max-width:100%;overflow-wrap:anywhere;font-size:clamp(52px,10vw,160px);font-weight:900;letter-spacing:-.06em;line-height:.86;font-variation-settings:"wdth" 116;text-transform:uppercase;margin-bottom:40px;position:relative}
 .foot .cta .o{color:transparent;-webkit-text-stroke:1.5px var(--fg)}
 .foot .cta .c{color:var(--cobalt)}
 .foot .row{display:grid;grid-template-columns:1.2fr 1fr;align-items:end;gap:40px;position:relative;padding-bottom:64px;border-bottom:1px solid var(--line)}
@@ -347,7 +348,7 @@ body::before{
 .legal{padding:22px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font:500 11.5px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)}
 .legal .totop{color:var(--fg-2)}
 .legal .totop:hover{color:var(--fg)}
-.giant{margin-top:24px;position:relative;line-height:0;user-select:none}
+.giant{margin-top:24px;position:relative;line-height:0;user-select:none;overflow:hidden;max-width:100%}
 .giant-in{position:relative}
 .gname{display:block;font-size:clamp(96px,23.5vw,360px);font-weight:900;letter-spacing:-.07em;line-height:.72;font-variation-settings:"wdth" 118;color:var(--fg);margin-bottom:-.16em;padding-top:.12em;transform:translateX(-.03em)}
 .tagcard{
@@ -376,7 +377,7 @@ body::before{
 /* =========================================================
    CASE STUDIES
    ========================================================= */
-.case{display:none;padding:150px 0 100px}
+.case{display:none;padding-block:150px 100px}
 body[data-view="case"] .home{display:none}
 body[data-view="case"] .case[data-active="true"]{display:block}
 .case .back{display:inline-flex;align-items:center;gap:10px;font:500 12px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--fg-2);margin-bottom:48px}
@@ -418,9 +419,13 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   .steps{grid-template-columns:repeat(2,1fr)}
   .step{min-height:240px}
   .thead{display:none}
-  .trow{grid-template-columns:1fr 44px;gap:12px 20px}
-  .trow .role,.trow .year,.trow .svc{grid-column:1}
-  .trow .go{grid-row:1/ span 4;align-self:start}
+  .trow{grid-template-columns:minmax(0,1fr) 44px;gap:10px 16px;grid-template-areas:"name go" "role go" "year go" "svc go" "more more"}
+  .trow .name{grid-area:name;min-width:0;overflow-wrap:anywhere}
+  .trow .role{grid-area:role;min-width:0}
+  .trow .year{grid-area:year}
+  .trow .svc{grid-area:svc;min-width:0}
+  .trow .go{grid-area:go;align-self:start}
+  .trow .more{grid-area:more;min-width:0}
   .hero-top{grid-template-columns:1fr}
   .hero-right{max-width:none;justify-self:start}
   .hero-bottom{grid-template-columns:1fr}
@@ -440,7 +445,11 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   .nav.open ul{display:flex;position:fixed;inset:78px var(--gutter) auto;flex-direction:column;gap:4px;background:var(--nav-bg);backdrop-filter:blur(22px);border:1px solid var(--nav-line);border-radius:22px;padding:12px}
   .nav.open ul a{opacity:1;display:block;padding:12px 16px;font-size:16px}
   .nav.open ul a.pill{margin:6px 0 0}
-  .nav-bar{padding:6px 8px 6px 20px}
+  .nav{top:10px;padding:0 12px}
+  .nav-bar{padding:6px 6px 6px 18px;gap:10px}
+  .nav .logo{font-size:15px}
+  .theme,.nav .menu{width:38px;height:38px}
+  .nav.open ul{inset:66px 12px auto}
   .hero{padding-top:110px}
   .facts{grid-template-columns:1fr}
   .facts div{border-right:0;border-bottom:1px solid var(--line)}
@@ -469,7 +478,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 }
 @media (max-width:640px){
   :root{--gutter:20px}
-  .section{padding:72px 0}
+  .section{padding-block:72px}
   .hero-cta .fbtn{width:100%;justify-content:center}
   .foot .row .hero-cta .fbtn{width:auto;flex:1}
   .hero-bottom{gap:36px;padding:32px 0 40px;margin-top:32px}
