@@ -229,6 +229,17 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opa
   .num:nth-last-child(-n+2){border-bottom:0}
 }
 
+/* NOTION TRACK RECORD HIGHLIGHT */
+.notion-band{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:28px;align-items:center;padding:30px 32px;border:1px solid var(--cobalt);border-radius:22px;background:linear-gradient(120deg,rgba(59,91,255,.16),rgba(59,91,255,.03) 60%),var(--panel);overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.notion-band:hover{transform:translateY(-3px);box-shadow:0 30px 70px -30px var(--cobalt-glow)}
+.notion-band .nb-ico{width:62px;height:62px;border-radius:16px;background:var(--fg);color:var(--bg);display:grid;place-items:center;font-weight:900;font-size:30px;font-variation-settings:"wdth" 110;flex:none}
+.notion-band .nb-k{font:500 11px var(--m);letter-spacing:.22em;text-transform:uppercase;color:var(--ice);margin-bottom:8px}
+.notion-band h3{font-size:clamp(22px,2.6vw,32px);font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:8px}
+.notion-band p{color:var(--fg-2);font-size:15px;margin:0;max-width:64ch}
+.notion-band .nb-stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.notion-band .nb-stats span{font:500 11.5px var(--m);padding:5px 10px;border-radius:999px;border:1px solid var(--line-2);color:var(--fg)}
+@media (max-width:760px){.notion-band{grid-template-columns:1fr;padding:24px 20px;gap:18px}.notion-band .nb-ico{width:52px;height:52px;font-size:25px}.notion-band .fbtn{width:100%;justify-content:center}}
+
 /* PROCESS */
 .process-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:48px}
 .process-head h2{font-size:clamp(34px,4.4vw,62px);font-weight:900;letter-spacing:-.048em;line-height:.98;font-variation-settings:"wdth" 113}
@@ -605,6 +616,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <div class="hero-cta">
         <a class="fbtn solid" href="#projects" data-flip="See my work"><span class="l"></span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         <a class="fbtn" href="mailto:shahidafrid97419@gmail.com" data-flip="Email me"><span class="l"></span></a>
+        <a class="fbtn" href="https://app.notion.com/p/3876869e8cbe81d1bb88fd93b15c6009" target="_blank" rel="noopener" data-flip="Work log · Notion"><span class="l"></span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
   </div>
@@ -900,6 +912,20 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   </div>
 </section>
 
+<!-- ============ NOTION TRACK RECORD ============ -->
+<section class="wrap" id="worklog" style="padding-bottom:clamp(40px,6vw,70px)">
+  <a class="notion-band rv" href="https://app.notion.com/p/3876869e8cbe81d1bb88fd93b15c6009" target="_blank" rel="noopener" aria-label="Open the full track record in Notion">
+    <span class="nb-ico" aria-hidden="true">N</span>
+    <span>
+      <span class="nb-k" style="display:block">Full track record · Notion</span>
+      <h3>Every project, feature and working day — documented.</h3>
+      <p>The complete, linked record behind this page: projects, every feature shipped with its impact and screenshots, and a dated daily log from December 2025 to now.</p>
+      <span class="nb-stats"><span>6 projects</span><span>40+ features shipped</span><span>Daily log</span><span>Updated Sep 2026</span></span>
+    </span>
+    <span class="fbtn solid" data-flip="Open in Notion"><span class="l"></span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  </a>
+</section>
+
 <!-- ============ SHIPPED ============ -->
 <section class="section wrap" id="shipped">
   <div class="ship-head">
@@ -1029,6 +1055,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
         <li><a href="https://www.instagram.com/akhi_shxhid" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://github.com/akhi-shxhid" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://github.com/shxhid-dev" target="_blank" rel="noopener">GitHub · alt</a></li>
+        <li><a href="https://app.notion.com/p/3876869e8cbe81d1bb88fd93b15c6009" target="_blank" rel="noopener" style="color:var(--ice)">Work log · Notion ↗</a></li>
         <li><span class="dimtxt">Bengaluru · IST (GMT+5:30)</span></li>
       </ul></div>
     </div>
