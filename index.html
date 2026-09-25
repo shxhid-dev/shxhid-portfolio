@@ -29,23 +29,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* =========================================================
-   TOKENS — ink, bone, cobalt
-   ========================================================= */
 :root{
-  --bg:#07090F;
-  --bg-2:#0C0F17;
-  --panel:#10131C;
-  --line:rgba(237,237,234,.09);
-  --line-2:rgba(237,237,234,.18);
-  --fg:#EDEDEA;
-  --fg-2:#9EA2AC;
-  --fg-3:#5F636D;
-  --cobalt:#3B5BFF;
-  --cobalt-2:#2E4AE6;
-  --ice:#B9CBFF;
-  --cobalt-glow:rgba(59,91,255,.32);
-
+  --bg:#07090F;--bg-2:#0C0F17;--panel:#10131C;
+  --line:rgba(237,237,234,.09);--line-2:rgba(237,237,234,.18);
+  --fg:#EDEDEA;--fg-2:#9EA2AC;--fg-3:#5F636D;
+  --cobalt:#3B5BFF;--cobalt-2:#2E4AE6;--ice:#B9CBFF;--cobalt-glow:rgba(59,91,255,.32);
   --shot-a:#101420;--shot-b:#0A0D15;
   --nav-bg:rgba(38,38,42,.78);--nav-line:rgba(255,255,255,.08);--nav-fg:#fff;
   --f:"Archivo",system-ui,sans-serif;
@@ -67,17 +55,9 @@
 html{-webkit-tap-highlight-color:rgba(59,91,255,.18)}
 .skip{position:absolute;left:-9999px;top:0;z-index:300;padding:12px 18px;border-radius:0 0 12px 0;background:var(--cobalt);color:#fff;font-weight:600}
 .skip:focus{left:0}
-/* overflow-x:clip (not hidden) — hidden turns html/body into a scroll
-   container and silently breaks every position:sticky on the page. */
 html{scroll-behavior:smooth;color-scheme:dark;overflow-x:clip;scroll-padding-top:var(--nav-h)}
 html[data-theme="light"]{color-scheme:light}
-body{
-  margin:0;background:var(--bg);color:var(--fg);
-  font-family:var(--f);font-variation-settings:"wdth" 100;
-  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
-  overflow-x:clip;width:100%;
-  transition:background .35s,color .35s;
-}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f);font-variation-settings:"wdth" 100;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip;width:100%;transition:background .35s,color .35s}
 body.lock{overflow:hidden;touch-action:none}
 h1,h2,h3,h4{margin:0;line-height:1;letter-spacing:-.03em;font-weight:700;overflow-wrap:break-word}
 p{margin:0 0 1em}
@@ -88,21 +68,13 @@ img{max-width:100%;display:block}
 [data-theme="light"] body::before{opacity:.06}
 :focus-visible{outline:2px solid var(--cobalt);outline-offset:3px;border-radius:4px}
 section[id],header[id],footer[id],article[id]{scroll-margin-top:var(--nav-h)}
-
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1;min-width:0}
 .mono{font-family:var(--m)}
 .label{font:500 11px/1 var(--m);letter-spacing:.22em;text-transform:uppercase;color:var(--fg-3)}
 .label.on{color:var(--cobalt)}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* noise */
-body::before{
-  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* =========================================================
-   LOADER
-   ========================================================= */
+/* LOADER */
 .loader{position:fixed;inset:0;overflow:hidden;background:var(--bg);z-index:200;display:flex;align-items:flex-end;padding:var(--gutter);transition:transform .9s var(--ease);will-change:transform}
 .loader.done{transform:translateY(-100%)}
 .loader .big{font-size:clamp(40px,11vw,150px);font-weight:900;font-variation-settings:"wdth" 118;letter-spacing:-.05em;line-height:.88;overflow:hidden;max-width:100%}
@@ -110,19 +82,9 @@ body::before{
 .loader .pct{position:absolute;top:var(--gutter);right:var(--gutter);font:500 12px var(--m);letter-spacing:.2em;color:var(--fg-3)}
 @keyframes up{to{transform:none}}
 
-/* =========================================================
-   NAV — glass pill
-   ========================================================= */
+/* NAV */
 .nav{position:fixed;top:12px;left:0;right:0;z-index:60;padding:0 var(--gutter);display:flex;justify-content:center}
-.nav-bar{
-  width:100%;max-width:var(--wrap);min-width:0;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:8px 10px 8px 24px;border-radius:999px;
-  background:var(--nav-bg);border:1px solid var(--nav-line);
-  backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);
-  box-shadow:0 14px 50px -18px rgba(0,0,0,.5);color:var(--nav-fg);
-  transition:background .35s,border-color .35s,color .35s;
-}
+.nav-bar{width:100%;max-width:var(--wrap);min-width:0;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 10px 8px 24px;border-radius:999px;background:var(--nav-bg);border:1px solid var(--nav-line);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);box-shadow:0 14px 50px -18px rgba(0,0,0,.5);color:var(--nav-fg);transition:background .35s,border-color .35s,color .35s}
 .nav .logo{font-weight:900;font-size:17px;letter-spacing:-.04em;font-variation-settings:"wdth" 112;text-transform:uppercase;white-space:nowrap}
 .nav .logo i{font-style:normal;color:var(--cobalt)}
 .nav-right{display:flex;align-items:center;gap:6px;min-width:0}
@@ -141,17 +103,11 @@ body::before{
 [data-theme="light"] .theme .moon{display:none}
 .nav .menu{display:none}
 
-/* =========================================================
-   HERO
-   ========================================================= */
+/* HERO */
 .hero{padding-top:clamp(120px,17vw,168px);position:relative}
 .hero .iam{font:500 12px var(--m);letter-spacing:.24em;text-transform:uppercase;color:var(--fg-2);margin-bottom:18px;display:flex;align-items:center;gap:14px}
 .hero .iam::before{content:"";width:40px;height:1px;background:var(--cobalt);flex:none}
-.hero .name{
-  max-width:100%;
-  font-size:clamp(52px,9vw,132px);font-weight:900;letter-spacing:-.055em;line-height:.88;
-  font-variation-settings:"wdth" 118;text-transform:uppercase;
-}
+.hero .name{max-width:100%;font-size:clamp(52px,9vw,132px);font-weight:900;letter-spacing:-.055em;line-height:.88;font-variation-settings:"wdth" 118;text-transform:uppercase}
 .hero .name .w{display:block;overflow:hidden;padding-bottom:.05em}
 .hero .name .w span{display:inline-block;transform:translateY(110%);opacity:0}
 .loaded .hero .name .w span{animation:up .95s var(--ease) forwards;opacity:1}
@@ -162,7 +118,6 @@ body::before{
 .hero-right .avail i{width:8px;height:8px;border-radius:50%;background:var(--cobalt);box-shadow:0 0 0 0 var(--cobalt-glow);animation:ping 2.2s infinite;flex:none}
 @keyframes ping{0%{box-shadow:0 0 0 0 var(--cobalt-glow)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
 .hero-right p{color:var(--fg-2);font-size:15.5px;line-height:1.65;margin:0 0 24px}
-
 .hero-bottom{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:end;padding:40px 0 48px;border-top:1px solid var(--line);margin-top:40px}
 .hero .state{font-size:clamp(23px,2.8vw,36px);font-weight:600;letter-spacing:-.035em;line-height:1.14;max-width:17ch}
 .hero .state .split{display:inline-block;overflow:hidden;vertical-align:bottom;max-width:100%}
@@ -170,15 +125,7 @@ body::before{
 .loaded .hero .state .split i{animation:up .9s var(--ease) forwards}
 .hero .state em{font-style:normal;color:var(--cobalt)}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-
-/* letter-flip buttons */
-.fbtn{
-  position:relative;display:inline-flex;align-items:center;gap:14px;
-  padding:15px 24px;border-radius:999px;border:1px solid var(--line-2);
-  font-weight:600;font-size:15px;letter-spacing:-.01em;overflow:hidden;background:transparent;color:var(--fg);
-  transition:border-color .3s,background .3s,color .3s,transform .3s var(--ease);cursor:pointer;
-  min-height:48px;
-}
+.fbtn{position:relative;display:inline-flex;align-items:center;gap:14px;padding:15px 24px;border-radius:999px;border:1px solid var(--line-2);font-weight:600;font-size:15px;letter-spacing:-.01em;overflow:hidden;background:transparent;color:var(--fg);transition:border-color .3s,background .3s,color .3s,transform .3s var(--ease);cursor:pointer;min-height:48px}
 .fbtn:hover{transform:translateY(-2px);border-color:var(--fg)}
 .fbtn.solid{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
 .fbtn.solid:hover{background:var(--cobalt-2);border-color:var(--cobalt-2);box-shadow:0 20px 50px -18px var(--cobalt-glow)}
@@ -190,9 +137,7 @@ body::before{
 .fbtn .ar{width:16px;height:16px;transition:transform .4s var(--ease);flex:none}
 .fbtn:hover .ar{transform:translate(2px,-2px)}
 
-/* =========================================================
-   HERO STRIP — real screenshots, edge to edge
-   ========================================================= */
+/* STRIP */
 .strip{position:relative;padding-bottom:clamp(70px,9vw,110px);overflow:hidden}
 .strip-line{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;max-width:var(--wrap);margin:0 auto 20px;padding:0 var(--gutter)}
 .strip-line .k{font:500 11px var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3)}
@@ -205,17 +150,11 @@ body::before{
 .strip:hover .rail{animation-play-state:paused}
 @keyframes slide{to{transform:translateX(-50%)}}
 .rail figure{margin:0;width:clamp(280px,32vw,440px);flex:none}
-.rail img{
-  width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;
-  border:1px solid var(--line);border-radius:14px;background:var(--panel);
-  filter:saturate(.92);transition:filter .4s,border-color .4s,transform .5s var(--ease);
-}
+.rail img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border:1px solid var(--line);border-radius:14px;background:var(--panel);filter:saturate(.92);transition:filter .4s,border-color .4s,transform .5s var(--ease)}
 .rail figure:hover img{filter:none;border-color:var(--line-2);transform:translateY(-4px)}
 .rail figcaption{font:500 10.5px var(--m);letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-top:10px}
 
-/* =========================================================
-   ABOUT
-   ========================================================= */
+/* ABOUT */
 .section{padding-block:clamp(80px,11vw,150px)}
 .about{display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:start}
 .about .side .label{margin-bottom:18px}
@@ -237,19 +176,14 @@ body::before{
 .facts .v{font-weight:600;font-size:15px;line-height:1.35}
 .facts .v.clock{font-family:var(--m);font-size:21px;color:var(--ice);font-weight:500}
 
-/* =========================================================
-   PROJECTS TABLE
-   ========================================================= */
+/* PROJECTS */
 .projects-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:30px;flex-wrap:wrap}
 .projects-head h2{font-size:clamp(36px,5.4vw,80px);font-weight:900;letter-spacing:-.05em;line-height:.92;font-variation-settings:"wdth" 114;text-transform:uppercase}
 .projects-head p{color:var(--fg-2);max-width:34ch;margin:0;font-size:15.5px}
 .tbl{border-top:1px solid var(--line-2)}
 .thead,.trow{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,1.5fr) 80px minmax(0,1.5fr) 44px;gap:22px;align-items:center}
 .thead{padding:14px 0;font:500 11px var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3)}
-.trow{
-  padding:22px 0;border-top:1px solid var(--line);position:relative;
-  transition:padding .45s var(--ease),color .3s;cursor:pointer;
-}
+.trow{padding:22px 0;border-top:1px solid var(--line);position:relative;transition:padding .45s var(--ease),color .3s;cursor:pointer}
 .trow::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--cobalt);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
 .trow:hover::after{transform:scaleX(1)}
 .trow:hover{padding-left:18px}
@@ -258,6 +192,7 @@ body::before{
 .trow .name{font-size:clamp(22px,2.7vw,34px);font-weight:700;letter-spacing:-.035em;line-height:1.05;font-variation-settings:"wdth" 104;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .trow .name .st{font:500 10px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--ice);padding:5px 9px;border:1px solid var(--line-2);border-radius:999px;background:rgba(59,91,255,.08)}
 .trow .name .st.off{color:var(--fg-3);background:transparent}
+.trow .name .st.new{color:#fff;background:var(--cobalt);border-color:var(--cobalt)}
 .trow .role{color:var(--fg-2);font-size:14.5px;line-height:1.45}
 .trow .year{font:500 13px var(--m);color:var(--fg-3)}
 .trow .svc{display:flex;flex-wrap:wrap;gap:6px}
@@ -266,8 +201,6 @@ body::before{
 .trow .go{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;transition:background .3s,transform .5s var(--ease),border-color .3s}
 .trow .go svg{width:16px;height:16px}
 .trow:hover .go{background:var(--fg);color:var(--bg);border-color:var(--fg);transform:rotate(-45deg)}
-
-/* row expansion on hover */
 .trow .more{grid-column:1 / -1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease);min-width:0}
 .trow:hover .more,.trow:focus-visible .more{grid-template-rows:1fr}
 .trow .more > div{overflow:hidden;min-height:0}
@@ -279,22 +212,24 @@ body::before{
 .tbl-toggle{margin-top:26px}
 @media (max-width:1024px){.trow .more .in{grid-template-columns:1fr;gap:10px}}
 
-/* =========================================================
-   NUMBERS
-   ========================================================= */
-.nums{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--panel)}
-.num{padding:28px 22px 24px;border-right:1px solid var(--line);transition:background .4s}
-.num:last-child{border-right:0}
+/* NUMBERS — 8 cells, 4 x 2 */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--panel)}
+.num{padding:28px 22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .4s}
+.num:nth-child(4n){border-right:0}
+.num:nth-last-child(-n+4){border-bottom:0}
 .num:hover{background:var(--bg)}
 .num .v{font-size:clamp(32px,3.4vw,50px);font-weight:900;letter-spacing:-.06em;line-height:.9;font-variation-settings:"wdth" 116}
 .num .v em{font-style:normal;color:var(--cobalt)}
 .num .l{margin-top:12px;font:500 10.5px var(--m);letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);line-height:1.6}
-@media (max-width:1024px){.nums{grid-template-columns:repeat(3,1fr)}.num:nth-child(3){border-right:0}.num:nth-child(-n+3){border-bottom:1px solid var(--line)}}
-@media (max-width:640px){.nums{grid-template-columns:repeat(2,1fr)}.num:nth-child(3){border-right:1px solid var(--line)}.num:nth-child(even){border-right:0}.num:nth-child(-n+4){border-bottom:1px solid var(--line)}}
+@media (max-width:1024px){
+  .nums{grid-template-columns:repeat(2,1fr)}
+  .num:nth-child(odd){border-right:1px solid var(--line)}
+  .num:nth-child(even){border-right:0}
+  .num:nth-last-child(-n+4){border-bottom:1px solid var(--line)}
+  .num:nth-last-child(-n+2){border-bottom:0}
+}
 
-/* =========================================================
-   PROCESS
-   ========================================================= */
+/* PROCESS */
 .process-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:48px}
 .process-head h2{font-size:clamp(34px,4.4vw,62px);font-weight:900;letter-spacing:-.048em;line-height:.98;font-variation-settings:"wdth" 113}
 .process-head h2 i{font-style:normal;color:transparent;-webkit-text-stroke:1px var(--fg-2)}
@@ -308,9 +243,7 @@ body::before{
 .step::after{content:"";position:absolute;left:26px;right:26px;top:58px;height:1px;background:var(--line);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
 .step:hover::after{transform:scaleX(1);background:var(--cobalt)}
 
-/* =========================================================
-   TOOLBOX
-   ========================================================= */
+/* TOOLBOX */
 .tools-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:36px;flex-wrap:wrap}
 .tools-head h2{font-size:clamp(34px,4.4vw,62px);font-weight:900;letter-spacing:-.048em;line-height:.96;font-variation-settings:"wdth" 113}
 .ttabs{display:flex;gap:22px;flex-wrap:wrap;font:500 12px var(--m);letter-spacing:.2em;text-transform:uppercase}
@@ -319,19 +252,14 @@ body::before{
 .ttabs button.on{color:var(--fg)}
 .ttabs button.on::after{transform:scaleX(1)}
 .tools{display:flex;flex-wrap:wrap;gap:10px}
-.tool{
-  padding:13px 19px;border-radius:999px;border:1px solid var(--line);font-weight:600;font-size:14.5px;
-  display:inline-flex;align-items:center;gap:11px;transition:border-color .25s,transform .4s var(--ease),opacity .4s,background .25s;
-}
+.tool{padding:13px 19px;border-radius:999px;border:1px solid var(--line);font-weight:600;font-size:14.5px;display:inline-flex;align-items:center;gap:11px;transition:border-color .25s,transform .4s var(--ease),opacity .4s,background .25s}
 .tool i{width:7px;height:7px;border-radius:50%;background:var(--cobalt);opacity:.7;flex:none}
 .tool:hover{border-color:var(--fg);transform:translateY(-3px)}
 .tool.dim{opacity:.18;pointer-events:none}
 .tool.hero{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .tool.hero i{background:var(--cobalt)}
 
-/* =========================================================
-   SHIPPED — compact log
-   ========================================================= */
+/* SHIPPED */
 .ship-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:36px}
 .ship-head h2{font-size:clamp(34px,4.4vw,62px);font-weight:900;letter-spacing:-.048em;line-height:.96;font-variation-settings:"wdth" 113}
 .ship-head p{color:var(--fg-2);margin:0;max-width:46ch}
@@ -339,6 +267,7 @@ body::before{
 .lg{display:grid;grid-template-columns:190px minmax(0,1fr) 210px;gap:26px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline;transition:padding-left .4s var(--ease)}
 .lg:hover{padding-left:12px}
 .lg .tag{font:500 11px var(--m);letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3)}
+.lg .tag b{display:block;font-weight:500;color:var(--cobalt);margin-top:6px}
 .lg .t{font-size:17.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px}
 .lg .d{color:var(--fg-2);font-size:14.5px;margin:0;max-width:70ch}
 .lg .fig{font:500 13px var(--m);color:var(--ice);text-align:right;line-height:1.5}
@@ -346,11 +275,7 @@ body::before{
 .log.open .lg.more{display:grid}
 .log-toggle{margin-top:26px}
 
-/* =========================================================
-   EXPERIENCE
-   ========================================================= */
-/* align-items MUST stay stretch: if the left column shrinks to its own
-   content height, position:sticky has zero distance to travel. */
+/* EXPERIENCE */
 .xp{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr);gap:64px;align-items:stretch}
 .xp-side{position:relative;min-width:0;align-self:stretch;height:100%}
 .xp-sticky{position:sticky;top:calc(var(--nav-h) + 24px)}
@@ -368,9 +293,7 @@ body::before{
 .mini div b{color:var(--fg);font-weight:600}
 .mini div span:last-child{font:500 12.5px var(--m);color:var(--fg-3)}
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
+/* FOOTER */
 .foot{padding:clamp(80px,11vw,150px) 0 0;position:relative;overflow:hidden}
 .foot .beam{position:absolute;left:50%;top:-80px;width:1200px;max-width:130vw;height:600px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 0%,var(--cobalt-glow),transparent 70%);pointer-events:none;filter:blur(10px)}
 .foot .cta{font-size:clamp(40px,8vw,120px);font-weight:900;letter-spacing:-.055em;line-height:.92;font-variation-settings:"wdth" 116;text-transform:uppercase;margin-bottom:40px;position:relative}
@@ -401,20 +324,10 @@ body::before{
 .legal{padding:22px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font:500 11.5px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)}
 .legal .totop{color:var(--fg-2)}
 .legal .totop:hover{color:var(--fg)}
-
-/* giant wordmark — plain type, sized so it always fits the column width */
 .giant{margin-top:32px;position:relative;user-select:none;line-height:0}
 .giant-in{position:relative;padding-bottom:clamp(12px,1.6vw,22px)}
-.gname{
-  display:block;text-align:center;
-  font-size:clamp(70px,17.5vw,250px);font-weight:900;letter-spacing:-.06em;
-  line-height:.82;font-variation-settings:"wdth" 116;color:var(--fg);
-}
-.tagcard{
-  position:absolute;right:2%;top:-6%;background:#fff;color:#0B0D14;border-radius:14px;padding:18px 24px;
-  transform:rotate(7deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.6);text-align:center;line-height:1;
-  transition:transform .6s var(--ease);
-}
+.gname{display:block;text-align:center;font-size:clamp(70px,17.5vw,250px);font-weight:900;letter-spacing:-.06em;line-height:.82;font-variation-settings:"wdth" 116;color:var(--fg)}
+.tagcard{position:absolute;right:2%;top:-6%;background:#fff;color:#0B0D14;border-radius:14px;padding:18px 24px;transform:rotate(7deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.6);text-align:center;line-height:1;transition:transform .6s var(--ease)}
 .tagcard:hover{transform:rotate(0)}
 .tagcard span{display:block}
 .tagcard .t1{font:500 10.5px var(--m);letter-spacing:.24em;text-transform:uppercase;color:#5F636D;margin-bottom:8px}
@@ -423,9 +336,7 @@ body::before{
 [data-theme="light"] .tagcard{background:#0B0D14;color:#fff;box-shadow:0 30px 60px -20px rgba(11,13,20,.4)}
 [data-theme="light"] .tagcard .t1,[data-theme="light"] .tagcard .t3{color:#9EA2AC}
 
-/* =========================================================
-   REVEAL
-   ========================================================= */
+/* REVEAL */
 .rv{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .rv.in{opacity:1;transform:none}
 .rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}.rv[data-d="3"]{transition-delay:.3s}
@@ -433,9 +344,7 @@ body::before{
 .line-rv > *{display:block;transform:translateY(110%);transition:transform 1.1s var(--ease)}
 .line-rv.in > *{transform:none}
 
-/* =========================================================
-   CASE STUDIES
-   ========================================================= */
+/* CASE STUDIES */
 .case{display:none;padding-block:clamp(120px,17vw,160px) 90px}
 body[data-view="case"] .home{display:none}
 body[data-view="case"] .case[data-active="true"]{display:block}
@@ -462,27 +371,27 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 .cbody ul{padding-left:18px;color:var(--fg-2);margin:0 0 1em}
 .cbody li{margin-bottom:10px}
 .cbody li::marker{color:var(--cobalt)}
+.cbody .inl{color:var(--ice);border-bottom:1px solid var(--line-2)}
 .pull{margin:36px 0;font-size:clamp(21px,2.6vw,31px);font-weight:600;letter-spacing:-.035em;line-height:1.25;padding-left:24px;border-left:2px solid var(--cobalt)}
+.note{margin:28px 0;padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--panel);font:500 12px/1.7 var(--m);letter-spacing:.06em;color:var(--fg-2)}
+.note b{color:var(--ice);font-weight:500}
 .cnext{margin-top:72px;padding-top:26px;border-top:1px solid var(--line)}
 .cnext .k{font:500 11px var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3);margin-bottom:10px}
 .cnext a{font-size:clamp(24px,4vw,46px);font-weight:800;letter-spacing:-.045em;font-variation-settings:"wdth" 108}
 .cnext a:hover{color:var(--cobalt)}
 
-/* =========================================================
-   SCREENSHOTS — figures, gallery, lightbox
-   ========================================================= */
+/* timeline inside case study */
+.tl{list-style:none;padding:0!important;margin:28px 0!important;border-left:1px solid var(--line-2)}
+.tl li{position:relative;padding:0 0 18px 24px;margin:0!important}
+.tl li::before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--cobalt)}
+.tl li b{display:block;font:500 11px var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--ice);margin-bottom:4px}
+
+/* SCREENSHOTS */
 .shot{margin:34px 0;position:relative}
-.shot img{
-  width:100%;border:1px solid var(--line);border-radius:16px;background:var(--panel);
-  cursor:zoom-in;transition:border-color .3s,transform .5s var(--ease);
-}
+.shot img{width:100%;border:1px solid var(--line);border-radius:16px;background:var(--panel);cursor:zoom-in;transition:border-color .3s,transform .5s var(--ease)}
 .shot img:hover{border-color:var(--line-2);transform:translateY(-3px)}
-.shot figcaption{
-  margin-top:12px;font:500 11px var(--m);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--fg-3);display:flex;gap:10px;align-items:baseline;
-}
+.shot figcaption{margin-top:12px;font:500 11px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);display:flex;gap:10px;align-items:baseline}
 .shot figcaption b{color:var(--ice);font-weight:500;flex:none}
-/* wide figures break out of the 70ch text column */
 .cbody .shot.wide{width:min(100%,calc(70ch + 12vw));max-width:none}
 @media (min-width:1025px){.cbody .shot.wide{margin-left:-6vw;width:calc(100% + 6vw)}}
 .gal{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:34px 0}
@@ -492,7 +401,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 .gal .shot.full img{aspect-ratio:auto;object-fit:contain}
 @media (min-width:1025px){.cbody .gal{margin-left:-6vw;width:calc(100% + 6vw)}}
 @media (max-width:720px){.gal{grid-template-columns:1fr}}
-
 .lb{position:fixed;inset:0;z-index:300;background:rgba(4,5,9,.94);backdrop-filter:blur(8px);display:none;place-items:center;padding:clamp(16px,4vw,54px)}
 .lb.on{display:grid;overscroll-behavior:contain}
 .lb img{max-width:100%;max-height:86vh;border-radius:12px;border:1px solid var(--line-2);object-fit:contain}
@@ -515,9 +423,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   .lb .x{top:12px;right:12px}
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/* RESPONSIVE */
 @media (max-width:1024px){
   :root{--nav-h:82px}
   .about,.xp{grid-template-columns:1fr;gap:36px}
@@ -541,6 +447,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   .case .meta div:nth-child(2){border-right:0}
   .lg{grid-template-columns:1fr;gap:8px}
   .lg .tag{order:-1}
+  .lg .tag b{display:inline;margin:0 0 0 8px}
   .lg .fig{text-align:left}
   .foot .row{grid-template-columns:1fr}
   .foot .row .hero-cta{justify-content:flex-start}
@@ -623,7 +530,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   .foot .email{font-size:16px}
   .icons a{width:42px;height:42px}
 }
-/* touch devices: hover-only content becomes visible, compact */
 @media (hover:none){
   .trow .more{grid-template-rows:1fr}
   .trow .more .in{opacity:1;transform:none;padding-top:12px;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:baseline}
@@ -695,7 +601,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     </h2>
     <div class="hero-right">
       <div class="avail"><i></i>Available for thoughtful work</div>
-      <p>Software developer in Bengaluru. Shopify themes and custom apps, AI agents on MCP, and the Node services behind them — currently for an industrial distributor in Dubai.</p>
+      <p>Software developer in Bengaluru. Shopify themes and custom apps, AI agents on MCP, and the Node services behind them — currently for an industrial distributor in the UAE, across two stores in the UAE and Saudi Arabia.</p>
       <div class="hero-cta">
         <a class="fbtn solid" href="#projects" data-flip="See my work"><span class="l"></span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         <a class="fbtn" href="mailto:shahidafrid97419@gmail.com" data-flip="Email me"><span class="l"></span></a>
@@ -705,13 +611,16 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 </header>
 
 <!-- ============ HERO STRIP ============ -->
-<section class="strip" aria-label="Screenshots of the storefront I built">
+<section class="strip" aria-label="Screenshots of storefronts I built">
   <div class="strip-line">
-    <span class="k">Latest build · Vision theme, live on creativeautomation.ae</span>
+    <span class="k">Vision theme, build 23 · Datum redesign now live on creativeautomation.ae</span>
     <span class="v">Tap any frame to enlarge</span>
   </div>
   <div class="rail" id="rail">
-    <figure><img src="assets/shots/01-home-part-lookup.webp" alt="Storefront home page with part-number lookup and distribution index" loading="eager" fetchpriority="high" decoding="async" width="1600" height="856"><figcaption>Home · part-number lookup</figcaption></figure>
+    <!-- Add Datum screenshots first once captured, e.g.
+    <figure><img src="assets/shots/datum-01-home.webp" alt="Datum theme home page" loading="eager" decoding="async" width="1600" height="900"><figcaption>Datum · home</figcaption></figure>
+    -->
+    <figure><img src="assets/shots/01-home-part-lookup.webp" alt="Storefront home page with part-number lookup and distribution index" loading="eager" fetchpriority="high" decoding="async" width="1600" height="856"><figcaption>Vision · part-number lookup</figcaption></figure>
     <figure><img src="assets/shots/02-mega-menu.webp" alt="Three-level mega menu with categories, subcategories and brand counts" loading="lazy" width="1600" height="816"><figcaption>Three-level mega menu</figcaption></figure>
     <figure><img src="assets/shots/03-collection-subcategories.webp" alt="Sensors collection page with subcategory tiles and part counts" loading="lazy" width="1600" height="862"><figcaption>Collection · subcategory tiles</figcaption></figure>
     <figure><img src="assets/shots/09-search-grid.webp" alt="Search results in grid view with metafield filters" loading="lazy" width="1600" height="871"><figcaption>Search · filters</figcaption></figure>
@@ -734,13 +643,14 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   </div>
   <div class="body">
     <p class="big rv">I'm Shahid — a developer who gets excited about <em>building something real</em> and then keeping it running.</p>
-    <p class="rv" data-d="1">Day to day that's Shopify: 23 theme builds shipped to production on a 200,000-part industrial catalogue, most recently a complete ground-up redesign — new architecture, new layout, new everything — that went live because the company saw it and wanted it out immediately. Around the theme sit custom Shopify apps I build in the Partner dashboard, Node services on Railway, and an MCP-based AI shopping agent — a Shopify app on Claude that searches the whole catalogue and checks out inside the chat.</p>
-    <p class="rv" data-d="2">I like the whole path — Liquid and front end, the API layer, deployment, and the debugging that only starts once something is live. On my own time I ship products: an AI study platform, a form builder, a few ML pipelines. BCA from Nitte Meenakshi Institute of Technology, 2022–2025.</p>
+    <p class="rv" data-d="1">Day to day that's Shopify: 24 theme builds shipped to production on a 200,000-part industrial catalogue. The latest is Datum, a redesign of every customer-facing page that went live in September 2026 — following Vision, the ground-up rebuild before it. Around the theme sit custom Shopify apps I build in the Partner dashboard, Node services on Railway, an MCP-based AI shopping agent that searches the whole catalogue and checks out inside the chat, and the pages the company sells through: four brand landing pages on paid traffic, an AI product search page, and a free engineering toolkit.</p>
+    <p class="rv" data-d="2">I like the whole path — Liquid and front end, the API layer, deployment, and the debugging that only starts once something is live: bot traffic eating a search plan, an app injecting scripts it shouldn't, a proxy that needs fixing on a Friday. On my own time I ship products: an AI study platform, a form builder, a few ML pipelines. BCA from Nitte Meenakshi Institute of Technology, 2022–2025.</p>
     <ul class="caps rv" data-d="2">
-      <li><span class="n">01</span><span class="t">Shopify theme development</span><span class="d">Liquid · OS 2.0 · 23 builds</span></li>
+      <li><span class="n">01</span><span class="t">Shopify theme development</span><span class="d">Liquid · OS 2.0 · 24 builds</span></li>
       <li><span class="n">02</span><span class="t">Custom Shopify apps</span><span class="d">Partner dashboard · APIs</span></li>
       <li><span class="n">03</span><span class="t">AI agents &amp; MCP</span><span class="d">Claude · tools · RAG</span></li>
       <li><span class="n">04</span><span class="t">Services &amp; deployment</span><span class="d">Node · Express · Railway</span></li>
+      <li><span class="n">05</span><span class="t">Search, filters &amp; traffic</span><span class="d">Search &amp; Discovery · bots</span></li>
     </ul>
   </div>
 </section>
@@ -755,22 +665,31 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   <div class="tbl rv" id="tbl">
     <div class="thead"><span>Name</span><span>Role</span><span>Year</span><span>Services</span><span></span></div>
 
+    <a class="trow" href="#/case/datum">
+      <span class="name">Datum theme redesign <span class="st new">New · Live</span></span>
+      <span class="role">Every customer-facing page redesigned — homepage, mega menu, listing pages, PDP, filters — with every link and integration kept intact</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Liquid</span><span class="chip">OS 2.0</span><span class="chip">Search &amp; Discovery</span><span class="chip">JavaScript</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">24</span><span class="cap">theme builds shipped — Datum is the one running now</span><span class="act">Open case study</span></div></div></span>
+    </a>
+
     <a class="trow" href="#/case/vision">
-      <span class="name">Vision theme redesign <span class="st">Live</span></span>
-      <span class="role">Ground-up rebuild of a 200,000-part storefront — new architecture, layout and design system</span>
+      <span class="name">Vision theme rebuild <span class="st off">Shipped</span></span>
+      <span class="role">Ground-up rebuild of a 200,000-part storefront — new architecture, layout and design system; live until Datum replaced it</span>
       <span class="year">2026</span>
       <span class="svc"><span class="chip">Liquid</span><span class="chip">OS 2.0</span><span class="chip">JavaScript</span><span class="chip">Metafields</span></span>
       <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-      <span class="more"><div><div class="in"><span class="num">23</span><span class="cap">theme builds shipped — case study has the full before and after</span><span class="act">Open case study</span></div></div></span>
+      <span class="more"><div><div class="in"><span class="num">23</span><span class="cap">the build that started over — full before and after inside</span><span class="act">Open case study</span></div></div></span>
     </a>
 
-    <a class="trow" href="#/case/shipping">
-      <span class="name">OTO shipping estimator <span class="st">Live</span></span>
-      <span class="role">Live carrier prices in the cart from hundreds of providers, credentials held server-side</span>
+    <a class="trow" href="https://www.creativeautomation.ae/pages/tia" target="_blank" rel="noopener">
+      <span class="name">TIA — AI Product Search <span class="st new">New · Live</span></span>
+      <span class="role">A search page where buyers describe the part in plain words — or paste a part number or brand — and the AI matches it to the catalogue</span>
       <span class="year">2026</span>
-      <span class="svc"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Railway</span><span class="chip">OTO API</span></span>
-      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-      <span class="more"><div><div class="in"><span class="num">9+</span><span class="cap">carriers quoted live in the cart — one endpoint, credentials never leave the server</span><span class="act">Open case study</span></div></div></span>
+      <span class="svc"><span class="chip">Liquid</span><span class="chip">UI/UX</span><span class="chip">AI agent</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">AI</span><span class="cap">plain-language search · example prompts · saved parts lists</span><span class="act">Visit page</span></div></div></span>
     </a>
 
     <a class="trow" href="#/case/agent">
@@ -782,31 +701,49 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <span class="more"><div><div class="in"><span class="num">200k</span><span class="cap">products searchable in chat</span><span class="act">Open case study</span></div></div></span>
     </a>
 
+    <a class="trow" href="#/case/shipping">
+      <span class="name">OTO shipping estimator <span class="st">Live</span></span>
+      <span class="role">Live carrier prices in the cart from hundreds of providers, credentials held server-side</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Railway</span><span class="chip">OTO API</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">9+</span><span class="cap">carriers quoted live in the cart — one endpoint, credentials never leave the server</span><span class="act">Open case study</span></div></div></span>
+    </a>
+
     <a class="trow" href="#/case/storefront">
       <span class="name">Catalogue architecture <span class="st">Live</span></span>
-      <span class="role">Metafield-driven category system behind 270+ collection pages and site-wide filters</span>
+      <span class="role">Metafield-driven category system behind 270+ collection pages, and the filter system now running on 120+ of them</span>
       <span class="year">2026</span>
-      <span class="svc"><span class="chip">Metafields</span><span class="chip">Rapid Search</span><span class="chip">Matrixify</span><span class="chip">PostHog</span></span>
+      <span class="svc"><span class="chip">Metafields</span><span class="chip">Search &amp; Discovery</span><span class="chip">Rapid Search</span><span class="chip">Matrixify</span></span>
       <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
       <span class="more"><div><div class="in"><span class="num">270+</span><span class="cap">collection pages from one hierarchy</span><span class="act">Open case study</span></div></div></span>
     </a>
 
-    <a class="trow" href="https://www.creativeautomation.sa/" target="_blank" rel="noopener">
-      <span class="name">Creative Automation Saudi <span class="st">Live</span></span>
-      <span class="role">Second regional storefront launched from the UAE theme, May 2026</span>
-      <span class="year">2026</span>
-      <span class="svc"><span class="chip">Liquid</span><span class="chip">Matrixify</span></span>
-      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-      <span class="more"><div><div class="in"><span class="num">43</span><span class="cap">images · 15 sections · IFM page</span><span class="act">Visit site</span></div></div></span>
-    </a>
-
     <a class="trow" href="#/case/brands">
-      <span class="name">Brand distributor pages <span class="st">Live</span></span>
-      <span class="role">Quote-first landing pages for IFM, Siemens and SMC, built to receive the company's paid traffic</span>
+      <span class="name">Brand landing pages <span class="st">Live</span></span>
+      <span class="role">Quote-first pages for IFM, Siemens and SMC — including a second, standalone SMC Brand page — built for the company's paid traffic</span>
       <span class="year">2026</span>
       <span class="svc"><span class="chip">Liquid</span><span class="chip">Google Ads</span><span class="chip">Page templates</span></span>
       <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-      <span class="more"><div><div class="in"><span class="num">Ads</span><span class="cap">three brands, three identities — enquiries, not carts</span><span class="act">Open case study</span></div></div></span>
+      <span class="more"><div><div class="in"><span class="num">4</span><span class="cap">brand pages, four identities — enquiries, not carts</span><span class="act">Open case study</span></div></div></span>
+    </a>
+
+    <a class="trow extra" href="https://www.creativeautomation.sa/" target="_blank" rel="noopener">
+      <span class="name">Creative Automation Saudi <span class="st">Live</span></span>
+      <span class="role">Second regional storefront, launched May 2026 from the UAE theme; a new Saudi theme designed in September, two versions in review</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Liquid</span><span class="chip">Matrixify</span><span class="chip">Shopify CDN</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">2</span><span class="cap">new theme versions in review · UAE redirects removed</span><span class="act">Visit site</span></div></div></span>
+    </a>
+
+    <a class="trow extra" href="https://creativeautomation.ae/tools" target="_blank" rel="noopener">
+      <span class="name">The Toolkit <span class="st new">New · Live</span></span>
+      <span class="role">Free maintenance and spares-planning workbook — seven working sheets, no login, opens in Excel or Google Sheets</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Liquid</span><span class="chip">UI/UX</span><span class="chip">Excel</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">7</span><span class="cap">working sheets · one-click .xlsx download</span><span class="act">Visit page</span></div></div></span>
     </a>
 
     <a class="trow extra" href="https://hydroair.ae/" target="_blank" rel="noopener">
@@ -854,15 +791,17 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <span class="more"><div><div class="in"><span class="num">ML</span><span class="cap">credit · handwriting · disease</span><span class="act">Visit site</span></div></div></span>
     </a>
   </div>
-  <button class="fbtn tbl-toggle" id="tbl-toggle" type="button" data-flip="Show all 11"><span class="l"></span></button>
+  <button class="fbtn tbl-toggle" id="tbl-toggle" type="button" data-flip="Show all 14"><span class="l"></span></button>
 </section>
 
 <!-- ============ NUMBERS ============ -->
 <section class="wrap" id="numbers" style="padding-bottom:clamp(80px,11vw,150px)">
   <div class="nums rv">
-    <div class="num"><div class="v">23</div><div class="l">Shopify theme builds shipped</div></div>
+    <div class="num"><div class="v">24</div><div class="l">Shopify theme builds shipped</div></div>
     <div class="num"><div class="v">200k<em>+</em></div><div class="l">products on the storefront I own</div></div>
     <div class="num"><div class="v">270<em>+</em></div><div class="l">collection pages from one hierarchy</div></div>
+    <div class="num"><div class="v">120<em>+</em></div><div class="l">collection pages on the new filter system</div></div>
+    <div class="num"><div class="v">4</div><div class="l">brand landing pages live</div></div>
     <div class="num"><div class="v">4,974</div><div class="l">broken image URLs found &amp; fixed</div></div>
     <div class="num"><div class="v">3</div><div class="l">storefronts live · UAE &amp; Saudi</div></div>
     <div class="num"><div class="v">0</div><div class="l">secrets exposed to the browser</div></div>
@@ -880,9 +819,9 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   </div>
   <div class="steps rv" data-d="1">
     <div class="step"><span class="n">01</span><h3>Understand</h3><p>What the buyer actually does. Procurement engineers search by part number, not by browsing — so the search has to meet them there.</p></div>
-    <div class="step"><span class="n">02</span><h3>Structure</h3><p>Put the shape in data, not in templates. A category is a metafield; adding one shouldn't need a deployment.</p></div>
+    <div class="step"><span class="n">02</span><h3>Structure</h3><p>Put the shape in data, not in templates. A category is a metafield; adding one shouldn't need a deployment — and a redesign shouldn't need a re-tag.</p></div>
     <div class="step"><span class="n">03</span><h3>Build</h3><p>Small services with one honest job each. Secrets stay server-side. Everything gets a mock mode so it can be built without touching production.</p></div>
-    <div class="step"><span class="n">04</span><h3>Run</h3><p>Production is where the real bugs live: token loops, security blocks, broken image URLs. I stay on the thing after it ships.</p></div>
+    <div class="step"><span class="n">04</span><h3>Run</h3><p>Production is where the real bugs live: token loops, security blocks, broken image URLs, bot traffic draining a search plan. I stay on the thing after it ships.</p></div>
   </div>
 </section>
 
@@ -908,17 +847,21 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <span class="tool" data-c="com"><i></i>Theme architecture</span>
     <span class="tool hero" data-c="com"><i></i>Custom Shopify apps</span>
     <span class="tool" data-c="com"><i></i>Metafields</span>
+    <span class="tool" data-c="com"><i></i>Search &amp; Discovery</span>
+    <span class="tool" data-c="com"><i></i>Rapid Search</span>
     <span class="tool" data-c="com"><i></i>Storefront API</span>
     <span class="tool" data-c="com"><i></i>Admin REST API</span>
     <span class="tool" data-c="com"><i></i>App proxies</span>
     <span class="tool" data-c="com"><i></i>Theme app extensions</span>
     <span class="tool" data-c="com"><i></i>Matrixify</span>
+    <span class="tool" data-c="com"><i></i>Third-party app integration</span>
     <span class="tool hero" data-c="fe"><i></i>TypeScript</span>
     <span class="tool" data-c="fe"><i></i>JavaScript</span>
     <span class="tool hero" data-c="fe"><i></i>React</span>
     <span class="tool" data-c="fe"><i></i>Next.js</span>
     <span class="tool" data-c="fe"><i></i>Tailwind CSS</span>
     <span class="tool" data-c="fe"><i></i>CSS architecture</span>
+    <span class="tool" data-c="fe"><i></i>Responsive UI/UX</span>
     <span class="tool" data-c="fe"><i></i>Accessible UI</span>
     <span class="tool hero" data-c="be"><i></i>Node.js</span>
     <span class="tool" data-c="be"><i></i>Express</span>
@@ -937,6 +880,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <span class="tool" data-c="ai"><i></i>Tool design</span>
     <span class="tool" data-c="ai"><i></i>Prompt design</span>
     <span class="tool" data-c="ai"><i></i>RAG</span>
+    <span class="tool" data-c="ai"><i></i>Claude Design</span>
     <span class="tool" data-c="ai"><i></i>OpenAI</span>
     <span class="tool" data-c="ai"><i></i>Gemini</span>
     <span class="tool hero" data-c="infra"><i></i>Railway</span>
@@ -946,6 +890,8 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <span class="tool" data-c="infra"><i></i>CI/CD</span>
     <span class="tool" data-c="infra"><i></i>Git</span>
     <span class="tool" data-c="infra"><i></i>Secret management</span>
+    <span class="tool" data-c="infra"><i></i>Bot &amp; traffic mitigation</span>
+    <span class="tool" data-c="infra"><i></i>robots.txt &amp; rate limits</span>
     <span class="tool" data-c="infra"><i></i>PostgreSQL</span>
     <span class="tool" data-c="infra"><i></i>MongoDB</span>
     <span class="tool" data-c="infra"><i></i>Supabase</span>
@@ -961,16 +907,29 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <div class="label rv" style="margin-bottom:18px">Track record</div>
       <h2 class="rv" data-d="1">What I shipped</h2>
     </div>
-    <p class="rv" data-d="2">Real changes on live systems, with the number attached. December 2025 to now.</p>
+    <p class="rv" data-d="2">Real changes on live systems, with the number attached. Newest first — December 2025 to September 2026.</p>
   </div>
   <div class="log rv" id="log">
-    <div class="lg"><span class="tag">Vision theme</span><div><div class="t">Complete storefront redesign, built from scratch</div><p class="d">A new theme with its own layout, navigation model, type system and component set — replacing the theme the store had been running on. Reviewed internally, approved and pushed live within days.</p></div><span class="fig">now the live theme<br>23rd build</span></div>
-    <div class="lg"><span class="tag">Vision theme</span><div><div class="t">Part-number-first search and lookup</div><p class="d">A dedicated lookup that matches manufacturer part numbers, SKUs and titles across the whole catalogue, with brand narrowing and a filter rail on results.</p></div><span class="fig">25,001 indexed parts</span></div>
-    <div class="lg"><span class="tag">Vision theme</span><div><div class="t">Three-level mega menu</div><p class="d">Category → subcategory → brand, with live part counts at every level, driven by the same metafield hierarchy that powers breadcrumbs and filters.</p></div><span class="fig">9 groups · 451 lines</span></div>
-    <div class="lg"><span class="tag">Cart · shipping</span><div><div class="t">Live carrier rates in the cart</div><p class="d">Express service on Railway quoting OTO's carrier network by delivery city, with COD surcharge shown separately and the refresh token never leaving the server.</p></div><span class="fig">rates from AED 10.00</span></div>
-    <div class="lg"><span class="tag">Catalogue</span><div><div class="t">Metafield-driven collection hierarchy</div><p class="d">Parent–child collections resolved from a <code style="font-family:var(--m);color:var(--ice);font-size:13px">custom.parent_collection</code> chain — subcategory cards, breadcrumbs and filtering rendered automatically, no per-collection hardcoding.</p></div><span class="fig">270+ collection pages<br>120+ subcategories</span></div>
-    <div class="lg"><span class="tag">Catalogue</span><div><div class="t">Large-catalogue import and image repair</div><p class="d">~40,000 products imported file by file; broken imagery traced to unstable Google PageSpeed URLs in the CSV, 4,974 corrected and re-imported via Matrixify.</p></div><span class="fig">4,974 URLs fixed</span></div>
-    <div class="lg"><span class="tag">AI chat agent</span><div><div class="t">Storefront API token handling rebuilt</div><p class="d">A production-only 401 loop with cart failures and domain leakage behind it. Legacy OAuth logic replaced with the official Admin REST flow, with proper refresh and validation.</p></div><span class="fig">401 loop cleared</span></div>
+    <!-- September 2026 -->
+    <div class="lg"><span class="tag">Datum theme<b>Sep 2026</b></span><div><div class="t">Datum redesign, live in production</div><p class="d">New homepage — hero, business stats, brand logos, parent categories, trending products, case studies, customer reviews — plus the mega menu, navbar, footer, subcategories, listing pages and PDP, all redesigned with every existing link and integration kept intact. Tested across desktop and mobile.</p></div><span class="fig">now the live theme<br>24th build</span></div>
+    <div class="lg"><span class="tag">New page<b>Sep 2026</b></span><div><div class="t">TIA — AI Product Search page</div><p class="d">Buyers describe the part in plain words, or enter a part number or brand, and the AI searches the catalogue for a match. Ask-TIA input, example prompts, parts-list saving with login, and a direct line into the chat agent with new and previous chats.</p></div><span class="fig">live · /pages/tia</span></div>
+    <div class="lg"><span class="tag">New page<b>Sep 2026</b></span><div><div class="t">The Toolkit — free maintenance and spares workbook</div><p class="d">Content, design and download flow for a seven-sheet Excel workbook: downtime cost calculator, machine risk map, critical spare score, spares register, planned maintenance planner, KPI scorecard and emergency log. No registration, email or login; opens in Excel and Google Sheets.</p></div><span class="fig">7 sheets · no login</span></div>
+    <div class="lg"><span class="tag">Filters &amp; search<b>Sep 2026</b></span><div><div class="t">New collection filtering system</div><p class="d">Built on Shopify Search &amp; Discovery — brand, series, dimensions, mounting type, price, accessory type, depth — with a redesigned search-results filter bar, clear active-filter and clear-all states, row and tile product views, and the Rapid Search snippet integration fixed.</p></div><span class="fig">120+ collection pages</span></div>
+    <div class="lg"><span class="tag">Traffic &amp; security<b>Sep 2026</b></span><div><div class="t">Bot traffic cut out of search usage</div><p class="d">Rapid Search sessions were running out. Traced it to heavy US bot traffic, worked with the vendor to exclude bots and reset the plan to real traffic only, then added robots.txt rules, rate limits and session timeouts against bot and data-centre traffic.</p></div><span class="fig">plan reset<br>accurate counts</span></div>
+    <div class="lg"><span class="tag">Brand pages<b>Sep 2026</b></span><div><div class="t">SMC Brand page, and the distributor page refined</div><p class="d">A second SMC page with a completely different layout from the distributor page, built in SMC's blue, white and black — hero, product imagery, industry applications, technology highlights, enquiry sections. The distributor page reworked in the same pass; both tuned for mobile, SEO and enquiries.</p></div><span class="fig">4th brand page</span></div>
+    <div class="lg"><span class="tag">Saudi storefront<b>Sep 2026</b></span><div><div class="t">New Saudi theme, two directions</div><p class="d">Landing page, header, logo, navigation, category and product-range sections on Shopify CDN imagery; image-loop rendering bugs fixed, and invalid links and UAE redirects removed for products not yet sold in KSA.</p></div><span class="fig">2 versions in review</span></div>
+    <div class="lg more"><span class="tag">Brand pages<b>Sep 2026</b></span><div><div class="t">Siemens page redesigned and redeployed</div><p class="d">Layout rebuilt, sections removed and added, product images and Enquiry buttons integrated, mobile and desktop tuned, pushed live.</p></div><span class="fig">live · enquiry-led</span></div>
+    <div class="lg more"><span class="tag">Cart · shipping<b>Sep 2026</b></span><div><div class="t">Shipping calculator restored</div><p class="d">The cart's shipping estimate diagnosed and fixed, with updates to the Railway proxy integration and a tidier cart UI in the same pass.</p></div><span class="fig">live rates back</span></div>
+    <div class="lg more"><span class="tag">Third-party apps<b>Sep 2026</b></span><div><div class="t">Pre-order app injection fixed</div><p class="d">Worked with Globo's support team to resolve a JavaScript injection that broke the Pre-Order button, and cleared the Add to Cart and Enquiry glitches around it.</p></div><span class="fig">vendor issue closed</span></div>
+    <div class="lg more"><span class="tag">Store settings<b>Sep 2026</b></span><div><div class="t">Pickup moved to Ajman</div><p class="d">Store location switched from Al Qusais to Ajman, with pickup availability on the product page configured to match.</p></div><span class="fig">Ajman pickup on PDP</span></div>
+    <!-- Earlier -->
+    <div class="lg more"><span class="tag">Vision theme</span><div><div class="t">Complete storefront rebuild, from scratch</div><p class="d">A new theme with its own layout, navigation model, type system and component set — replacing the theme the store had been running on. Reviewed internally, approved and pushed live within days.</p></div><span class="fig">23rd build<br>succeeded by Datum</span></div>
+    <div class="lg more"><span class="tag">Vision theme</span><div><div class="t">Part-number-first search and lookup</div><p class="d">A dedicated lookup that matches manufacturer part numbers, SKUs and titles across the whole catalogue, with brand narrowing and a filter rail on results.</p></div><span class="fig">25,001 indexed parts</span></div>
+    <div class="lg more"><span class="tag">Vision theme</span><div><div class="t">Three-level mega menu</div><p class="d">Category → subcategory → brand, with live part counts at every level, driven by the same metafield hierarchy that powers breadcrumbs and filters.</p></div><span class="fig">9 groups · 451 lines</span></div>
+    <div class="lg more"><span class="tag">Cart · shipping</span><div><div class="t">Live carrier rates in the cart</div><p class="d">Express service on Railway quoting OTO's carrier network by delivery city, with COD surcharge shown separately and the refresh token never leaving the server.</p></div><span class="fig">rates from AED 10.00</span></div>
+    <div class="lg more"><span class="tag">Catalogue</span><div><div class="t">Metafield-driven collection hierarchy</div><p class="d">Parent–child collections resolved from a <code style="font-family:var(--m);color:var(--ice);font-size:13px">custom.parent_collection</code> chain — subcategory cards, breadcrumbs and filtering rendered automatically, no per-collection hardcoding.</p></div><span class="fig">270+ collection pages<br>120+ subcategories</span></div>
+    <div class="lg more"><span class="tag">Catalogue</span><div><div class="t">Large-catalogue import and image repair</div><p class="d">~40,000 products imported file by file; broken imagery traced to unstable Google PageSpeed URLs in the CSV, 4,974 corrected and re-imported via Matrixify.</p></div><span class="fig">4,974 URLs fixed</span></div>
+    <div class="lg more"><span class="tag">AI chat agent</span><div><div class="t">Storefront API token handling rebuilt</div><p class="d">A production-only 401 loop with cart failures and domain leakage behind it. Legacy OAuth logic replaced with the official Admin REST flow, with proper refresh and validation.</p></div><span class="fig">401 loop cleared</span></div>
     <div class="lg more"><span class="tag">AI chat agent</span><div><div class="t">Production deployment and Shopify security resolution</div><p class="d">Shopify blocked the app as a security threat in production. Proxy reconfigured, every error cleared, deployment stabilised across devices.</p></div><span class="fig">live 21 Feb 2026</span></div>
     <div class="lg more"><span class="tag">AI chat agent</span><div><div class="t">Product search overhaul</div><p class="d">Broad full-catalogue query first, retries on simplified queries, multi-level fallback, SKU exact-match ranking, vendor inference. Redundant layers removed.</p></div><span class="fig">fewer zero-result queries</span></div>
     <div class="lg more"><span class="tag">Catalogue</span><div><div class="t">Advanced metafield filters</div><p class="d">Filters across collection pages with Rapid Search; resolved filter-definition conflicts with both vendors' support and secured a custom plan sized for 200k products.</p></div><span class="fig">200+ collection pages</span></div>
@@ -980,13 +939,13 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <div class="lg more"><span class="tag">AI chat agent</span><div><div class="t">In-chat add to cart and checkout</div><p class="d">Reliable cart and checkout inside the conversation with token refresh and validation; session state covers new/end chat, history hydration and email capture.</p></div><span class="fig">cart + checkout in chat</span></div>
     <div class="lg more"><span class="tag">AI chat agent</span><div><div class="t">Model upgrade and prompt refinement</div><p class="d">Upgraded the Claude model and rewrote system prompts — fewer empty or wrong results on multilingual and ambiguous queries.</p></div><span class="fig">multilingual queries</span></div>
     <div class="lg more"><span class="tag">Landing pages</span><div><div class="t">IFM, Siemens and SMC distributor pages</div><p class="d">Quote-first landing pages for three manufacturer lines, each with its own identity: product families with sub-type chips, part-number-led cards, anchored section navigation on the long IFM page, and an honest "supplied to order" section on Siemens. All three receive Google Ads traffic.</p></div><span class="fig">3 brand pages<br>27 families</span></div>
-    <div class="lg more"><span class="tag">Saudi storefront</span><div><div class="t">IFM distributor landing page</div><p class="d">Built and optimised by hand to match a required design and content structure.</p></div><span class="fig">43 images · 15 sections</span></div>
+    <div class="lg more"><span class="tag">Saudi storefront</span><div><div class="t">Saudi launch and IFM distributor landing page</div><p class="d">Second regional storefront launched from the UAE theme in May 2026; its IFM page built and optimised by hand to match a required design and content structure.</p></div><span class="fig">43 images · 15 sections</span></div>
     <div class="lg more"><span class="tag">Analytics</span><div><div class="t">PostHog integration</div><p class="d">Page views, session duration, paid traffic and behaviour across a site that previously had no analytics.</p></div><span class="fig">site-wide analytics</span></div>
     <div class="lg more"><span class="tag">SEO</span><div><div class="t">SEO structure work</div><p class="d">Single H1 per template, ALT text on every collection image, SEO content on ten IFM collection pages, related products from the deepest collection.</p></div><span class="fig">ALT text on 270+ pages</span></div>
     <div class="lg more"><span class="tag">Vision theme</span><div><div class="t">Pre-order system</div><p class="d">Dedicated cart page, pre-order buttons with lead times, stock badges and counts, and a warning that fires only on mixed carts.</p></div><span class="fig">mixed-cart logic</span></div>
     <div class="lg more"><span class="tag">Vision theme</span><div><div class="t">Product page rebuild</div><p class="d">Bigger specifications panel, SKU + brand line linking to the vendor collection, tariffs &amp; fees tab, larger imagery, related products from the same subcategory.</p></div><span class="fig">~30% larger imagery</span></div>
   </div>
-  <button class="fbtn log-toggle" id="log-toggle" type="button" data-flip="Show all 21"><span class="l"></span></button>
+  <button class="fbtn log-toggle" id="log-toggle" type="button" data-flip="Show all 32"><span class="l"></span></button>
 </section>
 
 <!-- ============ EXPERIENCE ============ -->
@@ -1003,12 +962,13 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <h3>Software Developer — Shopify &amp; AI</h3>
       <div class="org">Creative Industrial Automation</div>
       <ul>
-        <li>Sole developer on a 200,000-product Shopify storefront: 23 theme builds shipped to production, ending in a full ground-up redesign now live as the company's theme.</li>
-        <li>Own theme architecture, category structure, navigation, filters, search, pre-orders, product and cart templates, and SEO — written in Liquid, JavaScript and CSS.</li>
+        <li>Sole developer on a 200,000-product Shopify storefront: 24 theme builds shipped to production — Vision, a ground-up rebuild, then Datum, a full redesign live since September 2026.</li>
+        <li>Own theme architecture, category structure, navigation, filters, search, pre-orders, product and cart templates, and SEO — written in Liquid, JavaScript and CSS. Rebuilt collection filtering on Shopify Search &amp; Discovery across 120+ collection pages.</li>
         <li>Build custom Shopify apps in the Partner dashboard and the Node services behind them, deployed on Railway.</li>
-        <li>Designed, built and deployed an MCP-based AI shopping agent as a Shopify Dev Dashboard app on Claude — theme app extension, app proxy, Shopify Storefront and Customer MCP servers, Prisma/Postgres, Dockerised on Railway — and keep it running in production.</li>
-        <li>Built the OTO shipping-estimate proxy so buyers see live carrier prices in the cart, credentials held server-side.</li>
-        <li>Launched a second regional storefront for Saudi Arabia and the distributor landing pages that receive the company's paid traffic.</li>
+        <li>Designed, built and deployed an MCP-based AI shopping agent as a Shopify Dev Dashboard app on Claude — theme app extension, app proxy, Shopify Storefront and Customer MCP servers, Prisma/Postgres, Dockerised on Railway — and the TIA AI Product Search page that fronts it.</li>
+        <li>Built the OTO shipping-estimate proxy so buyers see live carrier prices in the cart, credentials held server-side, and keep it running.</li>
+        <li>Launched a second regional storefront for Saudi Arabia and designed its new theme; built four brand landing pages (IFM, Siemens, SMC Brand, SMC Distributor) and a free engineering toolkit page.</li>
+        <li>Traced bot traffic draining the search plan and shut it out with the vendor, robots.txt, rate limits and session timeouts; resolved third-party app issues directly with vendor support.</li>
         <li>Deployment, production debugging, PostHog instrumentation, Google Ads audits, and internal automation where it saves the team real time.</li>
       </ul>
     </div>
@@ -1063,7 +1023,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
         </div>
       </div>
       <div><h4>Navigation</h4><ul><li><a href="#top">Home</a></li><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#shipped">Shipped</a></li><li><a href="Shahid-Afrid-Resume.pdf" download>Résumé (PDF)</a></li><li><a href="Shahid-Afrid-Resume.docx" download>Résumé (Word)</a></li></ul></div>
-      <div><h4>Case studies</h4><ul><li><a href="#/case/vision">Vision theme redesign</a></li><li><a href="#/case/shipping">OTO shipping</a></li><li><a href="#/case/agent">AI chat agent</a></li><li><a href="#/case/storefront">Catalogue architecture</a></li><li><a href="#/case/brands">Brand pages</a></li></ul></div>
+      <div><h4>Case studies</h4><ul><li><a href="#/case/datum">Datum theme redesign</a></li><li><a href="#/case/vision">Vision theme rebuild</a></li><li><a href="#/case/shipping">OTO shipping</a></li><li><a href="#/case/agent">AI chat agent</a></li><li><a href="#/case/storefront">Catalogue architecture</a></li><li><a href="#/case/brands">Brand pages</a></li></ul></div>
       <div><h4>Connect</h4><ul>
         <li><a href="https://linkedin.com/in/shahidafrid-dev" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://www.instagram.com/akhi_shxhid" target="_blank" rel="noopener">Instagram</a></li>
@@ -1095,16 +1055,84 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 
 <!-- ============ CASE STUDIES ============ -->
 
-<article class="case wrap" id="case-vision">
+<article class="case wrap" id="case-datum">
   <a class="back" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All projects</a>
   <div class="label on" style="margin-bottom:18px">Case study · 01</div>
+  <h1>A second full redesign, live without breaking a link</h1>
+  <p class="stand">Vision rebuilt the store from zero. Datum, the build after it, redesigned every surface a customer touches — homepage, mega menu, listing pages, product page, filters — while every existing link, integration and third-party app kept working underneath. It went live on creativeautomation.ae in September 2026.</p>
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Sole developer — design, build, test, deploy</dd></div>
+    <div><dt>Stack</dt><dd>Shopify Liquid, OS 2.0, Search &amp; Discovery, Rapid Search, vanilla JS</dd></div>
+    <div><dt>Status</dt><dd>Live since September 2026 · build 24</dd></div>
+    <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">Live</a> · <a href="https://www.creativeautomation.ae/collections/electrical-automation-cables" target="_blank" rel="noopener">Collection</a> · <a href="https://www.creativeautomation.ae/pages/rapid-search-results?q=ifm" target="_blank" rel="noopener">Search</a></dd></div>
+  </dl>
+  <div class="cbody">
+    <nav class="toc"><a href="#s6-1">The constraint</a><a href="#s6-2">Filters first</a><a href="#s6-3">Every surface</a><a href="#s6-4">Timeline</a><a href="#s6-5">Running it</a><a href="#s6-6">Alongside</a></nav>
+    <div class="txt">
+      <h2 id="s6-1">The constraint: nothing underneath moves</h2>
+      <p>By the time Datum started, the store was carrying a lot that customers never see: the cart's live shipping estimate on its Railway proxy, the AI chat agent's mount point, a pre-order app, Rapid Search on the results page, analytics, and hundreds of links pointing into the mega menu and collection tree. A redesign that broke any of those would have cost more than it delivered.</p>
+      <p>So the brief I set was narrow on one side and wide on the other: <strong>change every surface, keep every connection</strong>. The metafield hierarchy, the collection tree and every URL stayed exactly where they were; the design on top of them was redone from the homepage down.</p>
+      <div class="pull">A redesign is only safe when the thing underneath it doesn't move.</div>
+
+      <h2 id="s6-2">Filters first</h2>
+      <p>Before touching the look of anything, I rebuilt how buyers narrow a catalogue this size. The new collection filtering runs on Shopify <strong>Search &amp; Discovery</strong> — brand, series, dimensions, mounting type, price, accessory type and depth — and now sits on <strong>120+ collection pages</strong>, for example <a class="inl" href="https://www.creativeautomation.ae/collections/electrical-automation-cables" target="_blank" rel="noopener">Electrical Automation Cables</a>.</p>
+      <p>The search-results filter bar was redesigned alongside it: tighter spacing and alignment, visible active-filter states, a working clear-all, and the same layout on desktop and mobile. Product grids got two modes — horizontal rows for scanning SKUs, tiles for browsing — and I explored several layout concepts in Claude Design before committing any of them to Liquid. A broken Rapid Search JavaScript snippet on the results page was fixed in the same stretch.</p>
+
+      <h2 id="s6-3">Every surface, redesigned</h2>
+      <ul>
+        <li><strong>Homepage.</strong> A new hero with key business stats, a brand-logo band, parent categories with their own navigation, and redesigned Trending Products, Case Studies and Customer Reviews sections.</li>
+        <li><strong>Mega menu.</strong> Redesigned for spacing, hierarchy and click behaviour, with every existing link and the navigation structure left intact — then its logic and hierarchy fixed again after launch.</li>
+        <li><strong>Navbar and footer.</strong> The Datum visual style, same links, same integrations.</li>
+        <li><strong>Collection subcategories.</strong> Clearer visual hierarchy, product counts, alignment and responsive behaviour.</li>
+        <li><strong>Listing pages and PDP.</strong> Product layouts, specifications, breadcrumbs, descriptions and related products refined; image overflow, Pre-Order button placement, and Add to Cart and Enquiry glitches caused by app injection all fixed.</li>
+      </ul>
+      <!-- Add Datum screenshots here once captured, then uncomment:
+      <figure class="shot wide"><img src="assets/shots/datum-01-home.webp" alt="Datum theme home page with hero, business stats and brand logos" loading="lazy" width="1600" height="900"><figcaption><b>Datum · home</b> Hero, business stats and brand logos.</figcaption></figure>
+      <div class="gal">
+        <figure class="shot"><img src="assets/shots/datum-02-mega-menu.webp" alt="Datum mega menu" loading="lazy" width="1600" height="900"><figcaption><b>Mega menu</b> Same links, new design</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/datum-03-filters.webp" alt="Collection page with Search and Discovery filters" loading="lazy" width="1600" height="900"><figcaption><b>Filters</b> Search and Discovery</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/datum-04-pdp.webp" alt="Datum product detail page" loading="lazy" width="1600" height="900"><figcaption><b>PDP</b> Redesigned product page</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/datum-05-search.webp" alt="Search results with row and tile views" loading="lazy" width="1600" height="900"><figcaption><b>Search</b> Row and tile views</figcaption></figure>
+      </div>
+      -->
+
+      <h2 id="s6-4">How the month went</h2>
+      <ul class="tl">
+        <li><b>Days 1–3</b>New filter system, search-results filter bar and product grid concepts; UI/UX fixes across collection, search, listing and product pages; mobile and desktop validation.</li>
+        <li><b>Days 4–5</b>SMC Brand page built and SMC Distributor refined; Siemens page redesigned and deployed; Globo Pre-Order injection resolved with their support team.</li>
+        <li><b>Days 6–7</b>Mega menu, navbar, footer, subcategories, listing pages and PDP redesigned in Datum; homepage rebuilt section by section and put up for review.</li>
+        <li><b>Day 8</b>Cross-device testing and bug fixing; Saudi redesign begins.</li>
+        <li><b>Days 9–17</b>Saudi theme in two versions; cart shipping calculator fixed; pickup moved to Ajman; bot traffic traced and shut out; post-launch fixes to templates, mega menu logic and hierarchy.</li>
+        <li><b>Day 18</b>TIA AI Product Search and The Toolkit pages designed, written and launched.</li>
+      </ul>
+
+      <h2 id="s6-5">Running it</h2>
+      <p>The redesign went live, and then the unglamorous part started. Rapid Search began reporting that the plan's session limit had been exceeded. The traffic analysis showed why: a large volume of bot traffic from the USA, each bot visit counted as a search session. I took it to Rapid Search's support and technical team, had bot traffic excluded and the plan reset to count real visitors only, and then closed the door on the site's side with <strong>robots.txt rules, rate limits and session timeouts</strong> aimed at bot and data-centre traffic. Filters and search results now show accurate counts again.</p>
+      <ul>
+        <li><strong>Cart shipping calculator.</strong> Broke, was traced and fixed — including updates to the Railway proxy integration and a cleaner cart UI.</li>
+        <li><strong>Third-party app conflicts.</strong> Globo Pre-Order's script injection was misplacing and breaking the Pre-Order button; resolved together with their support team.</li>
+        <li><strong>Pickup location.</strong> Switched from Al Qusais to Ajman, with pickup availability on the product page configured to match.</li>
+        <li><strong>Template and rendering bugs.</strong> Product-page template issues and product rendering bugs cleared as they surfaced after launch.</li>
+      </ul>
+
+      <h2 id="s6-6">Shipped alongside</h2>
+      <p><a class="inl" href="https://www.creativeautomation.ae/pages/tia" target="_blank" rel="noopener">TIA — AI Product Search</a> gives the chat agent a page of its own: a buyer describes the part in their own words, or types a part number or brand, and the AI searches the catalogue for a match. Example prompts — proximity sensors, safety switches, Bonfiglioli gearboxes — show what it's good at; parts lists save with a login, and the linked chat keeps new and previous conversations.</p>
+      <p><a class="inl" href="https://creativeautomation.ae/tools" target="_blank" rel="noopener">The Toolkit</a> is a free Excel workbook for maintenance and spares planning — downtime cost calculator, machine risk map, critical spare score, spares register, planned maintenance and spares planner, KPI scorecard and emergency log. No registration, email or login; it opens in Excel and Google Sheets. It gives an engineer a reason to come to the site that isn't a purchase yet.</p>
+    </div>
+  </div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/vision">Vision theme rebuild — the build before it</a></div>
+</article>
+
+<article class="case wrap" id="case-vision">
+  <a class="back" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All projects</a>
+  <div class="label on" style="margin-bottom:18px">Case study · 02</div>
   <h1>A storefront rebuilt from zero, live in days</h1>
-  <p class="stand">Twenty-two theme builds in, I stopped patching and started over: new architecture, new layout, new design language. The company saw it, asked for it live as soon as possible, and it is now the theme creativeautomation.ae runs on.</p>
+  <p class="stand">Twenty-two theme builds in, I stopped patching and started over: new architecture, new layout, new design language. The company saw it and asked for it live as soon as possible. It ran as creativeautomation.ae's theme until Datum, the next build, replaced it in September 2026.</p>
   <dl class="meta">
     <div><dt>Role</dt><dd>Sole developer — design, build, deploy, maintain</dd></div>
     <div><dt>Stack</dt><dd>Shopify Liquid, OS 2.0, vanilla JS, metafields</dd></div>
-    <div><dt>Theme</dt><dd>shxhid-theme-23-New-Vision — live</dd></div>
-    <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">Live</a> · <a href="https://www.creativeautomation.ae/?_ab=0&amp;_fd=0&amp;_sc=1&amp;preview_theme_id=156256796809" target="_blank" rel="noopener">Previous theme</a></dd></div>
+    <div><dt>Theme</dt><dd>shxhid-theme-23-New-Vision — succeeded by Datum</dd></div>
+    <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">Live store (now Datum)</a> · <a href="https://www.creativeautomation.ae/?_ab=0&amp;_fd=0&amp;_sc=1&amp;preview_theme_id=156256796809" target="_blank" rel="noopener">Pre-Vision theme</a></dd></div>
   </dl>
   <div class="cbody">
     <nav class="toc"><a href="#s4-1">Why rebuild</a><a href="#s4-0">Before</a><a href="#s4-2">Navigation</a><a href="#s4-3">Collections</a><a href="#s4-4">Product &amp; cart</a><a href="#s4-5">Search</a><a href="#s4-6">Live</a></nav>
@@ -1114,7 +1142,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>So the twenty-third build was not an iteration. New grid, new type scale, new component set, a different information hierarchy, and a visual language of its own — monospaced technical labels against a heavy display face, orange as the only accent, hard edges instead of soft cards. Industrial, not e-commerce-generic.</p>
       <h2 id="s4-0">The theme it replaced</h2>
       <p>Here is what the store looked like before. It isn't a bad storefront — it's a general-purpose e-commerce layout doing its best with an industrial catalogue. Hero panel with a slogan, a tabbed category picker, a "Trendy Products" carousel, and collection pages that lead with a marketing paragraph before anything you can click.</p>
-      <p>Two things in particular pushed the rebuild. The hero advertised <strong>10M+ products</strong> and <strong>20+ brands</strong> — numbers nobody could reconcile with the catalogue, and a buyer who searches a part number and finds nothing trusts the site less for having claimed them. And the browsing model assumed discovery: tiles, trending, best sellers. Procurement engineers do not shop that way.</p>
+      <p>Two things in particular pushed the rebuild. The hero advertised <strong>10M+ products</strong> and <strong>20+ brands</strong> — numbers nobody could reconcile with the catalogue, and a buyer who searches a part number and finds nothing trusts the site less for having claimed them. And the browsing model assumed discovery: tiles, trending, best sellers — with nothing on the page that accepted a part number first.</p>
       <div class="gal">
         <figure class="shot full"><img src="assets/shots/old-01-home.webp" alt="Previous theme home page with a large hero heading, description, browse button and four statistic cards claiming 10M+ products and 20+ brands" loading="lazy" width="1600" height="868"><figcaption><b>Before · home</b> A slogan, a generic search box and four claim cards. Nothing on this screen accepts a part number as its first move.</figcaption></figure>
         <figure class="shot"><img src="assets/shots/old-02-category-tabs.webp" alt="Previous theme category picker with a vertical tab list and a nine-tile grid of category images" loading="lazy" width="1600" height="792"><figcaption><b>Before</b> Category tiles, no counts</figcaption></figure>
@@ -1141,7 +1169,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       </div>
 
       <h2 id="s4-4">Product page and cart</h2>
-      <p>The product page opens on the breadcrumb path the metafield chain generated, the SKU and brand as a linked line, and the specification panel enlarged. Pre-order items carry their lead time next to the button rather than in fine print, and pickup availability resolves against the Al Qusais location. Related products come from the deepest collection the part belongs to, not from a generic "you may also like".</p>
+      <p>The product page opens on the breadcrumb path the metafield chain generated, the SKU and brand as a linked line, and the specification panel enlarged. Pre-order items carry their lead time next to the button rather than in fine print, and pickup availability resolved against the store's pickup location — Al Qusais at the time, since moved to Ajman. Related products come from the deepest collection the part belongs to, not from a generic "you may also like".</p>
       <div class="gal">
         <figure class="shot"><img src="assets/shots/06-product-page.webp" alt="Product page for an IFM magnetic-inductive flow meter with pre-order badge, sale price, lead time and pickup availability" loading="lazy" width="1600" height="735"><figcaption><b>Product</b> Pre-order with lead time</figcaption></figure>
         <figure class="shot"><img src="assets/shots/07-related-products.webp" alt="More in Flow Sensors section showing eight related products from the same subcategory" loading="lazy" width="1600" height="861"><figcaption><b>Related</b> From the deepest collection</figcaption></figure>
@@ -1154,9 +1182,9 @@ body[data-view="case"] .case[data-active="true"]{display:block}
         <figure class="shot"><img src="assets/shots/09-search-grid.webp" alt="Same search results in grid view with the brand, series, cable length and mounting type filters" loading="lazy" width="1600" height="871"><figcaption><b>Filters</b> Per-category attributes</figcaption></figure>
       </div>
 
-      <h2 id="s4-6">Getting it live</h2>
-      <p>The theme was shown internally, approved, and pushed to production days later — the company wanted it live as soon as they saw it. The previous build is still on the store, unpublished, which made the switch reversible on the day and makes the comparison easy to run now: <a href="https://www.creativeautomation.ae/?_ab=0&amp;_fd=0&amp;_sc=1&amp;preview_theme_id=156256796809" target="_blank" rel="noopener" style="color:var(--ice);border-bottom:1px solid var(--line-2)">open the previous theme in preview</a> and put it next to the screenshots above.</p>
-      <p>Everything downstream came with it: the cart's live shipping estimate, the AI chat agent's mount point, PostHog, the pre-order system, and the breadcrumb and filter architecture that the previous twenty-two builds had grown.</p>
+      <h2 id="s4-6">Getting it live — and what came next</h2>
+      <p>The theme was shown internally, approved, and pushed to production days later — the company wanted it live as soon as they saw it. The previous build stayed on the store, unpublished, which made the switch reversible on the day and makes the comparison easy to run now: <a class="inl" href="https://www.creativeautomation.ae/?_ab=0&amp;_fd=0&amp;_sc=1&amp;preview_theme_id=156256796809" target="_blank" rel="noopener">open the pre-Vision theme in preview</a> and put it next to the screenshots above.</p>
+      <p>Everything downstream came with it: the cart's live shipping estimate, the AI chat agent's mount point, PostHog, the pre-order system, and the breadcrumb and filter architecture that the previous twenty-two builds had grown. That same spine is what let the next build, Datum, redesign every page again in September 2026 without moving a single link.</p>
     </div>
   </div>
   <div class="cnext"><div class="k">Next case study</div><a href="#/case/shipping">OTO shipping estimator</a></div>
@@ -1164,13 +1192,13 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 
 <article class="case wrap" id="case-shipping">
   <a class="back" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All projects</a>
-  <div class="label on" style="margin-bottom:18px">Case study · 02</div>
+  <div class="label on" style="margin-bottom:18px">Case study · 03</div>
   <h1>Shipping prices in the cart, without shipping the credentials</h1>
   <p class="stand">Buyers on creativeautomation.ae couldn't see delivery cost until they were inside checkout. Fixing that meant calling a carrier aggregator from a Shopify theme — exactly the thing you cannot safely do.</p>
   <dl class="meta">
     <div><dt>Role</dt><dd>Sole developer</dd></div>
     <div><dt>Stack</dt><dd>Node.js, Express, Railway, OTO API, Liquid</dd></div>
-    <div><dt>Status</dt><dd>In production</dd></div>
+    <div><dt>Status</dt><dd>In production · maintained through two theme changes</dd></div>
     <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/cart" target="_blank" rel="noopener">Live cart</a> · <a href="https://github.com/shxhid-dev/shxhid-shipping-proxy" target="_blank" rel="noopener">Source</a></dd></div>
   </dl>
   <div class="cbody">
@@ -1193,6 +1221,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
         <li><strong>Timeouts and bounded retries</strong> upstream, so a slow carrier API degrades into a missing estimate rather than a hanging cart.</li>
         <li><strong>Weight ceiling</strong> validated before the upstream call.</li>
         <li><strong>Mock mode</strong> returning canned carrier data with no token, so the widget can be built locally without touching production credentials.</li>
+        <li><strong>Kept alive after launch.</strong> When the calculator broke in September 2026, I traced and fixed it — updating the Railway proxy integration and refining the cart UI in the same pass.</li>
       </ul>
 
       <h2 id="s1-4">The cart side</h2>
@@ -1209,17 +1238,17 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 
 <article class="case wrap" id="case-agent">
   <a class="back" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All projects</a>
-  <div class="label on" style="margin-bottom:18px">Case study · 03</div>
+  <div class="label on" style="margin-bottom:18px">Case study · 04</div>
   <h1>An AI agent that can actually find one part in 200,000</h1>
-  <p class="stand">A shopping agent is easy to demo and hard to keep alive. This one has been answering, searching and checking out on a live industrial catalogue since February 2026.</p>
+  <p class="stand">A shopping agent is easy to demo and hard to keep alive. This one has been answering, searching and checking out on a live industrial catalogue since February 2026 — and since September it has its own search page.</p>
   <dl class="meta">
     <div><dt>Role</dt><dd>Sole developer — design, build, deploy, maintain</dd></div>
     <div><dt>Stack</dt><dd>Shopify Dev Dashboard app, Claude, MCP, React Router, Prisma/Postgres, Railway</dd></div>
     <div><dt>Live since</dt><dd>21 February 2026</dd></div>
-    <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">Live site</a> · <a href="https://github.com/shxhid-dev/shxhid-chat-agent" target="_blank" rel="noopener">Source</a></dd></div>
+    <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">Live site</a> · <a href="https://www.creativeautomation.ae/pages/tia" target="_blank" rel="noopener">TIA page</a> · <a href="https://github.com/shxhid-dev/shxhid-chat-agent" target="_blank" rel="noopener">Source</a></dd></div>
   </dl>
   <div class="cbody">
-    <nav class="toc"><a href="#s2-1">Architecture</a><a href="#s2-2">Search</a><a href="#s2-3">Production</a><a href="#s2-4">Interface</a></nav>
+    <nav class="toc"><a href="#s2-1">Architecture</a><a href="#s2-2">Search</a><a href="#s2-3">Production</a><a href="#s2-4">Interface</a><a href="#s2-5">TIA page</a></nav>
     <div class="txt">
       <h2 id="s2-1">Architecture</h2>
       <p>It's a Shopify <strong>Dev Dashboard app</strong>, not a legacy custom app — OAuth session tokens, a theme app extension and an app proxy, with no permanent admin token anywhere in the system. The storefront half is a Liquid block plus <code>chat.js</code> injected into the theme; it posts to <code>/apps/shop-chat/chat</code>, Shopify's edge forwards that through the app proxy to a Dockerised React Router backend on Railway.</p>
@@ -1244,7 +1273,10 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>Session handling covers new chat, end chat, history hydration without duplicate threads, and email capture so a conversation that doesn't convert still becomes a lead — leads are stored per shop and visitors carry a fingerprint and UTM trail. Product results render as a carousel with a modal detail view; the input auto-expands; a multi-phase indicator shows what the agent is doing rather than spinning at the user.</p>
       <figure class="shot wide"><img src="assets/shots/14-agent-product-modal.webp" alt="Product detail modal inside the chat showing a Schmersal proximity sensor with price, description, view on store and add to cart buttons" loading="lazy" width="1523" height="956"><figcaption><b>Detail modal</b> Opened from a result card — full title, price, description, and the two things a buyer wants next: the canonical product page, or the cart.</figcaption></figure>
       <p>Later I upgraded the Claude model and rewrote the system prompts for cleaner tool queries and better instruction-following, which noticeably reduced empty and incorrect results on multilingual and ambiguous questions — a real requirement for a Gulf storefront.</p>
-      <p>The agent is mounted on every page of the live store, bottom right. <a href="https://www.creativeautomation.ae/" target="_blank" rel="noopener" style="color:var(--ice);border-bottom:1px solid var(--line-2)">Open it and ask for a part number.</a></p>
+
+      <h2 id="s2-5">A front door: the TIA page</h2>
+      <p>A chat bubble in the corner only helps the people who notice it. In September 2026 I built <a class="inl" href="https://www.creativeautomation.ae/pages/tia" target="_blank" rel="noopener">TIA — AI Product Search</a>, a full page that puts the agent's capability up front. A buyer describes what they need in plain words, or enters a part number or brand, and the AI searches the catalogue to match parts to the application. The Ask-TIA input comes with example prompts — proximity sensors, safety switches, Bonfiglioli gearboxes — parts lists save against a login, and the linked chat keeps new and previous conversations.</p>
+      <p>The agent is also still mounted on every page of the live store, bottom right. <a class="inl" href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">Open it and ask for a part number.</a></p>
     </div>
   </div>
   <div class="cnext"><div class="k">Next case study</div><a href="#/case/storefront">Catalogue architecture</a></div>
@@ -1252,65 +1284,70 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 
 <article class="case wrap" id="case-storefront">
   <a class="back" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All projects</a>
-  <div class="label on" style="margin-bottom:18px">Case study · 04</div>
+  <div class="label on" style="margin-bottom:18px">Case study · 05</div>
   <h1>Making 200,000 industrial parts findable</h1>
-  <p class="stand">Procurement engineers don't browse. They arrive with a part number or a spec and leave if the site can't meet them there. This is the data architecture underneath every theme I've built for this catalogue.</p>
+  <p class="stand">Procurement engineers don't browse. They arrive with a part number or a spec and leave if the site can't meet them there. This is the data architecture underneath every theme I've built for this catalogue — including two full redesigns that didn't have to re-tag a single product.</p>
   <dl class="meta">
     <div><dt>Role</dt><dd>Primary theme and front-end developer</dd></div>
-    <div><dt>Stack</dt><dd>Shopify Liquid, metafields, Rapid Search, Matrixify, PostHog</dd></div>
+    <div><dt>Stack</dt><dd>Shopify Liquid, metafields, Search &amp; Discovery, Rapid Search, Matrixify, PostHog</dd></div>
     <div><dt>Since</dt><dd>February 2026, in production</dd></div>
     <div><dt>Link</dt><dd><a href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">creativeautomation.ae</a></dd></div>
   </dl>
   <div class="cbody">
-    <nav class="toc"><a href="#s3-1">Structure</a><a href="#s3-2">Finding</a><a href="#s3-3">The rest</a><a href="#s3-4">Outcome</a></nav>
+    <nav class="toc"><a href="#s3-1">Structure</a><a href="#s3-2">Finding</a><a href="#s3-2b">Traffic</a><a href="#s3-3">The rest</a><a href="#s3-4">Outcome</a></nav>
     <div class="txt">
       <h2 id="s3-1">The structural decision</h2>
       <p>Two hundred thousand products can't be organised by hand, and a catalogue that grows every month can't be organised by template. So the category structure lives in data: every collection carries a <code>custom.parent_collection</code> metafield, and the theme walks that chain to render subcategory cards, breadcrumbs and filters.</p>
-      <p>That one decision is why 270 collection pages and 120 new subcategories could be added from a forty-thousand-product file without a new template, why breadcrumbs across the store auto-generate the deepest correct path with zero per-product setup, and why a complete theme redesign could be dropped on top of it without re-tagging a single product.</p>
+      <p>That one decision is why 270 collection pages and 120 new subcategories could be added from a forty-thousand-product file without a new template, why breadcrumbs across the store auto-generate the deepest correct path with zero per-product setup, and why two complete theme redesigns — Vision, then Datum — could be dropped on top of it without re-tagging a single product.</p>
       <div class="pull">Adding a category should be a metafield, not a deployment.</div>
 
       <h2 id="s3-2">Finding things</h2>
-      <p>Metafield-based filters run across 200+ collection pages with Rapid Search. Getting there meant diagnosing filter-definition conflicts with both Shopify and Rapid Search support, and securing a custom plan sized for a 200k-product limit. The AODD pump range shows what the structure buys: sixty-plus collection pages across size, material and diaphragm variant, all with working filters, breadcrumbs and mega-menu entries.</p>
+      <p>Metafield-based filters first ran across 200+ collection pages with Rapid Search. Getting there meant diagnosing filter-definition conflicts with both Shopify and Rapid Search support, and securing a custom plan sized for a 200k-product limit. The AODD pump range shows what the structure buys: sixty-plus collection pages across size, material and diaphragm variant, all with working filters, breadcrumbs and mega-menu entries.</p>
+      <p>In September 2026 collection filtering moved to a new system built on Shopify <strong>Search &amp; Discovery</strong> — brand, series, dimensions, mounting type, price, accessory type and depth — now live across <strong>120+ collection pages</strong>, with a redesigned search-results filter bar, clear active-filter states and row or tile product views. Rapid Search still powers the search results page.</p>
       <figure class="shot wide"><img src="assets/shots/09-search-grid.webp" alt="Search results with a metafield filter sidebar covering brand, series, cable length and mounting type" loading="lazy" width="1600" height="871"><figcaption><b>Filters</b> Brand, series, cable length, mounting type — each one a metafield definition, not a hardcoded facet.</figcaption></figure>
+
+      <h2 id="s3-2b">When the traffic isn't real</h2>
+      <p>Search plans are metered by session, and in September the Rapid Search plan hit its limit. Traffic analysis showed heavy bot traffic from the USA being counted as real sessions. I worked it through with Rapid Search's support and technical team — bots excluded, plan reset to count real visitors only — and added robots.txt rules, rate limits and session timeouts on the store to keep bot and data-centre traffic out. Filter and result counts are accurate again.</p>
 
       <h2 id="s3-3">The unglamorous half</h2>
       <ul>
         <li><strong>Import.</strong> ~40,000 products loaded file by file to avoid duplicates. Broken imagery traced to CSV links pointing at unstable Google PageSpeed URLs — 4,974 corrected and re-imported via Matrixify.</li>
-        <li><strong>Pre-orders.</strong> Cart drawer replaced with a dedicated cart page: pre-order buttons with lead times, stock badges and counts, and a warning that fires only on mixed carts.</li>
-        <li><strong>Product pages.</strong> Larger specifications panel, SKU + brand line linking to the vendor collection, tariffs &amp; fees tab, bigger imagery, direct route to a specialist.</li>
+        <li><strong>Pre-orders.</strong> Cart drawer replaced with a dedicated cart page: pre-order buttons with lead times, stock badges and counts, and a warning that fires only on mixed carts. When the Globo Pre-Order app's script injection later broke the button, fixed with their support team.</li>
+        <li><strong>Product pages.</strong> Larger specifications panel, SKU + brand line linking to the vendor collection, tariffs &amp; fees tab, bigger imagery, direct route to a specialist, and pickup availability now pointed at the Ajman location.</li>
         <li><strong>SEO.</strong> One H1 per template, ALT text across 270+ collection pages, content on ten IFM collection pages, related products from the deepest assigned collection.</li>
-        <li><strong>Measurement.</strong> PostHog across the site where previously there was nothing to look at.</li>
+        <li><strong>Measurement.</strong> PostHog across the site where previously there was nothing to look at — and traffic analysis that caught the bots.</li>
       </ul>
       <figure class="shot wide"><img src="assets/shots/03-collection-subcategories.webp" alt="Sensors collection page rendering seven subcategory tiles with part counts above the product grid" loading="lazy" width="1600" height="862"><figcaption><b>Rendered from the chain</b> Every tile, count and breadcrumb on this page is resolved from metafields at render time.</figcaption></figure>
 
       <h2 id="s3-4">What came out of it</h2>
-      <p>A second storefront for Saudi Arabia launched from the same theme in May 2026 with regional details, a dual-office footer, redirects disabled so Saudi clicks stay on the Saudi site, and its own distributor landing page. A structure built to be reused turned out to be reusable.</p>
+      <p>A second storefront for Saudi Arabia launched from the same theme in May 2026 with regional details, a dual-office footer, redirects disabled so Saudi clicks stay on the Saudi site, and its own distributor landing page. In September it got a new theme of its own — redesigned landing page, header, logo, navigation, and category and product-range sections on Shopify CDN imagery — delivered as two versions for the company to choose between, with the remaining invalid links and UAE redirects removed for products not yet sold in KSA. A structure built to be reused turned out to be reusable.</p>
     </div>
   </div>
-  <div class="cnext"><div class="k">Next case study</div><a href="#/case/brands">Brand distributor pages</a></div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/brands">Brand landing pages</a></div>
 </article>
 
 <article class="case wrap" id="case-brands">
   <a class="back" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All projects</a>
-  <div class="label on" style="margin-bottom:18px">Case study &middot; 05</div>
+  <div class="label on" style="margin-bottom:18px">Case study &middot; 06</div>
   <h1>Brand pages whose job is an enquiry, not a checkout</h1>
-  <p class="stand">IFM, Siemens and SMC are quoted, not carted &mdash; part numbers, successor parts, lead times, panel-build BOMs. So the three pages that receive the company's Google Ads traffic for those lines work nothing like the storefront they sit inside, and nothing like each other.</p>
+  <p class="stand">IFM, Siemens and SMC are quoted, not carted &mdash; part numbers, successor parts, lead times, panel-build BOMs. So the pages that receive the company's Google Ads traffic for those lines work nothing like the storefront they sit inside, and nothing like each other. There are four of them now: IFM, Siemens, and two for SMC.</p>
   <dl class="meta">
     <div><dt>Role</dt><dd>Sole developer &mdash; design and build</dd></div>
     <div><dt>Stack</dt><dd>Shopify Liquid, custom page templates, Google Ads</dd></div>
-    <div><dt>Status</dt><dd>All three live, receiving paid traffic</dd></div>
-    <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/pages/ifm-distributor" target="_blank" rel="noopener">IFM</a> &middot; <a href="https://www.creativeautomation.ae/pages/siemens-distributor" target="_blank" rel="noopener">Siemens</a> &middot; <a href="https://www.creativeautomation.ae/pages/smc-distributor" target="_blank" rel="noopener">SMC</a></dd></div>
+    <div><dt>Status</dt><dd>All four live &middot; IFM, Siemens and SMC Distributor on paid traffic</dd></div>
+    <div><dt>Links</dt><dd><a href="https://www.creativeautomation.ae/pages/ifm-distributor" target="_blank" rel="noopener">IFM</a> &middot; <a href="https://www.creativeautomation.ae/pages/siemens-distributor" target="_blank" rel="noopener">Siemens</a> &middot; <a href="https://www.creativeautomation.ae/pages/smc" target="_blank" rel="noopener">SMC Brand</a> &middot; <a href="https://www.creativeautomation.ae/pages/smc-distributor" target="_blank" rel="noopener">SMC Distributor</a></dd></div>
   </dl>
   <div class="cbody">
-    <nav class="toc"><a href="#s5-1">The brief</a><a href="#s5-2">Siemens</a><a href="#s5-3">Honesty</a><a href="#s5-4">SMC</a><a href="#s5-6">IFM</a><a href="#s5-5">Identities</a></nav>
+    <nav class="toc"><a href="#s5-1">The brief</a><a href="#s5-2">Siemens</a><a href="#s5-3">Honesty</a><a href="#s5-4">SMC</a><a href="#s5-7">SMC Brand</a><a href="#s5-6">IFM</a><a href="#s5-5">Identities</a></nav>
     <div class="txt">
       <h2 id="s5-1">The brief</h2>
-      <p>Someone clicking a Siemens ad is usually holding an MLFB article number. Someone clicking an SMC or IFM ad is usually holding a model string, or a specification they need help turning into one. Neither wants a product grid with add-to-cart buttons, and neither is served by a price that may not survive contact with a distributor quote. So on both pages there are no prices and no cart. Every card ends in <strong>Email for quote</strong> or <strong>WhatsApp</strong>.</p>
+      <p>Someone clicking a Siemens ad is usually holding an MLFB article number. Someone clicking an SMC or IFM ad is usually holding a model string, or a specification they need help turning into one. Neither wants a product grid with add-to-cart buttons, and neither is served by a price that may not survive contact with a distributor quote. So on these pages there are no prices and no cart. Every card ends in an enquiry: <strong>Email for quote</strong>, <strong>WhatsApp</strong>, or an Enquiry button.</p>
       <div class="pull">The storefront's job is a cart. These pages have a different job, and the design should stop pretending otherwise.</div>
 
       <h2 id="s5-2">Siemens: article number first</h2>
       <p>Eight numbered product families &mdash; SIMATIC controllers, SIRIUS switching, SITOP power, SENTRON protection, command and signalling, industrial communication, motors and drives &mdash; each expanded into its own block with series chips underneath (<code>S7-1200 / S7-1500</code>, <code>ET 200SP</code>, <code>5SL MCBs</code>, <code>PAC3120 / PAC3200</code>). The chips exist because that's the vocabulary the buyer arrives with; the ad keyword and the on-page label match.</p>
       <p>Every card leads with the article number in monospace, above the name, above a one-line spec. That ordering is deliberate: the number is what gets matched against, so it goes first.</p>
+      <p>In September 2026 the page was redesigned and redeployed: layout reworked, sections removed and added, real product images and Enquiry buttons integrated throughout, and mobile and desktop tuned again. The screenshots below are from the version before that pass.</p>
       <figure class="shot wide"><img src="assets/shots/siemens-01-hero.webp" alt="Siemens distributor landing page hero in teal with a supplier badge, headline, quote and WhatsApp buttons, and four product tiles labelled with article numbers" loading="lazy" width="1600" height="847"><figcaption><b>Siemens &middot; hero</b> Two contact routes and a line naming exactly what the page is good for: part numbers, BOMs, drawings and bulk enquiries.</figcaption></figure>
       <div class="gal">
         <figure class="shot"><img src="assets/shots/siemens-02-simatic.webp" alt="SIMATIC controllers and I/O section with series chips and four product cards showing article numbers, names and quote buttons" loading="lazy" width="1600" height="656"><figcaption><b>SIMATIC</b> Article number first</figcaption></figure>
@@ -1322,9 +1359,9 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>Above it sits the part-number check: send an article number and get back availability, current pricing, and the correct successor where the original has been discontinued. Discontinuation is a real problem in this catalogue, and offering to resolve it is a better reason to make contact than a discount would be.</p>
       <figure class="shot wide"><img src="assets/shots/siemens-04-partlist.webp" alt="Part number check band with send your part list and browse catalogue buttons, above an also supplied to order grid of six product families each with an ask for a lead time button" loading="lazy" width="1600" height="762"><figcaption><b>Part list and lead times</b> The page converts on a question the buyer already has, instead of on stock it doesn't hold.</figcaption></figure>
 
-      <h2 id="s5-4">SMC: the same pattern, a different vocabulary</h2>
+      <h2 id="s5-4">SMC Distributor: the same pattern, a different vocabulary</h2>
       <p>SMC came first and set the template. The structure rhymes &mdash; a hero that names the enquiry route, a category strip, then one block per family with sub-type chips and cards ending in a quote action &mdash; but the content works at a different level. SMC parts are configured rather than looked up, so the cards describe <em>types</em>: ISO standard, compact, rodless, guided; one-touch, stainless, brass, push-in. The buyer picks the shape of the thing, then talks to a person about the exact model string.</p>
-      <p>The hero puts the sales address in a box as the primary action, with WhatsApp beside it, and labels it for what it's best at: part numbers, BOMs, drawings and bulk enquiries. Nine icon-led category tiles run across the top so a visitor who landed on a fittings ad can get to fittings without scrolling past cylinders.</p>
+      <p>The hero puts the sales address in a box as the primary action, with WhatsApp beside it, and labels it for what it's best at: part numbers, BOMs, drawings and bulk enquiries. Nine icon-led category tiles run across the top so a visitor who landed on a fittings ad can get to fittings without scrolling past cylinders. In September the page's design, content presentation, imagery and CTA sections were refined again alongside the new SMC Brand page.</p>
       <figure class="shot wide"><img src="assets/shots/smc-01-hero.webp" alt="SMC distributor landing page hero in deep blue with an authorized distributor badge, an email address in a box as the primary call to action, a WhatsApp button, and four product tiles" loading="lazy" width="1600" height="712"><figcaption><b>SMC &middot; hero</b> The enquiry address <em>is</em> the call to action &mdash; boxed, oversized, with the WhatsApp route directly beneath it.</figcaption></figure>
       <div class="gal">
         <figure class="shot full"><img src="assets/shots/smc-02-categories.webp" alt="SMC category strip of nine icon tiles above a pneumatic cylinders section with eight sub-type chips and four cards" loading="lazy" width="1600" height="851"><figcaption><b>Categories and families</b> Nine tiles across the top, then each family expanded with its own sub-type chips &mdash; ISO standard, compact, rodless, guided, mini, stopper, rotary, grippers.</figcaption></figure>
@@ -1334,18 +1371,25 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>The page closes on a trust band rather than another product grid &mdash; genuine product, distributor pricing, selection support, delivery, the customer base and the ISO certification, with the enquiry address repeated underneath. It's the last thing a visitor sees before deciding whether to write the email.</p>
       <figure class="shot wide"><img src="assets/shots/smc-05-trust.webp" alt="Closing band in deep blue with five checkmarked claims, a card showing 500+ industrial customers, an ISO 9001:2015 card, and the sales email repeated" loading="lazy" width="1600" height="575"><figcaption><b>Closing band</b> Reasons to trust the supplier, then the address again &mdash; no second product grid, no newsletter box.</figcaption></figure>
 
+      <h2 id="s5-7">SMC, twice: the Brand page</h2>
+      <p>The distributor page answers "can you quote this part?". The new <a class="inl" href="https://www.creativeautomation.ae/pages/smc" target="_blank" rel="noopener">SMC Brand page</a> answers the question before it: "what does SMC make, and where does it fit?". So it was built with a completely different layout and visual direction from the distributor page &mdash; in SMC's own blue, white and black &mdash; leading with product imagery and hero sections, then industry applications and technology highlights, and only then the enquiry and CTA sections.</p>
+      <p>Both SMC pages were optimised together for responsive behaviour, real product images, enquiry and contact integration, SEO details and mobile layout, and validated after deployment.</p>
+      <!-- Add SMC Brand screenshots once captured, then uncomment:
+      <figure class="shot wide"><img src="assets/shots/smc-brand-01-hero.webp" alt="SMC Brand page hero in blue, white and black" loading="lazy" width="1600" height="850"><figcaption><b>SMC Brand &middot; hero</b> A different page with a different job.</figcaption></figure>
+      -->
+
       <h2 id="s5-6">IFM: the long one</h2>
-      <p>IFM is the deepest of the three and the page reflects it. Ten anchored sections &mdash; sensors, process sensors, IO-Link and communication, condition monitoring, vision and identification, safety, industrial communication, mobile machines, display and illuminate, IIoT, power and accessories &mdash; with a sticky anchor nav so a visitor who arrived on a condition-monitoring keyword can jump straight there instead of scrolling forty cards.</p>
+      <p>IFM is the deepest of the brand pages and the page reflects it. Ten anchored sections &mdash; sensors, process sensors, IO-Link and communication, condition monitoring, vision and identification, safety, industrial communication, mobile machines, display and illuminate, IIoT, power and accessories &mdash; with a sticky anchor nav so a visitor who arrived on a condition-monitoring keyword can jump straight there instead of scrolling forty cards.</p>
       <p>Each card carries a category image, an <em>In stock</em> badge, a one-line description and two capability bullets: <code>Up to SIL 3 / PL e</code>, <code>Calorimetric &amp; magnetic types</code>, <code>IP69K rated</code>. That's the level of detail that decides whether a sensor is even a candidate, and putting it on the card saves the enquiry that only exists to ask it.</p>
       <p>The enquiry band repeats between sections rather than sitting only at the bottom, because the page is long enough that a visitor may make their decision at section three. It closes on the same offer as Siemens: send a part number, a quantity or an application, get a quotation &mdash; with email named as the preferred route for accuracy and WhatsApp as the fast one.</p>
-      <p><a href="https://www.creativeautomation.ae/pages/ifm-distributor" target="_blank" rel="noopener" style="color:var(--ice);border-bottom:1px solid var(--line-2)">See the IFM page</a> &mdash; it's the clearest demonstration of the pattern at scale.</p>
+      <p><a class="inl" href="https://www.creativeautomation.ae/pages/ifm-distributor" target="_blank" rel="noopener">See the IFM page</a> &mdash; it's the clearest demonstration of the pattern at scale.</p>
 
-      <h2 id="s5-5">Three identities, on purpose</h2>
-      <p>The storefront is orange. Siemens is teal with flat bordered cards and a monospaced technical voice. SMC is deep blue with soft-cornered cards and a warmer one. IFM runs on its own palette with image-led category cards and stock badges. A visitor arriving from an ad for one manufacturer should land somewhere that reads as that manufacturer's corner of the business, and should be in no doubt they've reached a page about that brand specifically rather than a general catalogue that happens to carry it.</p>
-      <p>All three are page templates inside the same Shopify theme, so the header, cart, chat agent and footer come along unchanged. The identity is skin-deep by design &mdash; the fourth brand page is a template and a palette, not a new build.</p>
+      <h2 id="s5-5">Four identities, on purpose</h2>
+      <p>The storefront has its own look. Siemens is teal with a monospaced technical voice. SMC Distributor is deep blue with soft-cornered cards and a warmer one; SMC Brand is blue, white and black with a product-and-applications story. IFM runs on its own palette with image-led category cards and stock badges. A visitor arriving from an ad for one manufacturer should land somewhere that reads as that manufacturer's corner of the business, and should be in no doubt they've reached a page about that brand specifically rather than a general catalogue that happens to carry it.</p>
+      <p>All four are page templates inside the same Shopify theme, so the header, cart, chat agent and footer come along unchanged &mdash; and they carried straight through the Datum redesign. A new brand is a template and a palette, not a new build; where a brand deserves more, as SMC did, it gets a second page with its own layout.</p>
     </div>
   </div>
-  <div class="cnext"><div class="k">Next case study</div><a href="#/case/vision">Vision theme redesign</a></div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/datum">Datum theme redesign</a></div>
 </article>
 
 <!-- ============ LIGHTBOX ============ -->
@@ -1363,7 +1407,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   var $=function(s,c){return (c||document).querySelector(s)},
       $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
 
-  /* flip-letter buttons */
   function flip(el,txt){
     el.setAttribute("data-flip",txt);
     $(".l",el).innerHTML = txt.split("").map(function(ch,i){
@@ -1373,7 +1416,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   }
   $$("[data-flip]").forEach(function(b){ flip(b, b.getAttribute("data-flip")); });
 
-  /* loader */
   var pct=$("#pct"), n=0, t=setInterval(function(){
     n=Math.min(100,n+Math.ceil(Math.random()*9));
     pct.textContent=String(n).padStart(3,"0");
@@ -1384,13 +1426,11 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   if(document.fonts&&document.fonts.ready){document.fonts.ready.then(go);}
   setTimeout(go,1500);
 
-  /* reveal */
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
   },{threshold:.08,rootMargin:"0px 0px -5% 0px"});
   $$(".rv,.line-rv").forEach(function(el){io.observe(el)});
 
-  /* hero rail — marquee on wide pointers, native swipe on touch/small screens */
   var rail=$("#rail"), strip=rail&&rail.closest(".strip");
   var marquee = window.matchMedia("(min-width:900px) and (hover:hover)").matches
                 && !window.matchMedia("(prefers-reduced-motion:reduce)").matches;
@@ -1409,7 +1449,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     }
   }
 
-  /* clock */
   var clock=$("#clock");
   function tick(){
     try{ clock.textContent=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(new Date()); }
@@ -1417,7 +1456,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   }
   tick(); setInterval(tick,1000);
 
-  /* lightbox */
   var lb=$("#lb"), lbImg=$("#lb-img"), lbCap=$("#lb-cap"), group=[], idx=0;
   function capOf(img){
     var fig=img.closest("figure"), cap=fig&&fig.querySelector("figcaption");
@@ -1449,7 +1487,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   $("#lb-prev").addEventListener("click",function(e){e.stopPropagation();show(idx-1)});
   $("#lb-next").addEventListener("click",function(e){e.stopPropagation();show(idx+1)});
   lb.addEventListener("click",function(e){ if(e.target===lb||e.target===lbImg) close(); });
-  /* swipe the lightbox on touch */
   (function(){
     var x0=null,y0=null;
     lb.addEventListener("touchstart",function(e){
@@ -1472,7 +1509,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     if(e.key==="ArrowRight") show(idx+1);
   });
 
-  /* toolbox tabs */
   $("#ttabs").addEventListener("click",function(e){
     var b=e.target.closest("button"); if(!b) return;
     $$("#ttabs button").forEach(function(x){x.classList.toggle("on",x===b)});
@@ -1480,7 +1516,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     $$("#tools .tool").forEach(function(x){ x.classList.toggle("dim", f!=="all" && x.getAttribute("data-c")!==f); });
   });
 
-  /* collapsible lists (projects + shipped log) */
   function collapsible(listSel,btnSel,openTxt,shutTxt,anchorSel){
     var list=$(listSel), btn=$(btnSel); if(!list||!btn) return;
     btn.addEventListener("click",function(){
@@ -1490,10 +1525,9 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       if(!open){ var a=$(anchorSel); if(a) a.scrollIntoView({behavior:"smooth",block:"start"}); }
     });
   }
-  collapsible("#tbl","#tbl-toggle","Show all 11","Show fewer","#projects");
-  collapsible("#log","#log-toggle","Show all 21","Show fewer","#shipped");
+  collapsible("#tbl","#tbl-toggle","Show all 14","Show fewer","#projects");
+  collapsible("#log","#log-toggle","Show all 32","Show fewer","#shipped");
 
-  /* nav */
   var nav=$("#nav"), menu=$("#menu");
   function setMenu(open){ nav.classList.toggle("open",open); menu.setAttribute("aria-expanded",open?"true":"false"); menu.setAttribute("aria-label",open?"Close menu":"Open menu"); }
   menu.addEventListener("click",function(e){ e.stopPropagation(); setMenu(!nav.classList.contains("open")); });
@@ -1514,14 +1548,12 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   },{rootMargin:"-30% 0px -55% 0px"});
   navSecs.forEach(function(x){nio.observe(x)});
 
-  /* copy email */
   var cp=$("#copy");
   if(cp){ cp.addEventListener("click",function(){
     var fin=function(){ cp.classList.add("ok"); cp.firstChild.textContent="Copied"; setTimeout(function(){cp.classList.remove("ok"); cp.firstChild.textContent="Copy";},1800); };
     if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText("shahidafrid97419@gmail.com").then(fin,fin); } else { fin(); }
   }); }
 
-  /* theme */
   var root=document.documentElement, tb=$("#theme"), saved=null;
   try{saved=localStorage.getItem("theme")}catch(e){}
   if(saved==="light"||saved==="dark") root.setAttribute("data-theme",saved);
@@ -1531,9 +1563,8 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     try{localStorage.setItem("theme",next)}catch(e){}
   });
 
-  /* case routing */
-  var cases={vision:$("#case-vision"),shipping:$("#case-shipping"),agent:$("#case-agent"),storefront:$("#case-storefront"),brands:$("#case-brands")};
-  var titles={vision:"Vision theme redesign",shipping:"OTO shipping estimator",agent:"Shopify AI chat agent",storefront:"Catalogue architecture",brands:"Brand distributor pages"};
+  var cases={datum:$("#case-datum"),vision:$("#case-vision"),shipping:$("#case-shipping"),agent:$("#case-agent"),storefront:$("#case-storefront"),brands:$("#case-brands")};
+  var titles={datum:"Datum theme redesign",vision:"Vision theme rebuild",shipping:"OTO shipping estimator",agent:"Shopify AI chat agent",storefront:"Catalogue architecture",brands:"Brand landing pages"};
   function route(){
     var m=(location.hash||"").match(/^#\/case\/([a-z]+)$/);
     Object.keys(cases).forEach(function(k){cases[k].setAttribute("data-active","false")});
