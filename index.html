@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shahid Afrid — Software Engineer</title>
-<meta name="description" content="Shahid Afrid is a software engineer in Bengaluru building AI agents, Shopify systems, Node.js integrations and customer-data workflows for a 140,000-part industrial catalogue.">
+<meta name="description" content="Shahid Afrid is a software engineer in Bengaluru who ships AI agents to production: an MCP shopping agent on Claude live since February 2026, full-stack TypeScript products like the Who's Cooked? web game, and Shopify systems for a 140,000-part catalogue.">
 <meta name="theme-color" content="#07090f">
 <meta property="og:title" content="Shahid Afrid — Software Engineer">
-<meta property="og:description" content="Shopify themes and custom apps, AI agents, Node services. Built to run, not to demo.">
+<meta property="og:description" content="AI agents on Claude and MCP, full-stack TypeScript, Shopify systems. Built to run, not to demo.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shxhid.is-a.dev/">
 <link rel="canonical" href="https://shxhid.is-a.dev/">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Shahid Afrid","url":"https://shxhid.is-a.dev/","jobTitle":"Software Engineer","email":"mailto:shahidafrid97419@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Bengaluru","addressRegion":"Karnataka","addressCountry":"IN"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Nitte Meenakshi Institute of Technology"},"knowsAbout":["Shopify theme development","Shopify app development","Liquid","Node.js","React","Model Context Protocol","AI agents","Email deliverability","SPF, DKIM and DMARC"],"sameAs":["https://github.com/shxhid-dev","https://github.com/akhi-shxhid","https://linkedin.com/in/shahidafrid-dev"]}
+{"@context":"https://schema.org","@type":"Person","name":"Shahid Afrid","url":"https://shxhid.is-a.dev/","jobTitle":"Software Engineer","email":"mailto:shahidafrid97419@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Bengaluru","addressRegion":"Karnataka","addressCountry":"IN"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Nitte Meenakshi Institute of Technology"},"knowsAbout":["AI agents","Claude API","Model Context Protocol","TypeScript","React","Node.js","Cloudflare Workers","PostgreSQL","Shopify theme development","Shopify app development","Liquid","Email deliverability"],"sameAs":["https://github.com/shxhid-dev","https://github.com/akhi-shxhid","https://linkedin.com/in/shahidafrid-dev"]}
 </script>
 <noscript><style>
 .loader{display:none!important}
@@ -404,7 +404,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 
 /* SCREENSHOTS */
 .shot{margin:34px 0;position:relative}
-.shot img{width:100%;border:1px solid var(--line);border-radius:16px;background:var(--panel);cursor:zoom-in;transition:border-color .3s,transform .5s var(--ease)}
+.shot img{width:100%;height:auto;border:1px solid var(--line);border-radius:16px;background:var(--panel);cursor:zoom-in;transition:border-color .3s,transform .5s var(--ease)}
 .shot img:hover{border-color:var(--line-2);transform:translateY(-3px)}
 .shot figcaption{margin-top:12px;font:500 11px var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);display:flex;gap:10px;align-items:baseline}
 .shot figcaption b{color:var(--ice);font-weight:500;flex:none}
@@ -417,6 +417,11 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 .gal .shot.full img{aspect-ratio:auto;object-fit:contain}
 @media (min-width:1025px){.cbody .gal{margin-left:-6vw;width:calc(100% + 6vw)}}
 @media (max-width:720px){.gal{grid-template-columns:1fr}}
+.gal.phones{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gal.phones .shot img{height:auto;aspect-ratio:390/844;object-fit:cover;object-position:top;border-radius:22px}
+@media (min-width:1025px){.cbody .gal.phones{margin-left:0;width:100%}}
+@media (max-width:720px){.gal.phones{grid-template-columns:repeat(2,minmax(0,1fr))}.gal.phones .shot:last-child:nth-child(odd){grid-column:1 / -1;max-width:50%;justify-self:center}}
+.ccard .k b{font-weight:500;color:#fff;background:var(--cobalt);padding:3px 7px;border-radius:999px;margin-left:8px;letter-spacing:.14em}
 .lb{position:fixed;inset:0;z-index:300;background:rgba(4,5,9,.94);backdrop-filter:blur(8px);display:none;place-items:center;padding:clamp(16px,4vw,54px)}
 .lb.on{display:grid;overscroll-behavior:contain}
 .lb img{max-width:100%;max-height:86vh;border-radius:12px;border:1px solid var(--line-2);object-fit:contain}
@@ -611,8 +616,8 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <span class="split"><i style="animation-delay:.75s"><em>production</em> — and stays there.</i></span>
     </h2>
     <div class="hero-right">
-      <div class="avail"><i></i>Available for thoughtful work</div>
-      <p>Software engineer in Bengaluru. AI agents on MCP, Shopify systems, Node services and customer-data workflows — currently for an industrial distributor, across storefronts in the UAE and Saudi Arabia.</p>
+      <div class="avail"><i></i>Open to roles · remote or relocation</div>
+      <p>Software engineer in Bengaluru. I ship AI agents to production — a Claude shopping agent on MCP, live since February 2026 — and full-stack TypeScript products, most recently <a href="#/case/cooked" style="color:var(--fg);border-bottom:1px solid var(--line-2)">Who's Cooked?</a>, a mobile web game on Cloudflare Workers. By day: Shopify systems and Node services for an industrial distributor in the UAE and Saudi Arabia.</p>
       <div class="hero-cta">
         <a class="fbtn solid" href="#case-studies" data-flip="See my work"><span class="l"></span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         <a class="fbtn" href="mailto:shahidafrid97419@gmail.com" data-flip="Email me"><span class="l"></span></a>
@@ -635,14 +640,14 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   </div>
   <div class="body">
     <p class="big rv">I'm Shahid — a developer who gets excited about <em>building something real</em> and then keeping it running.</p>
-    <p class="rv" data-d="1">Day to day that's Shopify: 24 theme builds shipped to production on a 140,000-part industrial catalogue. The latest is Datum, a redesign of every customer-facing page that went live in September 2026 — following Vision, the ground-up rebuild before it. Around the theme sit custom Shopify apps I build in the Partner dashboard, Node services on Railway, an MCP-based AI shopping agent that searches the whole catalogue and checks out inside the chat, and the pages the company sells through: four brand landing pages on paid traffic, an AI product search page, and a free engineering toolkit.</p>
-    <p class="rv" data-d="2">I like the whole path — Liquid and front end, the API layer, deployment, and the debugging that only starts once something is live: bot traffic eating a search plan, an app injecting scripts it shouldn't, a proxy that needs fixing on a Friday. I also run the company's email and WhatsApp campaigns, from cleaning the customer data to authenticating the sending domain. On my own time I ship products: an AI study platform, a form builder, a few ML pipelines. BCA from Nitte Meenakshi Institute of Technology, 2022–2025.</p>
+    <p class="rv" data-d="1">Day to day I'm the engineer behind a 140,000-part industrial storefront in the UAE and Saudi Arabia. The work I'm proudest of there is an MCP-based AI shopping agent on Claude that searches the whole catalogue and checks out inside the chat — live since February 2026 — and TIA, the AI product-search page that fronts it. Around it: 24 Shopify theme builds shipped to production (the latest, Datum, redesigned every customer-facing page in September 2026), custom Shopify apps, Node services on Railway, four brand landing pages on paid traffic, and a free engineering toolkit.</p>
+    <p class="rv" data-d="2">I like the whole path — Liquid and front end, the API layer, deployment, and the debugging that only starts once something is live: bot traffic eating a search plan, an app injecting scripts it shouldn't, a proxy that needs fixing on a Friday. I also run the company's email and WhatsApp campaigns, from cleaning the customer data to authenticating the sending domain. On my own time I ship products end to end. The newest is Who's Cooked?, a mobile web game in a TypeScript monorepo — PixiJS front end, Hono API on Cloudflare Workers, Postgres on Neon, 102 unit tests — public on GitHub and live. Before it: an AI study platform, a form builder and a few ML pipelines. BCA from Nitte Meenakshi Institute of Technology, 2022–2025.</p>
     <ul class="caps rv" data-d="2">
-      <li><span class="n">01</span><span class="t">Shopify theme development</span><span class="d">Liquid · OS 2.0 · 24 builds</span></li>
-      <li><span class="n">02</span><span class="t">Custom Shopify apps</span><span class="d">Partner dashboard · APIs</span></li>
-      <li><span class="n">03</span><span class="t">AI agents &amp; MCP</span><span class="d">Claude · tools · RAG</span></li>
-      <li><span class="n">04</span><span class="t">Services &amp; deployment</span><span class="d">Node · Express · Railway</span></li>
-      <li><span class="n">05</span><span class="t">Search, filters &amp; traffic</span><span class="d">Search &amp; Discovery · bots</span></li>
+      <li><span class="n">01</span><span class="t">AI agents &amp; MCP</span><span class="d">Claude · tools · streaming</span></li>
+      <li><span class="n">02</span><span class="t">Full-stack TypeScript</span><span class="d">React · Hono · Postgres</span></li>
+      <li><span class="n">03</span><span class="t">Shopify theme development</span><span class="d">Liquid · OS 2.0 · 24 builds</span></li>
+      <li><span class="n">04</span><span class="t">Custom Shopify apps</span><span class="d">Partner dashboard · APIs</span></li>
+      <li><span class="n">05</span><span class="t">Services &amp; deployment</span><span class="d">Node · Workers · Railway</span></li>
       <li><span class="n">06</span><span class="t">Customer data &amp; email</span><span class="d">Brevo · SPF · DKIM · DMARC</span></li>
     </ul>
   </div>
@@ -656,10 +661,11 @@ body[data-view="case"] .case[data-active="true"]{display:block}
   </div>
   <div class="cases-grid rv">
     <a class="ccard lead" href="#/case/agent"><span class="k">Applied AI</span><h3>An AI agent that can find one part in 140,000</h3><p>Claude and Shopify MCP servers handling search, cart and checkout inside the chat.</p><span class="proof">Live since Feb 2026</span></a>
-    <a class="ccard" href="#/case/campaigns"><span class="k">Customer data</span><h3>From old records to 14,132 delivered emails</h3><p>Data cleaning, a segmentation dashboard, SPF, DKIM and DMARC, then six Brevo campaigns.</p><span class="proof">0.11% unsubscribe rate</span></a>
+    <a class="ccard" href="#/case/cooked"><span class="k">Full-stack product<b>New</b></span><h3>A mobile web game, from spec to live in under two weeks</h3><p>PixiJS game, Hono API on Cloudflare Workers, Postgres on Neon, seeded duels shared by link.</p><span class="proof">102 unit tests · public repo</span></a>
     <a class="ccard" href="#/case/shipping"><span class="k">API integration</span><h3>Shipping prices without exposing credentials</h3><p>A small Node.js service between the storefront and the carrier API.</p><span class="proof">100+ carrier providers</span></a>
-    <a class="ccard lead" href="#/case/storefront"><span class="k">Data architecture</span><h3>Making 140,000 industrial parts findable</h3><p>Category structure stored in data, so new categories and redesigns need no re-tagging.</p><span class="proof">270+ collection pages</span></a>
     <a class="ccard" href="#/case/datum"><span class="k">Production</span><h3>A full redesign without breaking a link</h3><p>Every customer-facing page changed while integrations kept working underneath.</p><span class="proof">Build 24, live now</span></a>
+    <a class="ccard" href="#/case/campaigns"><span class="k">Customer data</span><h3>From old records to 14,132 delivered emails</h3><p>Data cleaning, a segmentation dashboard, SPF, DKIM and DMARC, then six Brevo campaigns.</p><span class="proof">0.11% unsubscribe rate</span></a>
+    <a class="ccard" href="#/case/storefront"><span class="k">Data architecture</span><h3>Making 140,000 industrial parts findable</h3><p>Category structure stored in data, so new categories and redesigns need no re-tagging.</p><span class="proof">270+ collection pages</span></a>
     <a class="ccard" href="#/case/vision"><span class="k">Production</span><h3>A storefront rebuilt from zero</h3><p>A new architecture built around how buyers search for parts.</p><span class="proof">Build 23</span></a>
     <a class="ccard" href="#/case/brands"><span class="k">Business workflows</span><h3>Pages built for an enquiry, not a checkout</h3><p>Landing pages for industrial brands, each with its own identity.</p><span class="proof">4 brand pages</span></a>
   </div>
@@ -669,37 +675,29 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 <section class="section wrap" id="projects">
   <div class="projects-head">
     <h2 class="line-rv"><span>Projects</span></h2>
-    <p class="rv" data-d="1">Not demos. Things people in Dubai and Riyadh use every day — plus a few of my own.</p>
+    <p class="rv" data-d="1">Not demos. An AI agent buyers in Dubai and Riyadh use every day, the systems around it, and products I ship on my own.</p>
   </div>
 
   <div class="tbl rv" id="tbl">
     <div class="thead"><span>Name</span><span>Role</span><span>Year</span><span>Services</span><span></span></div>
 
-    <a class="trow" href="#/case/campaigns">
-      <span class="name">Customer data &amp; email campaigns <span class="st new">New · Active</span></span>
-      <span class="role">Cleaned multi-year customer records, built the segmentation dashboard, authenticated the sending domain, and ran email and WhatsApp campaigns</span>
+
+    <a class="trow" href="#/case/agent">
+      <span class="name">Shopify AI chat agent <span class="st">Live · Feb 2026</span></span>
+      <span class="role">MCP architecture on Claude — search, cart and checkout inside the conversation</span>
       <span class="year">2026</span>
-      <span class="svc"><span class="chip">Brevo</span><span class="chip">SPF · DKIM · DMARC</span><span class="chip">ZeroBounce</span><span class="chip">QuickReply.ai</span></span>
+      <span class="svc"><span class="chip">Claude</span><span class="chip">MCP</span><span class="chip">Shopify app</span><span class="chip">Prisma</span><span class="chip">Railway</span></span>
       <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-      <span class="more"><div><div class="in"><span class="num">14,132</span><span class="cap">emails delivered across six campaigns · 0.11% unsubscribed</span><span class="act">Open case study</span></div></div></span>
+      <span class="more"><div><div class="in"><span class="num">140k</span><span class="cap">parts searchable in chat</span><span class="act">Open case study</span></div></div></span>
     </a>
 
-    <a class="trow" href="#/case/datum">
-      <span class="name">Datum theme redesign <span class="st new">New · Live</span></span>
-      <span class="role">Every customer-facing page redesigned — homepage, mega menu, listing pages, PDP, filters — with every link and integration kept intact</span>
+    <a class="trow" href="#/case/cooked">
+      <span class="name">Who's Cooked? <span class="st new">New · Live</span></span>
+      <span class="role">Mobile web game built end to end — 8 microgames, 6 modes, a daily seeded run, duels shared by link and daily leaderboards, in a TypeScript monorepo</span>
       <span class="year">2026</span>
-      <span class="svc"><span class="chip">Liquid</span><span class="chip">OS 2.0</span><span class="chip">Search &amp; Discovery</span><span class="chip">JavaScript</span></span>
+      <span class="svc"><span class="chip">TypeScript</span><span class="chip">PixiJS</span><span class="chip">Hono · Workers</span><span class="chip">Neon Postgres</span><span class="chip">Playwright</span></span>
       <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-      <span class="more"><div><div class="in"><span class="num">24</span><span class="cap">theme builds shipped — Datum is the one running now</span><span class="act">Open case study</span></div></div></span>
-    </a>
-
-    <a class="trow" href="#/case/vision">
-      <span class="name">Vision theme rebuild <span class="st off">Shipped</span></span>
-      <span class="role">Ground-up rebuild of a 140,000-part storefront — new architecture, layout and design system; live until Datum replaced it</span>
-      <span class="year">2026</span>
-      <span class="svc"><span class="chip">Liquid</span><span class="chip">OS 2.0</span><span class="chip">JavaScript</span><span class="chip">Metafields</span></span>
-      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-      <span class="more"><div><div class="in"><span class="num">23</span><span class="cap">the build that started over — full before and after inside</span><span class="act">Open case study</span></div></div></span>
+      <span class="more"><div><div class="in"><span class="num">102</span><span class="cap">unit tests · seeded runs · duels encoded in the link</span><span class="act">Open case study</span></div></div></span>
     </a>
 
     <a class="trow" href="https://www.creativeautomation.ae/pages/tia" target="_blank" rel="noopener">
@@ -711,15 +709,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <span class="more"><div><div class="in"><span class="num">AI</span><span class="cap">plain-language search · example prompts · saved parts lists</span><span class="act">Visit page</span></div></div></span>
     </a>
 
-    <a class="trow" href="#/case/agent">
-      <span class="name">Shopify AI chat agent <span class="st">Live</span></span>
-      <span class="role">MCP architecture on Claude — search, cart and checkout inside the conversation</span>
-      <span class="year">2026</span>
-      <span class="svc"><span class="chip">Claude</span><span class="chip">MCP</span><span class="chip">Shopify app</span><span class="chip">Prisma</span><span class="chip">Railway</span></span>
-      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
-      <span class="more"><div><div class="in"><span class="num">140k</span><span class="cap">parts searchable in chat</span><span class="act">Open case study</span></div></div></span>
-    </a>
-
     <a class="trow" href="#/case/shipping">
       <span class="name">OTO shipping estimator <span class="st">Live</span></span>
       <span class="role">Live carrier prices in the cart from 100+ providers, credentials held server-side</span>
@@ -727,6 +716,15 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <span class="svc"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Railway</span><span class="chip">OTO API</span></span>
       <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
       <span class="more"><div><div class="in"><span class="num">100+</span><span class="cap">carrier providers, varying by delivery location — one endpoint, credentials never leave the server</span><span class="act">Open case study</span></div></div></span>
+    </a>
+
+    <a class="trow" href="#/case/datum">
+      <span class="name">Datum theme redesign <span class="st new">New · Live</span></span>
+      <span class="role">Every customer-facing page redesigned — homepage, mega menu, listing pages, PDP, filters — with every link and integration kept intact</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Liquid</span><span class="chip">OS 2.0</span><span class="chip">Search &amp; Discovery</span><span class="chip">JavaScript</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">24</span><span class="cap">theme builds shipped — Datum is the one running now</span><span class="act">Open case study</span></div></div></span>
     </a>
 
     <a class="trow" href="#/case/storefront">
@@ -738,6 +736,15 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <span class="more"><div><div class="in"><span class="num">270+</span><span class="cap">collection pages from one hierarchy</span><span class="act">Open case study</span></div></div></span>
     </a>
 
+    <a class="trow" href="#/case/campaigns">
+      <span class="name">Customer data &amp; email campaigns <span class="st new">New · Active</span></span>
+      <span class="role">Cleaned multi-year customer records, built the segmentation dashboard, authenticated the sending domain, and ran email and WhatsApp campaigns</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Brevo</span><span class="chip">SPF · DKIM · DMARC</span><span class="chip">ZeroBounce</span><span class="chip">QuickReply.ai</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">14,132</span><span class="cap">emails delivered across six campaigns · 0.11% unsubscribed</span><span class="act">Open case study</span></div></div></span>
+    </a>
+
     <a class="trow" href="#/case/brands">
       <span class="name">Brand landing pages <span class="st">Live</span></span>
       <span class="role">Quote-first pages for IFM, Siemens and SMC — including a second, standalone SMC Brand page — built for the company's paid traffic</span>
@@ -745,6 +752,15 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <span class="svc"><span class="chip">Liquid</span><span class="chip">Google Ads</span><span class="chip">Page templates</span></span>
       <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
       <span class="more"><div><div class="in"><span class="num">4</span><span class="cap">brand pages, four identities — enquiries, not carts</span><span class="act">Open case study</span></div></div></span>
+    </a>
+
+    <a class="trow extra" href="#/case/vision">
+      <span class="name">Vision theme rebuild <span class="st off">Shipped</span></span>
+      <span class="role">Ground-up rebuild of a 140,000-part storefront — new architecture, layout and design system; live until Datum replaced it</span>
+      <span class="year">2026</span>
+      <span class="svc"><span class="chip">Liquid</span><span class="chip">OS 2.0</span><span class="chip">JavaScript</span><span class="chip">Metafields</span></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      <span class="more"><div><div class="in"><span class="num">23</span><span class="cap">the build that started over — full before and after inside</span><span class="act">Open case study</span></div></div></span>
     </a>
 
     <a class="trow extra" href="https://www.creativeautomation.sa/" target="_blank" rel="noopener">
@@ -810,7 +826,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <span class="more"><div><div class="in"><span class="num">ML</span><span class="cap">credit · handwriting · disease</span><span class="act">Visit site</span></div></div></span>
     </a>
   </div>
-  <button class="fbtn tbl-toggle" id="tbl-toggle" type="button" data-flip="Show all 15"><span class="l"></span></button>
+  <button class="fbtn tbl-toggle" id="tbl-toggle" type="button" data-flip="Show all 16"><span class="l"></span></button>
 </section>
 
 <!-- ============ NUMBERS ============ -->
@@ -827,7 +843,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <div class="num"><div class="v">14,132</div><div class="l">emails delivered across 6 campaigns</div></div>
     <div class="num"><div class="v">99<em>%+</em></div><div class="l">delivery on the latest ADIPEC sends</div></div>
     <div class="num"><div class="v">0.11<em>%</em></div><div class="l">unsubscribe rate across all sends</div></div>
-    <div class="num"><div class="v">3</div><div class="l">email auth records: SPF, DKIM, DMARC</div></div>
+    <div class="num"><div class="v">102</div><div class="l">unit tests on Who's Cooked?, all passing</div></div>
   </div>
 </section>
 
@@ -857,15 +873,50 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     </div>
     <div class="ttabs rv" data-d="2" id="ttabs">
       <button class="on" data-f="all">All</button>
-      <button data-f="com">Shopify</button>
+      <button data-f="ai">AI</button>
       <button data-f="fe">Frontend</button>
       <button data-f="be">Backend</button>
-      <button data-f="ai">AI</button>
+      <button data-f="com">Shopify</button>
       <button data-f="data">Data &amp; email</button>
       <button data-f="infra">Infrastructure</button>
     </div>
   </div>
   <div class="tools rv" data-d="1" id="tools-list">
+    <span class="tool hero" data-c="ai"><i></i>Claude API</span>
+    <span class="tool hero" data-c="ai"><i></i>MCP servers</span>
+    <span class="tool" data-c="ai"><i></i>Agent architecture</span>
+    <span class="tool" data-c="ai"><i></i>Tool design</span>
+    <span class="tool" data-c="ai"><i></i>Prompt design</span>
+    <span class="tool" data-c="ai"><i></i>RAG</span>
+    <span class="tool" data-c="ai"><i></i>Claude Design</span>
+    <span class="tool" data-c="ai"><i></i>OpenAI</span>
+    <span class="tool" data-c="ai"><i></i>Gemini</span>
+    <span class="tool hero" data-c="ai"><i></i>Claude Code</span>
+    <span class="tool" data-c="ai"><i></i>Output guardrails</span>
+    <span class="tool hero" data-c="fe"><i></i>TypeScript</span>
+    <span class="tool" data-c="fe"><i></i>JavaScript</span>
+    <span class="tool hero" data-c="fe"><i></i>React</span>
+    <span class="tool" data-c="fe"><i></i>Next.js</span>
+    <span class="tool" data-c="fe"><i></i>Tailwind CSS</span>
+    <span class="tool" data-c="fe"><i></i>CSS architecture</span>
+    <span class="tool" data-c="fe"><i></i>Responsive UI/UX</span>
+    <span class="tool" data-c="fe"><i></i>Accessible UI</span>
+    <span class="tool" data-c="fe"><i></i>Astro</span>
+    <span class="tool" data-c="fe"><i></i>PixiJS · WebGL</span>
+    <span class="tool hero" data-c="be"><i></i>Node.js</span>
+    <span class="tool" data-c="be"><i></i>Express</span>
+    <span class="tool" data-c="be"><i></i>Python</span>
+    <span class="tool" data-c="be"><i></i>FastAPI</span>
+    <span class="tool" data-c="be"><i></i>REST design</span>
+    <span class="tool" data-c="be"><i></i>OAuth &amp; tokens</span>
+    <span class="tool" data-c="be"><i></i>Webhooks</span>
+    <span class="tool" data-c="be"><i></i>SSE streaming</span>
+    <span class="tool" data-c="be"><i></i>Prisma</span>
+    <span class="tool" data-c="be"><i></i>Caching &amp; rate limiting</span>
+    <span class="tool" data-c="be"><i></i>SQL</span>
+    <span class="tool hero" data-c="be"><i></i>Hono</span>
+    <span class="tool" data-c="be"><i></i>Zod</span>
+    <span class="tool" data-c="be"><i></i>Drizzle ORM</span>
     <span class="tool hero" data-c="com"><i></i>Shopify Liquid</span>
     <span class="tool hero" data-c="com"><i></i>Online Store 2.0</span>
     <span class="tool" data-c="com"><i></i>Theme architecture</span>
@@ -879,34 +930,6 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <span class="tool" data-c="com"><i></i>Theme app extensions</span>
     <span class="tool" data-c="com"><i></i>Matrixify</span>
     <span class="tool" data-c="com"><i></i>Third-party app integration</span>
-    <span class="tool hero" data-c="fe"><i></i>TypeScript</span>
-    <span class="tool" data-c="fe"><i></i>JavaScript</span>
-    <span class="tool hero" data-c="fe"><i></i>React</span>
-    <span class="tool" data-c="fe"><i></i>Next.js</span>
-    <span class="tool" data-c="fe"><i></i>Tailwind CSS</span>
-    <span class="tool" data-c="fe"><i></i>CSS architecture</span>
-    <span class="tool" data-c="fe"><i></i>Responsive UI/UX</span>
-    <span class="tool" data-c="fe"><i></i>Accessible UI</span>
-    <span class="tool hero" data-c="be"><i></i>Node.js</span>
-    <span class="tool" data-c="be"><i></i>Express</span>
-    <span class="tool" data-c="be"><i></i>Python</span>
-    <span class="tool" data-c="be"><i></i>FastAPI</span>
-    <span class="tool" data-c="be"><i></i>REST design</span>
-    <span class="tool" data-c="be"><i></i>OAuth &amp; tokens</span>
-    <span class="tool" data-c="be"><i></i>Webhooks</span>
-    <span class="tool" data-c="be"><i></i>SSE streaming</span>
-    <span class="tool" data-c="be"><i></i>Prisma</span>
-    <span class="tool" data-c="be"><i></i>Caching &amp; rate limiting</span>
-    <span class="tool" data-c="be"><i></i>SQL</span>
-    <span class="tool hero" data-c="ai"><i></i>Claude API</span>
-    <span class="tool hero" data-c="ai"><i></i>MCP servers</span>
-    <span class="tool" data-c="ai"><i></i>Agent architecture</span>
-    <span class="tool" data-c="ai"><i></i>Tool design</span>
-    <span class="tool" data-c="ai"><i></i>Prompt design</span>
-    <span class="tool" data-c="ai"><i></i>RAG</span>
-    <span class="tool" data-c="ai"><i></i>Claude Design</span>
-    <span class="tool" data-c="ai"><i></i>OpenAI</span>
-    <span class="tool" data-c="ai"><i></i>Gemini</span>
     <span class="tool hero" data-c="data"><i></i>SPF · DKIM · DMARC</span>
     <span class="tool" data-c="data"><i></i>Data cleaning</span>
     <span class="tool" data-c="data"><i></i>Audience segmentation</span>
@@ -931,6 +954,12 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <span class="tool" data-c="infra"><i></i>Supabase</span>
     <span class="tool" data-c="infra"><i></i>PostHog</span>
     <span class="tool" data-c="infra"><i></i>Linux</span>
+    <span class="tool hero" data-c="infra"><i></i>Cloudflare Workers</span>
+    <span class="tool" data-c="infra"><i></i>Neon Postgres</span>
+    <span class="tool" data-c="infra"><i></i>Vitest</span>
+    <span class="tool" data-c="infra"><i></i>Playwright</span>
+    <span class="tool" data-c="infra"><i></i>GitHub Actions</span>
+    <span class="tool" data-c="infra"><i></i>pnpm monorepos</span>
   </div>
 </section>
 
@@ -958,6 +987,8 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <p class="rv" data-d="2">Real changes on live systems, with the number attached. Newest first — December 2025 to November 2026.</p>
   </div>
   <div class="log rv" id="log">
+    <!-- November 2026 -->
+    <div class="lg"><span class="tag">Who's Cooked?<b>Nov 2026</b></span><div><div class="t">A mobile web game, built and shipped end to end</div><p class="d">Eight microgames, six modes, a daily seeded run, duels shared by link and daily leaderboards, in a TypeScript monorepo on Cloudflare Workers and Neon Postgres. Typecheck, unit tests, the build and phone-size Playwright tests run in CI on every push; the repo is public on GitHub.</p></div><span class="fig">102 unit tests<br>live on Workers</span></div>
     <!-- October to November 2026 -->
     <div class="lg"><span class="tag">Email campaigns<b>Oct–Nov 2026</b></span><div><div class="t">Six Brevo campaigns, from data to delivery</div><p class="d">Festival greetings, a lead follow-up and a three-part ADIPEC 2026 series, sent to audiences from a dashboard I built on cleaned company data. Lists validated with ZeroBounce, and bounces removed after each send.</p></div><span class="fig">14,132 delivered<br>0.11% unsubscribed</span></div>
     <div class="lg"><span class="tag">Email infrastructure<b>Oct 2026</b></span><div><div class="t">Sending domain authenticated</div><p class="d">Separate sending domain set up with SPF, DKIM and DMARC records in cPanel DNS and connected to Brevo, with replies routed back to the main company domain.</p></div><span class="fig">SPF · DKIM · DMARC</span></div>
@@ -968,7 +999,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <div class="lg"><span class="tag">Filters &amp; search<b>Sep 2026</b></span><div><div class="t">New collection filtering system</div><p class="d">Built on Shopify Search &amp; Discovery — brand, series, dimensions, mounting type, price, accessory type, depth — with a redesigned search-results filter bar, clear active-filter and clear-all states, row and tile product views, and the Rapid Search snippet integration fixed.</p></div><span class="fig">120+ collection pages</span></div>
     <div class="lg"><span class="tag">Traffic &amp; security<b>Sep 2026</b></span><div><div class="t">Bot traffic cut out of search usage</div><p class="d">Rapid Search sessions were running out. Traced it to heavy US bot traffic, worked with the vendor to exclude bots and reset the plan to real traffic only, then added robots.txt rules, rate limits and session timeouts against bot and data-centre traffic.</p></div><span class="fig">plan reset<br>accurate counts</span></div>
     <div class="lg"><span class="tag">Brand pages<b>Sep 2026</b></span><div><div class="t">SMC Brand page, and the distributor page refined</div><p class="d">A second SMC page with a completely different layout from the distributor page, built in SMC's blue, white and black — hero, product imagery, industry applications, technology highlights, enquiry sections. The distributor page reworked in the same pass; both tuned for mobile, SEO and enquiries.</p></div><span class="fig">4th brand page</span></div>
-    <div class="lg"><span class="tag">Saudi storefront<b>Sep 2026</b></span><div><div class="t">New Saudi theme, two directions</div><p class="d">Landing page, header, logo, navigation, category and product-range sections on Shopify CDN imagery; image-loop rendering bugs fixed, and invalid links and UAE redirects removed for products not yet sold in KSA.</p></div><span class="fig">2 versions in review</span></div>
+    <div class="lg more"><span class="tag">Saudi storefront<b>Sep 2026</b></span><div><div class="t">New Saudi theme, two directions</div><p class="d">Landing page, header, logo, navigation, category and product-range sections on Shopify CDN imagery; image-loop rendering bugs fixed, and invalid links and UAE redirects removed for products not yet sold in KSA.</p></div><span class="fig">2 versions in review</span></div>
     <div class="lg more"><span class="tag">Brand pages<b>Sep 2026</b></span><div><div class="t">Siemens page redesigned and redeployed</div><p class="d">Layout rebuilt, sections removed and added, product images and Enquiry buttons integrated, mobile and desktop tuned, pushed live.</p></div><span class="fig">live · enquiry-led</span></div>
     <div class="lg more"><span class="tag">Cart · shipping<b>Sep 2026</b></span><div><div class="t">Shipping calculator restored</div><p class="d">The cart's shipping estimate diagnosed and fixed, with updates to the Railway proxy integration and a tidier cart UI in the same pass.</p></div><span class="fig">live rates back</span></div>
     <div class="lg more"><span class="tag">Third-party apps<b>Sep 2026</b></span><div><div class="t">Pre-order app injection fixed</div><p class="d">Worked with Globo's support team to resolve a JavaScript injection that broke the Pre-Order button, and cleared the Add to Cart and Enquiry glitches around it.</p></div><span class="fig">vendor issue closed</span></div>
@@ -996,7 +1027,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <div class="lg more"><span class="tag">Vision theme</span><div><div class="t">Pre-order system</div><p class="d">Dedicated cart page, pre-order buttons with lead times, stock badges and counts, and a warning that fires only on mixed carts.</p></div><span class="fig">mixed-cart logic</span></div>
     <div class="lg more"><span class="tag">Vision theme</span><div><div class="t">Product page rebuild</div><p class="d">Bigger specifications panel, SKU + brand line linking to the vendor collection, tariffs &amp; fees tab, larger imagery, related products from the same subcategory.</p></div><span class="fig">~30% larger imagery</span></div>
   </div>
-  <button class="fbtn log-toggle" id="log-toggle" type="button" data-flip="Show all 34"><span class="l"></span></button>
+  <button class="fbtn log-toggle" id="log-toggle" type="button" data-flip="Show all 35"><span class="l"></span></button>
 </section>
 
 <!-- ============ EXPERIENCE ============ -->
@@ -1066,7 +1097,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     <div class="fcols rv">
       <div class="fbrand">
         <div class="fname">Shahid<i>.</i></div>
-        <p>Software engineer in Bengaluru. AI agents, Shopify systems, Node services and data workflows — built to run, not just to demo.</p>
+        <p>Software engineer in Bengaluru. AI agents, full-stack TypeScript, Shopify systems and Node services — built to run, not just to demo.</p>
         <div class="icons">
           <a href="https://linkedin.com/in/shahidafrid-dev" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg></a>
           <a href="https://www.instagram.com/akhi_shxhid" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
@@ -1075,12 +1106,13 @@ body[data-view="case"] .case[data-active="true"]{display:block}
         </div>
       </div>
       <div><h4>Navigation</h4><ul><li><a href="#top">Home</a></li><li><a href="#about">About</a></li><li><a href="#case-studies">Case studies</a></li><li><a href="#projects">Projects</a></li><li><a href="#shipped">Shipped</a></li><li><a href="Shahid-Afrid-Resume.pdf" download>Résumé (PDF)</a></li><li><a href="Shahid-Afrid-Resume.docx" download>Résumé (Word)</a></li></ul></div>
-      <div><h4>Case studies</h4><ul><li><a href="#/case/agent">AI chat agent</a></li><li><a href="#/case/campaigns">Email campaigns</a></li><li><a href="#/case/shipping">OTO shipping</a></li><li><a href="#/case/storefront">Catalogue architecture</a></li><li><a href="#/case/datum">Datum theme redesign</a></li><li><a href="#/case/vision">Vision theme rebuild</a></li><li><a href="#/case/brands">Brand pages</a></li></ul></div>
+      <div><h4>Case studies</h4><ul><li><a href="#/case/agent">AI chat agent</a></li><li><a href="#/case/cooked">Who's Cooked? game</a></li><li><a href="#/case/campaigns">Email campaigns</a></li><li><a href="#/case/shipping">OTO shipping</a></li><li><a href="#/case/storefront">Catalogue architecture</a></li><li><a href="#/case/datum">Datum theme redesign</a></li><li><a href="#/case/vision">Vision theme rebuild</a></li><li><a href="#/case/brands">Brand pages</a></li></ul></div>
       <div><h4>Connect</h4><ul>
         <li><a href="https://linkedin.com/in/shahidafrid-dev" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://www.instagram.com/akhi_shxhid" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://github.com/akhi-shxhid" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://github.com/shxhid-dev" target="_blank" rel="noopener">GitHub · alt</a></li>
+        <li><a href="https://whoscooked.whoscooked-api.workers.dev" target="_blank" rel="noopener">Play Who's Cooked? ↗</a></li>
         <li><a href="https://app.notion.com/p/3876869e8cbe81d1bb88fd93b15c6009" target="_blank" rel="noopener" style="color:var(--ice)">Work log · Notion ↗</a></li>
         <li><span class="dimtxt">Bengaluru · IST (GMT+5:30)</span></li>
       </ul></div>
@@ -1097,7 +1129,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
         <div class="tagcard">
           <span class="t1">Software</span>
           <span class="t2">Engineer</span>
-          <span class="t3">Shopify · AI · Full-stack</span>
+          <span class="t3">AI · Full-stack · Shopify</span>
         </div>
       </div>
     </div>
@@ -1108,9 +1140,77 @@ body[data-view="case"] .case[data-active="true"]{display:block}
 
 <!-- ============ CASE STUDIES ============ -->
 
+<article class="case wrap" id="case-cooked">
+  <a class="back" href="#case-studies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All case studies</a>
+  <div class="label on" style="margin-bottom:18px">Case study · 02</div>
+  <h1>A mobile web game, from a written spec to live in under two weeks</h1>
+  <p class="stand">Who's Cooked? is a mobile-first browser game: fast microgames, three lives, and a result you can send to a friend, who then plays your exact run. No install, no account. I built it as a whole product rather than a demo — game engine, API, database, payments, consent-gated analytics, tests and CI — and the code is public on GitHub.</p>
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Solo — product, build and deploy, with Claude Code</dd></div>
+    <div><dt>Stack</dt><dd>TypeScript, Astro, React, PixiJS, Hono, Cloudflare Workers, Drizzle, Neon Postgres</dd></div>
+    <div><dt>Status</dt><dd>Live · first commit 5 Nov 2026 · public 17 Nov 2026</dd></div>
+    <div><dt>Links</dt><dd><a href="https://whoscooked.whoscooked-api.workers.dev" target="_blank" rel="noopener">Play it</a> · <a href="https://github.com/akhi-shxhid/whos-cooked" target="_blank" rel="noopener">Source</a></dd></div>
+  </dl>
+  <div class="cbody">
+    <nav class="toc"><a href="#s8-1">The game</a><a href="#s8-2">Architecture</a><a href="#s8-3">Duels by link</a><a href="#s8-4">Payments &amp; trust</a><a href="#s8-5">Testing</a><a href="#s8-6">The rebuild</a><a href="#s8-7">AI-first build</a></nav>
+    <div class="txt">
+      <figure class="shot wide"><img src="assets/shots/cooked-00-cover.webp" alt="Three phone screens from Who's Cooked: the landing page with Play now and four mode tiles, a Count microgame asking how many nail-polish emojis there are, and a Blitz result screen with Play again, Duel a friend and Share buttons" loading="lazy" width="1600" height="900"><figcaption><b>Who's Cooked?</b> Landing, a Count microgame mid-run, and the result screen with duel and share.</figcaption></figure>
+
+      <h2 id="s8-1">The game</h2>
+      <p>Eight microgames — Pop, Flags, Don't, Order, Burnt, Mash, Catch and Count — each a one-line instruction you have a second or two to obey. Six modes sit on top of them: <strong>Classic</strong> (three lives, speeds up every five, a boss every ten), <strong>Blitz</strong> (60 seconds with combos), <strong>One Life</strong>, <strong>Chill</strong>, a <strong>Daily</strong> run that is the same for every player, and <strong>Duel</strong>.</p>
+      <p>XP, levels, daily missions, streaks with a grace day, and an unlockable roster — the Cooked Crew, eleven original SVG characters — give people a reason to come back tomorrow. Tapping Play starts a run straight away: no gate, no tutorial.</p>
+      <div class="gal phones">
+        <figure class="shot"><img src="assets/shots/cooked-01-landing.webp" alt="Who's Cooked landing page on a phone with the title, three characters, a Play now button and Blitz, One Life, Daily and Chill tiles" loading="lazy" width="600" height="1298"><figcaption><b>Landing</b> Zero JavaScript</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/cooked-02-hub.webp" alt="Hub screen with level, XP bar, day streak, three daily missions and five mode cards" loading="lazy" width="600" height="1298"><figcaption><b>Hub</b> Missions and modes</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/cooked-06-crew.webp" alt="The Crew sheet showing eleven characters, most locked behind a level or a pack" loading="lazy" width="600" height="1298"><figcaption><b>Crew</b> Unlock by playing</figcaption></figure>
+      </div>
+
+      <h2 id="s8-2">Architecture</h2>
+      <p>A pnpm monorepo with strict TypeScript: two apps and eight packages, each with one job.</p>
+      <ul>
+        <li><strong>Web.</strong> Astro serves the landing page as static HTML with no JavaScript. <code>/play/</code> is a React island that mounts a PixiJS (WebGL) stage; sound effects are synthesised with Web Audio.</li>
+        <li><strong>API.</strong> Hono on Cloudflare Workers, every route under <code>/api/v1</code>, reached through a service binding so the game and the API share one origin.</li>
+        <li><strong>Data.</strong> Neon Postgres through Cloudflare Hyperdrive for connection pooling, with schema-first Drizzle migrations: players, purchases, entitlements, webhook events, leaderboard entries and handles.</li>
+        <li><strong>Identity.</strong> An anonymous player id in a signed HttpOnly cookie. No sign-up and no password to leak.</li>
+        <li><strong>Rules in plain TypeScript.</strong> <code>game-core</code> has no DOM — modes, scoring, XP and missions are pure functions, so they're tested directly instead of through the canvas.</li>
+      </ul>
+
+      <h2 id="s8-3">Duels without accounts</h2>
+      <p>Every random choice in a run comes from one seeded generator (sfc32, seeded through cyrb128 string hashing). Same seed, same rounds. A duel link carries the seed and a <strong>ghost</strong> — a compact string of which rounds the sender cleared — so the friend who opens it plays the identical sequence against the sender's ghost, from any group chat. The Daily works the same way: one seed per day for everyone, and a share grid that doesn't spoil the answers.</p>
+      <div class="pull">The link is the multiplayer. No lobby, no accounts, no server state for a duel — a seed and a ghost in the URL.</div>
+      <p>Leaderboard posts are checked on the server. A Daily score must equal the rounds cleared in its ghost for today's seed; other boards refuse more points than the run could earn (boss multiplier × combo cap). It isn't full anti-cheat — server-issued seeds and signed play tokens are the next step — but impossible scores get a <code>422</code>. Boards prune themselves after 30 days.</p>
+      <div class="gal phones">
+        <figure class="shot"><img src="assets/shots/cooked-03-count.webp" alt="Count microgame: how many nail-polish emojis, with answers 6, 7 and 8" loading="lazy" width="600" height="1298"><figcaption><b>Count</b> Blitz, 36s left</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/cooked-04-mash.webp" alt="Mash microgame with a progress bar at 2 of 9 and a large MASH button" loading="lazy" width="600" height="1298"><figcaption><b>Mash</b> 2 of 9 taps</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/cooked-05-result.webp" alt="Result screen: Fully Cooked, a caption, Play again, Duel a friend, Share, Save card, Save clip and Post to leaderboard buttons, and an XP breakdown" loading="lazy" width="600" height="1298"><figcaption><b>Result</b> Duel, share, post</figcaption></figure>
+      </div>
+
+      <h2 id="s8-4">Payments and trust</h2>
+      <ul>
+        <li><strong>Two one-time unlocks.</strong> Cooked+ at $3.99 and the Chaos Crew pack at $1.99. No subscriptions, no loot boxes, no random paid rewards.</li>
+        <li><strong>A provider behind an interface.</strong> A <code>PaymentProvider</code> with a Dodo Payments implementation and a fake one. Webhooks are verified with Standard Webhooks HMAC signatures, and writes use conflict-safe inserts, so a redelivered event can't grant anything twice.</li>
+        <li><strong>The whole loop, locally.</strong> The fake provider sends a real signed webhook through the same route, so checkout → webhook → entitlement → restore runs end to end without money.</li>
+        <li><strong>Built for a young audience.</strong> Under-13s can't buy or post to leaderboards; analytics events stay on the device until the player consents; a break prompt appears every ten runs.</li>
+      </ul>
+      <div class="note"><b>Status:</b> real payments are waiting on merchant approval from the payment provider. Everything up to that point is built and tested.</div>
+
+      <h2 id="s8-5">Tested like a product</h2>
+      <p><strong>102 unit tests</strong> in Vitest cover the seeded generator, modes, scoring, progression, the renderers, the API and webhook verification. Playwright drives the real game on a <strong>360 px phone viewport</strong>: start a run, play until game over, check the rank, XP and share buttons, and fail if anything overflows the screen. GitHub Actions runs typecheck, unit tests, the build and the Playwright suite on every push.</p>
+
+      <h2 id="s8-6">Rebuilt after an honest look</h2>
+      <p>The first build was a four-round "cooked score" test with a slice of toast that browned as the score rose. It worked. The written value assessment after it was blunt: almost nobody would pay for it, and nothing about it was worth showing a friend. So the next pass started from research into what actually brings players back — fast variety, a shared daily ritual, identity you can show off — and rebuilt the game around microgames, modes, progression and the Crew. The research, the decision record and that value assessment are all in the repo's <code>docs/</code>.</p>
+
+      <h2 id="s8-7">Built AI-first</h2>
+      <p>The project started from a written product spec with milestone checks, and I built it with Claude Code as a pair engineer — with the Neon MCP server and agent skills wired in during the build. Each milestone had to pass typecheck, tests and a phone-size playthrough before the next one started. That's how I like working with AI: a clear spec, real tools, hard checks, and a person deciding what ships.</p>
+      <p><a class="inl" href="https://whoscooked.whoscooked-api.workers.dev" target="_blank" rel="noopener">Play a run on your phone</a> — it takes a minute — or <a class="inl" href="https://github.com/akhi-shxhid/whos-cooked" target="_blank" rel="noopener">read the source</a>.</p>
+    </div>
+  </div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/shipping">OTO shipping estimator</a></div>
+</article>
+
 <article class="case wrap" id="case-datum">
   <a class="back" href="#case-studies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All case studies</a>
-  <div class="label on" style="margin-bottom:18px">Case study · 01</div>
+  <div class="label on" style="margin-bottom:18px">Case study · 04</div>
   <h1>A second full redesign, live without breaking a link</h1>
   <p class="stand">Vision rebuilt the store from zero. Datum, the build after it, redesigned every surface a customer touches — homepage, mega menu, listing pages, product page, filters — while every existing link, integration and third-party app kept working underneath. It went live on creativeautomation.ae in September 2026.</p>
   <dl class="meta">
@@ -1173,12 +1273,12 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p><a class="inl" href="https://creativeautomation.ae/tools" target="_blank" rel="noopener">The Toolkit</a> is a free Excel workbook for maintenance and spares planning — downtime cost calculator, machine risk map, critical spare score, spares register, planned maintenance and spares planner, KPI scorecard and emergency log. No registration, email or login; it opens in Excel and Google Sheets. It gives an engineer a reason to come to the site that isn't a purchase yet.</p>
     </div>
   </div>
-  <div class="cnext"><div class="k">Next case study</div><a href="#/case/vision">Vision theme rebuild — the build before it</a></div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/campaigns">Customer data and email campaigns</a></div>
 </article>
 
 <article class="case wrap" id="case-vision">
   <a class="back" href="#case-studies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All case studies</a>
-  <div class="label on" style="margin-bottom:18px">Case study · 02</div>
+  <div class="label on" style="margin-bottom:18px">Case study · 07</div>
   <h1>A storefront rebuilt from zero, live in days</h1>
   <p class="stand">Twenty-two theme builds in, I stopped patching and started over: new architecture, new layout, new design language. The company saw it and asked for it live as soon as possible. It ran as creativeautomation.ae's theme until Datum, the next build, replaced it in September 2026.</p>
   <dl class="meta">
@@ -1240,7 +1340,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>Everything downstream came with it: the cart's live shipping estimate, the AI chat agent's mount point, PostHog, the pre-order system, and the breadcrumb and filter architecture that the previous twenty-two builds had grown. That same spine is what let the next build, Datum, redesign every page again in September 2026 without moving a single link.</p>
     </div>
   </div>
-  <div class="cnext"><div class="k">Next case study</div><a href="#/case/shipping">OTO shipping estimator</a></div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/brands">Brand landing pages</a></div>
 </article>
 
 <article class="case wrap" id="case-shipping">
@@ -1286,12 +1386,12 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>The estimate is display-only and labelled that way — rates are quoted by delivery city, the postal code is ignored, and Shopify still calculates and charges its own rate at checkout. This shows an indicative cost early, at the moment it decides whether the cart survives.</p>
     </div>
   </div>
-  <div class="cnext"><div class="k">Next case study</div><a href="#/case/agent">Shopify AI chat agent</a></div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/datum">Datum theme redesign</a></div>
 </article>
 
 <article class="case wrap" id="case-agent">
   <a class="back" href="#case-studies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All case studies</a>
-  <div class="label on" style="margin-bottom:18px">Case study · 04</div>
+  <div class="label on" style="margin-bottom:18px">Case study · 01</div>
   <h1>An AI agent that can actually find one part in 140,000</h1>
   <p class="stand">A shopping agent is easy to demo and hard to keep alive. This one has been answering, searching and checking out on a live industrial catalogue since February 2026 — and since September it has its own search page.</p>
   <dl class="meta">
@@ -1332,12 +1432,12 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>The agent is also still mounted on every page of the live store, bottom right. <a class="inl" href="https://www.creativeautomation.ae/" target="_blank" rel="noopener">Open it and ask for a part number.</a></p>
     </div>
   </div>
-  <div class="cnext"><div class="k">Next case study</div><a href="#/case/storefront">Catalogue architecture</a></div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/cooked">Who's Cooked? — a mobile web game</a></div>
 </article>
 
 <article class="case wrap" id="case-storefront">
   <a class="back" href="#case-studies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All case studies</a>
-  <div class="label on" style="margin-bottom:18px">Case study · 05</div>
+  <div class="label on" style="margin-bottom:18px">Case study · 06</div>
   <h1>Making 140,000 industrial parts findable</h1>
   <p class="stand">Procurement engineers don't browse. They arrive with a part number or a spec and leave if the site can't meet them there. This is the data architecture underneath every theme I've built for this catalogue — including two full redesigns that didn't have to re-tag a single product.</p>
   <dl class="meta">
@@ -1376,12 +1476,12 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>A second storefront for Saudi Arabia launched from the same theme in May 2026 with regional details, a dual-office footer, redirects disabled so Saudi clicks stay on the Saudi site, and its own distributor landing page. In September it got a new theme of its own — redesigned landing page, header, logo, navigation, and category and product-range sections on Shopify CDN imagery — delivered as two versions for the company to choose between, with the remaining invalid links and UAE redirects removed for products not yet sold in KSA. A structure built to be reused turned out to be reusable.</p>
     </div>
   </div>
-  <div class="cnext"><div class="k">Next case study</div><a href="#/case/brands">Brand landing pages</a></div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/vision">Vision theme rebuild</a></div>
 </article>
 
 <article class="case wrap" id="case-brands">
   <a class="back" href="#case-studies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All case studies</a>
-  <div class="label on" style="margin-bottom:18px">Case study &middot; 06</div>
+  <div class="label on" style="margin-bottom:18px">Case study · 08</div>
   <h1>Brand pages whose job is an enquiry, not a checkout</h1>
   <p class="stand">IFM, Siemens and SMC are quoted, not carted &mdash; part numbers, successor parts, lead times, panel-build BOMs. So the pages that receive the company's Google Ads traffic for those lines work nothing like the storefront they sit inside, and nothing like each other. There are four of them now: IFM, Siemens, and two for SMC.</p>
   <dl class="meta">
@@ -1442,12 +1542,12 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>All four are page templates inside the same Shopify theme, so the header, cart, chat agent and footer come along unchanged &mdash; and they carried straight through the Datum redesign. A new brand is a template and a palette, not a new build; where a brand deserves more, as SMC did, it gets a second page with its own layout.</p>
     </div>
   </div>
-  <div class="cnext"><div class="k">Next case study</div><a href="#/case/campaigns">Customer data and email campaigns</a></div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/agent">Shopify AI chat agent</a></div>
 </article>
 
 <article class="case wrap" id="case-campaigns">
   <a class="back" href="#case-studies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>All case studies</a>
-  <div class="label on" style="margin-bottom:18px">Case study &middot; 07</div>
+  <div class="label on" style="margin-bottom:18px">Case study · 05</div>
   <h1>From old customer records to 14,132 delivered emails</h1>
   <p class="stand">The company had two to three years of customer, enquiry and prospect records. I cleaned them, built a dashboard to segment them, authenticated a separate sending domain, and ran six Brevo campaigns between 10 October and 4 November 2026, alongside WhatsApp broadcasts.</p>
   <dl class="meta">
@@ -1498,7 +1598,7 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       <p>The same data also feeds WhatsApp campaigns through QuickReply.ai. I designed message templates with links, submitted them for WhatsApp approval, loaded customer and prospect numbers, and sent the approved broadcasts.</p>
     </div>
   </div>
-  <div class="cnext"><div class="k">Next case study</div><a href="#/case/datum">Datum theme redesign</a></div>
+  <div class="cnext"><div class="k">Next case study</div><a href="#/case/storefront">Catalogue architecture</a></div>
 </article>
 
 <!-- ============ LIGHTBOX ============ -->
@@ -1616,8 +1716,8 @@ body[data-view="case"] .case[data-active="true"]{display:block}
       if(!open){ var a=$(anchorSel); if(a) a.scrollIntoView({behavior:"smooth",block:"start"}); }
     });
   }
-  collapsible("#tbl","#tbl-toggle","Show all 15","Show fewer","#projects");
-  collapsible("#log","#log-toggle","Show all 34","Show fewer","#shipped");
+  collapsible("#tbl","#tbl-toggle","Show all 16","Show fewer","#projects");
+  collapsible("#log","#log-toggle","Show all 35","Show fewer","#shipped");
 
   var nav=$("#nav"), menu=$("#menu");
   function setMenu(open){ nav.classList.toggle("open",open); menu.setAttribute("aria-expanded",open?"true":"false"); menu.setAttribute("aria-label",open?"Close menu":"Open menu"); }
@@ -1654,8 +1754,8 @@ body[data-view="case"] .case[data-active="true"]{display:block}
     try{localStorage.setItem("theme",next)}catch(e){}
   });
 
-  var cases={datum:$("#case-datum"),vision:$("#case-vision"),shipping:$("#case-shipping"),agent:$("#case-agent"),storefront:$("#case-storefront"),brands:$("#case-brands"),campaigns:$("#case-campaigns")};
-  var titles={datum:"Datum theme redesign",vision:"Vision theme rebuild",shipping:"OTO shipping estimator",agent:"Shopify AI chat agent",storefront:"Catalogue architecture",brands:"Brand landing pages",campaigns:"Customer data and email campaigns"};
+  var cases={datum:$("#case-datum"),vision:$("#case-vision"),shipping:$("#case-shipping"),agent:$("#case-agent"),storefront:$("#case-storefront"),brands:$("#case-brands"),campaigns:$("#case-campaigns"),cooked:$("#case-cooked")};
+  var titles={datum:"Datum theme redesign",vision:"Vision theme rebuild",shipping:"OTO shipping estimator",agent:"Shopify AI chat agent",storefront:"Catalogue architecture",brands:"Brand landing pages",campaigns:"Customer data and email campaigns",cooked:"Who's Cooked? — a mobile web game"};
   function route(){
     var m=(location.hash||"").match(/^#\/case\/([a-z]+)$/);
     Object.keys(cases).forEach(function(k){cases[k].setAttribute("data-active","false")});
